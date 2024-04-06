@@ -1,0 +1,28 @@
+footer {
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  z-index: 1;
+  justify-content: space-between;
+  background-color: var(--color-dark);
+  padding: 20px 5%;
+  width: 100%;
+}
+
+footer a,
+footer p {
+  font-size: 1.4rem;
+  margin: 0;
+}
+
+.links-utils {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-style: normal;
+}
+
+.topo {
+  background-color: transparent;
+  border: none;
+}

@@ -1,0 +1,119 @@
+.pizza-image {
+  position: absolute;
+  left: -60rem;
+  top: -18rem;
+  z-index: -1;
+  width: 70rem;
+  filter: drop-shadow(12px 24px 20px rgb(0, 0, 0));
+}
+
+#how-it-works {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.steps-list {
+  width: 80%;
+}
+
+.step {
+  display: flex;
+  align-items: center;
+}
+
+.step:nth-child(odd) {
+  justify-content: end;
+}
+
+.step strong {
+  font-size: 5.6rem;
+  margin-right: 12px;
+  color: transparent;
+  background: var(--color-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.step p {
+  display: block;
+  width: 68%;
+}
+
+.cta-section,
+.attention-section {
+  max-width: 650px;
+  text-align: center;
+}
+
+.attention-section {
+  margin-bottom: 64px;
+}
+
+.testimonial-container,
+.menu-list {
+  display: flex;
+  gap: 20px;
+}
+
+.control {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.control #back {
+  margin-right: 10px;
+}
+
+.menu-list {
+  margin-top: 32px;
+}
+
+.testimonial-card,
+.pizza-card {
+  width: 27rem;
+  background-color: var(--color-light);
+  box-shadow: var(--box-shadow);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: 0.3s ease-in-out;
+}
+
+.testimonial-card:hover,
+.pizza-card:hover {
+  transform: scale(1.05);
+}
+
+.pizza-card img {
+  width: 100%;
+}
+
+.testimonial-card h3,
+.pizza-card h3 {
+  color: var(--color-dark);
+  font-size: 1.8rem;
+  text-align: center;
+}
+
+.pizza-card h3 {
+  padding: 20px;
+}
+
+.testimonial-card p,
+.pizza-card figcaption {
+  color: var(--color-dark);
+  font-size: 1.2rem;
+  line-height: 18px;
+  text-align: justify;
+  margin: 0 20px 20px;
+}
+
+.testimonial-star {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+}

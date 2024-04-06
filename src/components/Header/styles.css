@@ -1,0 +1,38 @@
+.navigation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding-top: 20px;
+}
+
+.navigation .logo {
+  font-size: 28px;
+  color: var(--color-primary-light);
+  padding: 0;
+}
+
+.navigation .logo:hover {
+  scale: 1.1;
+}
+
+.navigation a {
+  font-size: 16px;
+  margin: 0;
+  padding: 5px 10px;
+  color: var(--color-light);
+  font-weight: 800;
+  transition: 0.3s ease-in-out;
+}
+
+.navigation nav ul {
+  display: flex;
+}
+
+.navigation a:hover {
+  color: var(--color-primary-light);
+}
+
+.navigation nav a {
+  margin-right: 15px;
+}
