@@ -3,7 +3,7 @@ import "./styles.css";
 export const Footer = () => {
   return (
     <footer>
-      <ul class="links-utils">
+      <ul className="links-utils">
         <li>
           <a
             href="https://www.linkedin.com/in/victorpariziobackend/"
@@ -33,7 +33,7 @@ export const Footer = () => {
         Desenvolvido por <strong>Victor Parizio</strong>
       </p>
 
-      <button class="topo"></button>
+      <button className="topo"></button>
     </footer>
   );
 };
