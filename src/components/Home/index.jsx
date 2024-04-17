@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 
 import { Button } from "../Button";
 import { Hero } from "../Hero";
+
 import "./styles.css";
 
 export const Home = () => {
@@ -128,7 +129,7 @@ export const Home = () => {
             cada vez!
           </p>
 
-          <Button variant={"primary-button animation"}>
+          <Button variant={"base-button large animation"}>
             <a href="./src/pages/menu.html">Quero pedir a minha Pizza</a>
           </Button>
         </section>
@@ -138,7 +139,7 @@ export const Home = () => {
             <h2>Depoimentos</h2>
             <div>
               <button
-                className="control-button"
+                className="base-button"
                 id="back"
                 onClick={handlePrev}
                 disabled={currentIndex === 0}
@@ -146,7 +147,7 @@ export const Home = () => {
                 &lt;
               </button>
               <button
-                className="control-button"
+                className="base-button"
                 id="next"
                 onClick={handleNext}
                 disabled={currentIndex === testimonialsData.length - 3}

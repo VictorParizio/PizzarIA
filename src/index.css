@@ -25,7 +25,7 @@ input[type="number"] {
 :root {
   --color-primary: rgb(161, 126, 0);
   --color-primary-light: rgb(255, 200, 0);
-  --color-secundary: rgb(64, 50, 0);
+  --color-secondary: rgb(64, 50, 0);
 
   --color-light: rgb(255, 255, 255);
   --color-dark: rgb(50, 50, 50);
@@ -34,7 +34,7 @@ input[type="number"] {
     180deg,
     var(--color-primary-light) 0%,
     var(--color-primary) 36%,
-    var(--color-secundary) 100%
+    var(--color-secondary) 100%
   );
 
   --bg-color: rgb(30, 30, 40);

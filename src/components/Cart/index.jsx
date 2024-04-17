@@ -21,9 +21,9 @@ export const Cart = () => {
               <p>Pizza de Margherita</p>
             </div>
             <p>preço</p>
-            <Control variant={'small'}/>
+            <Control variant={"small"} />
             <p>subtotal</p>
-            <Button variant={'small'}>x</Button>
+            <Button variant={"small"}>x</Button>
           </div>
         </section>
 
@@ -64,9 +64,9 @@ export const Cart = () => {
               />
               <label for="cartao">Cartão</label>
             </div>
-            <button>
-              <a href="./success.html">Finalizar Compra</a>
-            </button>
+            <Button variant={"base-button large"}>
+              Finalizar Compra
+            </Button>
           </div>
         </section>
       </section>

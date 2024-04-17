@@ -1,8 +1,9 @@
-import './styles.css'
+import "./styles.css";
 
-export const Button = ({variant, children}) => {
+export const Button = ({ variant, children, onClick }) => {
   return (
-    <button className={variant}>{children}</button>
-  )
-
-}
+    <button className={`base-button ${variant}`} onClick={onClick}>
+      {children}
+    </button>
+  );
+};

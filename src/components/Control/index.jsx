@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./styles.css";
+import { Button } from "../Button";
 
 export const Control = ({ variant }) => {
   const [counter, setCounter] = useState(0);
@@ -19,18 +20,18 @@ export const Control = ({ variant }) => {
 
   return (
     <div className="control">
-      <button className={variant} id="less" onClick={handleClickLess}>
+      <Button variant={variant} id="less" onClick={handleClickLess}>
         -
-      </button>
+      </Button>
       <input
         className={`${variant}-input`}
         type="number"
         value={counter}
         onChange={handleChange}
       />
-      <button className={variant} id="more" onClick={handleClickMore}>
+      <Button variant={variant} id="more" onClick={handleClickMore}>
         +
-      </button>
+      </Button>
     </div>
   );
 };
