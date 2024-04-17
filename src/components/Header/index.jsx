@@ -22,7 +22,7 @@ export const Header = () => {
         </ul>
       </nav>
 
-      <Button styleType={"primary-button login"}>
+      <Button variant={"primary-button login"}>
         <a href="">Entrar</a>
       </Button>
     </header>

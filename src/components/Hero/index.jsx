@@ -15,7 +15,7 @@ export const Hero = () => {
           Bem, prepare-se para uma experiência gastronômica futurística!
         </p>
 
-        <Button styleType={"primary-button animation"}>
+        <Button variant={"primary-button animation"}>
           <a href="./src/pages/menu.html">Faça já o seu Pedido</a>
         </Button>
       </div>

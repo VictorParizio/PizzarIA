@@ -1,8 +1,33 @@
+import { useState, useEffect, useRef } from "react";
+
 import { Button } from "../Button";
 import { Hero } from "../Hero";
 import "./styles.css";
 
 export const Home = () => {
+  const [testimonialsData, setTestimonialsData] = useState([]);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    fetch("/testimunial.json")
+      .then((response) => response.json())
+      .then((data) => setTestimonialsData(data))
+      .catch((error) => console.log("Erro ao carregar Depoimentos:", error));
+  }, []);
+
+  const handleNext = () => {
+    if (currentIndex < testimonialsData.length - 3) {
+      setCurrentIndex(currentIndex + 1);
+    }
+  };
+
+  const handlePrev = () => {
+    if (currentIndex > 0) {
+      setCurrentIndex(currentIndex - 1);
+    }
+  };
+
   return (
     <>
       <Hero />
@@ -57,8 +82,11 @@ export const Home = () => {
           <h2>Destaques do Cardápio</h2>
           <div className="menu-list">
             <figure className="pizza-card">
-              <img src="./src/assets/images/pizza1.jpeg" alt="Pizza margherita, com molho de tomate,
-                queijo mozarela fresco e manjericão" />
+              <img
+                src="./src/assets/images/pizza1.jpeg"
+                alt="Pizza margherita, com molho de tomate,
+                queijo mozarela fresco e manjericão"
+              />
               <h3>Pizza Margherita</h3>
               <figcaption>
                 Uma clássica e deliciosa pizza margherita, com molho de tomate,
@@ -66,8 +94,11 @@ export const Home = () => {
               </figcaption>
             </figure>
             <figure className="pizza-card">
-              <img src="./src/assets/images/pizza2.jpeg" alt="Pizza de calabresa com um toque especial da nossa IA, que
-                garante a combinação perfeita de sabores" />
+              <img
+                src="./src/assets/images/pizza2.jpeg"
+                alt="Pizza de calabresa com um toque especial da nossa IA, que
+                garante a combinação perfeita de sabores"
+              />
               <h3>Pizza Calabresa</h3>
               <figcaption>
                 Uma pizza de calabresa com um toque especial da nossa IA, que
@@ -75,7 +106,10 @@ export const Home = () => {
               </figcaption>
             </figure>
             <figure className="pizza-card">
-              <img src="./src/assets/images/pizza3.jpeg" alt="Pizza vegetariana com molho de tomate, mozarela, pimentão, cebola, tomate, azeitonas e ervilhas" />
+              <img
+                src="./src/assets/images/pizza3.jpeg"
+                alt="Pizza vegetariana com molho de tomate, mozarela, pimentão, cebola, tomate, azeitonas e ervilhas"
+              />
               <h3>Pizza Vegetariana</h3>
               <figcaption>
                 Para os amantes de vegetais, nossa pizza vegetariana é uma
@@ -94,7 +128,7 @@ export const Home = () => {
             cada vez!
           </p>
 
-          <Button styleType={"primary-button animation"}>
+          <Button variant={"primary-button animation"}>
             <a href="./src/pages/menu.html">Quero pedir a minha Pizza</a>
           </Button>
         </section>
@@ -103,72 +137,37 @@ export const Home = () => {
           <div className="control">
             <h2>Depoimentos</h2>
             <div>
-              <button className="control-button" id="back" disabled>
+              <button
+                className="control-button"
+                id="back"
+                onClick={handlePrev}
+                disabled={currentIndex === 0}
+              >
                 &lt;
               </button>
-              <button className="control-button" id="next">&gt;</button>
+              <button
+                className="control-button"
+                id="next"
+                onClick={handleNext}
+                disabled={currentIndex === testimonialsData.length - 3}
+              >
+                &gt;
+              </button>
             </div>
           </div>
 
-          <div className="testimonial-container">
-            <div className="testimonial-card">
-              <div className="testimonial-star">
-                <h3>Maria Silva</h3>
-                <span>⭐⭐⭐⭐⭐</span>
-              </div>
-              <p>
-                A PizzarIA realmente superou minhas expectativas! Nunca imaginei
-                que uma inteligência artificial pudesse criar pizzas tão
-                saborosas.
-              </p>
-            </div>
-
-            <div className="testimonial-card">
-              <div className="testimonial-star">
-                <h3>João Oliveira</h3>
-                <span>⭐⭐⭐⭐⭐</span>
-              </div>
-              <p>
-                Como um entusiasta de tecnologia, fiquei intrigado quando ouvi
-                falar da PizzarIA. As pizzas são incrivelmente criativas e
-                deliciosas.
-              </p>
-            </div>
-
-            <div className="testimonial-card">
-              <div className="testimonial-star">
-                <h3>Ana Souza</h3>
-                <span>⭐⭐⭐⭐⭐</span>
-              </div>
-              <p>
-                Sou vegetariana e sempre tive dificuldade em encontrar boas
-                opções de pizza. Mas isso mudou com a PizzarIA!
-              </p>
-            </div>
-
-            {/* <!-- <div className="depoimento">
-        <h3>Carlos Santos</h3>
-        <p>
-          Como um aficionado por pizzas, estou sempre em busca da próxima
-          grande novidade. E encontrei isso na PizzarIA.
-        </p>
-      </div>
-
-      <div className="depoimento">
-        <h3>Juliana Ferreira</h3>
-        <p>
-          A PizzarIA é simplesmente revolucionária! Eu e meus amigos estamos
-          maravilhados com a qualidade e a originalidade das pizzas.
-        </p>
-      </div>
-
-      <div className="depoimento">
-        <h3>Rafael Oliveira</h3>
-        <p>
-          Depois de experimentar suas criações, fiquei impressionado! Estou
-          completamente satisfeito e vou recomendar a todos os meus amigos!"
-        </p>
-      </div> --> */}
+          <div className="testimonial-container" ref={containerRef}>
+            {testimonialsData
+              .slice(currentIndex, currentIndex + 3)
+              .map((testimonial) => (
+                <div className="testimonial-card" key={testimonial.id}>
+                  <div className="testimonial-star">
+                    <h3>{testimonial.name}</h3>
+                    <span>{testimonial.rating}</span>
+                  </div>
+                  <p>{testimonial.review}</p>
+                </div>
+              ))}
           </div>
         </section>
 

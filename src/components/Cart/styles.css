@@ -1,0 +1,93 @@
+main {
+  gap: 24px;
+}
+
+.container-shopping {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 20px;
+  width: 100%;
+  padding: 0;
+  box-shadow: none;
+}
+
+.my-shopping-cart,
+.cart-total {
+  border: 1px solid #555;
+  border-radius: 12px;
+  padding: 0;
+}
+
+.my-shopping-cart > div {
+  display: grid;
+  grid-template-columns: 3fr repeat(3, 1fr) 0.2fr;
+  align-items: center;
+  border-bottom: 1px solid #555;
+}
+
+.th-product-card,
+.product-card {
+  padding: 8px 20px;
+  text-align: center;
+}
+
+.th-product-card p:first-child {
+  text-align: start;
+}
+
+.product-card .product {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.product-card .product img {
+  height: 56px;
+  width: 56px;
+  border-radius: 8px;
+}
+
+/* ------------------------------ */
+
+.cart-total h3 {
+  text-align: center;
+  padding: 10px;
+  border-bottom: 1px solid #555;
+}
+
+.cost-contain {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+}
+
+.cost-contain .cost {
+  text-align: end;
+}
+
+.cost strong {
+  font-size: 2.4rem;
+}
+
+.payment div {
+  padding: 10px 20px;
+}
+
+.cart-total input[type="radio"] {
+  box-shadow: none;
+  width: 20px;
+}
+
+.cart-total label {
+  font-size: 1.6rem;
+  padding: 4px 0;
+  position: inherit;
+  display: inline-block;
+}
+
+.payment button {
+  margin: 20px auto;
+  display: block;
+  border-radius: 50px;
+  padding: 1rem 2rem;
+}

@@ -1,8 +1,8 @@
 import './styles.css'
 
-export const Button = ({styleType, children}) => {
+export const Button = ({variant, children}) => {
   return (
-    <button className={styleType}>{children}</button>
+    <button className={variant}>{children}</button>
   )
 
 }

@@ -57,14 +57,14 @@
   gap: 20px;
 }
 
-.control {
+#testimonials .control {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 30px;
 }
 
-.control #back {
+#testimonials .control #back {
   margin-right: 10px;
 }
 

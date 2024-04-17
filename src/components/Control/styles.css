@@ -1,0 +1,45 @@
+.small {
+  background: var(--color-gradient);
+  color: var(--color-light);
+  border: none;
+  border-radius: 4px;
+  width: 28px;
+  padding: 0.4rem 0.8rem;
+  transition: 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.small-input {
+  text-align: center;
+  width: 28px;
+  margin: 0 4px;
+  padding: 0.4rem 0.8rem;
+  box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.6);
+  border-radius: 4px;
+  border: none;
+  color: var(--color-primary-light);
+}
+
+.medium {
+  background: var(--color-gradient);
+  color: var(--color-light);
+  border: none;
+  border-radius: 4px;
+  height: 38px;
+  width: 38px;
+  padding: 0.4rem 0.8rem;
+  transition: 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.medium-input[type="number"] {
+  text-align: center;
+  width: 42px;
+  height: 38px;
+  margin: 0 4px;
+  padding: 0.4rem 0.8rem;
+  box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.6);
+  border-radius: 4px;
+  border: none;
+  color: var(--color-primary-light);
+}

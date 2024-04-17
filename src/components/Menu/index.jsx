@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
-import "./styles.css";
+import { useState, useEffect } from "react";
 import { Button } from "../Button";
+import { Control } from "../Control";
+import "./styles.css";
 
 export const Menu = () => {
-  const [menuData, setMenuData] = useState({ pizzas: [] });
+  const [menuData, setMenuData] = useState([]);
 
   useEffect(() => {
     fetch("/menu.json")
@@ -18,7 +19,7 @@ export const Menu = () => {
       <section className="menu-container" id="menu">
         <h2>Cardápio</h2>
         <ul className="menu-list" id="menu-list">
-          {menuData.pizzas.map((item) => {
+          {menuData.map((item) => {
             let preco = item.preco.toLocaleString("pt-BR", {
               style: "currency",
               currency: "BRL",
@@ -33,16 +34,8 @@ export const Menu = () => {
                   <strong>{preco}</strong>
                 </figure>
                 <div className="add-cart">
-                  <div>
-                    <Button styleType={"control-button"} id="back">
-                      -
-                    </Button>
-                    <input type="number" value="0" />
-                    <Button styleType={"control-button"} id="next">
-                      +
-                    </Button>
-                  </div>
-                  <Button styleType={"control-button"}>adicionar</Button>
+                  <Control variant={"medium"} />
+                  <Button variant={"control-button"}>adicionar</Button>
                 </div>
               </li>
             );

@@ -75,14 +75,3 @@
   justify-content: space-between;
   padding: 20px;
 }
-
-input[type="number"] {
-  text-align: center;
-  width: 40px;
-  margin: 0 5px;
-  padding: 1rem 1rem;
-  box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.6);
-  border-radius: 4px;
-  border: none;
-  color: var(--color-primary-light);
-}
