@@ -1,5 +1,5 @@
-import { Button } from "../Button";
-import { Control } from "../Control";
+import { Button } from "../../components/Button";
+import { Control } from "../../components/Control";
 import "./styles.css";
 const pizza = "/src/assets/images/OIG3 (1).gif";
 
@@ -64,9 +64,7 @@ export const Cart = () => {
               />
               <label for="cartao">Cartão</label>
             </div>
-            <Button variant={"base-button large"}>
-              Finalizar Compra
-            </Button>
+            <Button variant={"large"}>Finalizar Compra</Button>
           </div>
         </section>
       </section>

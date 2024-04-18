@@ -1,12 +1,13 @@
+import { Link } from "react-router-dom";
 import { Button } from "../Button";
 import "./styles.css";
 
 export const Header = () => {
   return (
     <header className="navigation">
-      <a href="" className="logo">
+      <Link to="/" className="logo">
         PizzarIA
-      </a>
+      </Link>
 
       <nav>
         <ul>
@@ -22,8 +23,8 @@ export const Header = () => {
         </ul>
       </nav>
 
-      <Button variant={"base-button login"}>
-        <a href="">Entrar</a>
+      <Button variant={"login"}>
+        <Link to="/login">Entrar</Link>
       </Button>
     </header>
   );

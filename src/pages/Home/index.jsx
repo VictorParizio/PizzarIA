@@ -1,7 +1,8 @@
 import { useState, useEffect, useRef } from "react";
 
-import { Button } from "../Button";
-import { Hero } from "../Hero";
+import { Button } from "../../components/Button";
+import { Hero } from "../../components/Hero";
+import { Link } from "react-router-dom";
 
 import "./styles.css";
 
@@ -129,8 +130,8 @@ export const Home = () => {
             cada vez!
           </p>
 
-          <Button variant={"base-button large animation"}>
-            <a href="./src/pages/menu.html">Quero pedir a minha Pizza</a>
+          <Button variant={"large animation"}>
+            <Link to="/menu">Quero pedir a minha Pizza</Link>
           </Button>
         </section>
 

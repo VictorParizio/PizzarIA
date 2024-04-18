@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Button } from "../Button";
 import "./styles.css";
 
@@ -15,8 +16,8 @@ export const Hero = () => {
           Bem, prepare-se para uma experiência gastronômica futurística!
         </p>
 
-        <Button variant={"base-button large animation"}>
-          <a href="./src/pages/menu.html">Faça já o seu Pedido</a>
+        <Button variant={"large animation"}>
+          <Link to="/menu">Faça já o seu Pedido</Link>
         </Button>
       </div>
     </>

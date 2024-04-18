@@ -36,3 +36,7 @@
 .navigation nav a {
   margin-right: 15px;
 }
+
+.login > a:hover {
+  color: var(--color-light);
+}

@@ -83,7 +83,7 @@
 }
 
 .testimonial-card:hover,
-.pizza-card:hover {
+figure.pizza-card:hover {
   transform: scale(1.05);
 }
 

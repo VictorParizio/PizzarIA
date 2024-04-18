@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { Button } from "../Button";
-import { Control } from "../Control";
+import { Button } from "../../components/Button";
+import { Control } from "../../components/Control";
 import "./styles.css";
 
 export const Menu = () => {
@@ -16,9 +16,9 @@ export const Menu = () => {
   return (
     <main>
       <div className="banner"></div>
-      <section className="menu-container" id="menu">
+      <section className="menu-container">
         <h2>Cardápio</h2>
-        <ul className="menu-list" id="menu-list">
+        <ul className="menu-list">
           {menuData.map((item) => {
             let preco = item.preco.toLocaleString("pt-BR", {
               style: "currency",
@@ -35,7 +35,7 @@ export const Menu = () => {
                 </figure>
                 <div className="add-cart">
                   <Control variant={"medium"} />
-                  <Button variant={"base-button"}>adicionar</Button>
+                  <Button variant>adicionar</Button>
                 </div>
               </li>
             );
