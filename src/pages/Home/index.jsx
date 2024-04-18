@@ -1,10 +1,12 @@
 import { useState, useEffect, useRef } from "react";
-
 import { Button } from "../../components/Button";
 import { Hero } from "../../components/Hero";
 import { Link } from "react-router-dom";
-
 import "./styles.css";
+import {
+  addScrollListener,
+  removeScrollListener,
+} from "../../utils/scrollAnimation";
 
 export const Home = () => {
   const [testimonialsData, setTestimonialsData] = useState([]);
@@ -16,6 +18,13 @@ export const Home = () => {
       .then((response) => response.json())
       .then((data) => setTestimonialsData(data))
       .catch((error) => console.log("Erro ao carregar Depoimentos:", error));
+  }, []);
+
+  useEffect(() => {
+    addScrollListener();
+    return () => {
+      removeScrollListener();
+    };
   }, []);
 
   const handleNext = () => {
@@ -34,17 +43,15 @@ export const Home = () => {
     <>
       <Hero />
       <main>
-        <section className="about-section">
-          <div id="about">
-            <h2>Pizzas feitas por IA!</h2>
-            <p>
-              Na PizzarIA, nossas pizzas são mais do que apenas uma combinação
-              de queijo, molho de tomate e massa crocante. Elas são fruto do
-              trabalho árduo de nossos talentosos algoritmos de IA, que
-              aprenderam milhares de receitas de pizza para criar as combinações
-              mais inovadoras e saborosas.
-            </p>
-          </div>
+        <section id="about">
+          <h2>Pizzas feitas por IA!</h2>
+          <p>
+            Na PizzarIA, nossas pizzas são mais do que apenas uma combinação de
+            queijo, molho de tomate e massa crocante. Elas são fruto do trabalho
+            árduo de nossos talentosos algoritmos de IA, que aprenderam milhares
+            de receitas de pizza para criar as combinações mais inovadoras e
+            saborosas.
+          </p>
         </section>
 
         <section id="how-it-works">

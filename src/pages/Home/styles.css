@@ -119,6 +119,18 @@ figure.pizza-card:hover {
 }
 
 /* ANIMATION */
+#about,
+.cta-section {
+  transform: scale(0);
+  overflow: hidden;
+  transition: transform 2s ease;
+}
+
+#about.visible,
+.cta-section.visible {
+  transform: scale(1);
+}
+
 #how-it-works.visible li:nth-child(odd) {
   animation: moveLeftToRight 1.5s ease-in-out;
 }
@@ -136,16 +148,4 @@ figure.pizza-card:hover {
 #menu.visible {
   opacity: 1;
   transform: translateY(0);
-}
-
-#about,
-.cta-section {
-  transform: scale(0);
-  overflow: hidden;
-  transition: transform 2s ease;
-}
-
-#about.visible,
-.cta-section.visible {
-  transform: scale(1);
 }
