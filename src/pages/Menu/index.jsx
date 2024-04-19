@@ -35,7 +35,7 @@ export const Menu = () => {
                 </figure>
                 <div className="add-cart">
                   <Control variant={"medium"} />
-                  <Button variant>adicionar</Button>
+                  <Button variant={"medium"}>adicionar</Button>
                 </div>
               </li>
             );

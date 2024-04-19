@@ -23,9 +23,14 @@ export const Header = () => {
         </ul>
       </nav>
 
-      <Button variant={"login"}>
-        <Link to="/login">Entrar</Link>
-      </Button>
+      <div>
+        <Button variant={"login"}>
+          <Link to="/cart">Carrinho</Link>
+        </Button>
+        <Button variant={"login"}>
+          <Link to="/login">Entrar</Link>
+        </Button>
+      </div>
     </header>
   );
 };
