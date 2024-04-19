@@ -7,7 +7,7 @@ export const Menu = () => {
   const [menuData, setMenuData] = useState([]);
 
   useEffect(() => {
-    fetch("/menu.json")
+    fetch("./src/api/menu.json")
       .then((response) => response.json())
       .then((data) => setMenuData(data))
       .catch((error) => console.error("Erro ao carregar o menu:", error));

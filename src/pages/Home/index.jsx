@@ -1,12 +1,15 @@
 import { useState, useEffect, useRef } from "react";
+
 import { Button } from "../../components/Button";
 import { Hero } from "../../components/Hero";
 import { Link } from "react-router-dom";
-import "./styles.css";
+
 import {
   addScrollListener,
   removeScrollListener,
 } from "../../utils/scrollAnimation";
+
+import "./styles.css";
 
 export const Home = () => {
   const [testimonialsData, setTestimonialsData] = useState([]);
