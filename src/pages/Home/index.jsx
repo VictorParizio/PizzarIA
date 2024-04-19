@@ -9,6 +9,11 @@ import {
   removeScrollListener,
 } from "../../utils/scrollAnimation";
 
+import sidebarIllustration from '../../assets/images/OIG3 (1).gif'
+import pizzaMargherita from "../../assets/images/pizza1.jpeg"
+import pizzaCalabresa from "../../assets/images/pizza2.jpeg"
+import pizzaVegetariana from "../../assets/images/pizza3.jpeg"
+
 import "./styles.css";
 
 export const Home = () => {
@@ -17,7 +22,7 @@ export const Home = () => {
   const containerRef = useRef(null);
 
   useEffect(() => {
-    fetch("/testimunial.json")
+    fetch("./src/api/testimunial.json")
       .then((response) => response.json())
       .then((data) => setTestimonialsData(data))
       .catch((error) => console.log("Erro ao carregar Depoimentos:", error));
@@ -60,7 +65,7 @@ export const Home = () => {
         <section id="how-it-works">
           <img
             className="pizza-image"
-            src="src/assets/images/OIG3 (1).gif"
+            src={sidebarIllustration}
             alt=""
           />
           <ol className="steps-list">
@@ -95,7 +100,7 @@ export const Home = () => {
           <div className="menu-list">
             <figure className="pizza-card">
               <img
-                src="./src/assets/images/pizza1.jpeg"
+                src={pizzaMargherita}
                 alt="Pizza margherita, com molho de tomate,
                 queijo mozarela fresco e manjericão"
               />
@@ -107,7 +112,7 @@ export const Home = () => {
             </figure>
             <figure className="pizza-card">
               <img
-                src="./src/assets/images/pizza2.jpeg"
+                src={pizzaCalabresa}
                 alt="Pizza de calabresa com um toque especial da nossa IA, que
                 garante a combinação perfeita de sabores"
               />
@@ -119,7 +124,7 @@ export const Home = () => {
             </figure>
             <figure className="pizza-card">
               <img
-                src="./src/assets/images/pizza3.jpeg"
+                src={pizzaVegetariana}
                 alt="Pizza vegetariana com molho de tomate, mozarela, pimentão, cebola, tomate, azeitonas e ervilhas"
               />
               <h3>Pizza Vegetariana</h3>
