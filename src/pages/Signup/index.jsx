@@ -6,13 +6,13 @@ import "./styles.css";
 export const Signup = () => {
   return (
     <>
-      <div className="background"></div>
+      <div className="background" />
       <section className="signup-container">
         <h2>Criar Conta</h2>
         <p className="subtitle">Crie já sua conta e faça seu pedido!</p>
 
         <form>
-				<InputForm
+          <InputForm
             textLabel={"Nome"}
             type="text"
             id="name"
@@ -30,7 +30,7 @@ export const Signup = () => {
             id="password"
             placeholder="Digite sua senha"
           />
-					<InputForm
+          <InputForm
             textLabel={"Confirmar Senha"}
             type="password"
             id="confirmar-senha"

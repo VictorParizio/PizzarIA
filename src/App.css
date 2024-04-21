@@ -1,14 +1,14 @@
 main {
-  max-width: 1010px;
-  padding: 20px 5%;
-
+  min-height: calc(100vh - (63px + 48px));
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 
 section {
-  padding: 20px;
+  max-width: 100vw;
+  padding: 20px 5%;
 }
 
 section h2 {

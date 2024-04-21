@@ -1,3 +1,11 @@
+#about,
+#how-it-works,
+#menu,
+#testimonials {
+  max-width: 70vw;
+  margin-top: 48px;
+}
+
 .pizza-image {
   position: absolute;
   left: -60rem;
@@ -43,7 +51,7 @@
 
 .cta-section,
 .attention-section {
-  max-width: 650px;
+  max-width: 56vw;
   text-align: center;
 }
 

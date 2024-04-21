@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { Button } from "../Button";
 import "./styles.css";
 
 export const Header = () => {
@@ -24,12 +23,8 @@ export const Header = () => {
       </nav>
 
       <div>
-        <Button variant={"login"}>
-          <Link to="/cart">Carrinho</Link>
-        </Button>
-        <Button variant={"login"}>
-          <Link to="/login">Entrar</Link>
-        </Button>
+        <Link to="/cart">Carrinho</Link>
+        <Link to="/login">Entrar</Link>
       </div>
     </header>
   );

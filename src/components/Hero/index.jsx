@@ -1,11 +1,10 @@
 import { Link } from "react-router-dom";
-import { Button } from "../Button";
 import "./styles.css";
 
 export const Hero = () => {
   return (
-    <>
-      <div className="hero-container"></div>
+    <section className="hero-container">
+      <div className="hero-background" />
       <div className="hero-content">
         <h1>
           Bem-vindo à <strong>PizzarIA</strong>
@@ -16,10 +15,8 @@ export const Hero = () => {
           Bem, prepare-se para uma experiência gastronômica futurística!
         </p>
 
-        <Button variant={"large animation"}>
-          <Link to="/menu">Faça já o seu Pedido</Link>
-        </Button>
+          <Link to="/menu" className="base-button large animation" >Faça já o seu Pedido</Link>
       </div>
-    </>
+    </section>
   );
 };

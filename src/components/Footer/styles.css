@@ -1,8 +1,9 @@
 footer {
   position: absolute;
   bottom: 0;
-  display: flex;
   z-index: 1;
+  display: flex;
+  align-items: center;
   justify-content: space-between;
   background-color: var(--color-dark);
   padding: 12px 5%;
