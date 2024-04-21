@@ -1,3 +1,4 @@
+import { FaLinkedin, FaGithub, FaUserTie } from "react-icons/fa";
 import "./styles.css";
 
 export const Footer = () => {
@@ -9,13 +10,13 @@ export const Footer = () => {
             href="https://www.linkedin.com/in/victorpariziobackend/"
             target="_blank"
           >
-            LinkedIn
+            <FaLinkedin />
           </a>
         </li>
 
         <li>
           <a href="https://github.com/VictorParizio" target="_blank">
-            GitHub
+            <FaGithub />
           </a>
         </li>
 
@@ -24,7 +25,7 @@ export const Footer = () => {
             href="https://portfolio-victor-parizio.vercel.app/"
             target="_blank"
           >
-            Portfolio
+            <FaUserTie />
           </a>
         </li>
       </ul>
@@ -33,7 +34,9 @@ export const Footer = () => {
         Desenvolvido por <strong>Victor Parizio</strong>
       </p>
 
-      <button className="topo"></button>
+      <div className="top">
+        <button className="topo"></button>
+      </div>
     </footer>
   );
 };

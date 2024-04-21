@@ -22,6 +22,10 @@ footer p {
   font-style: normal;
 }
 
+.top {
+  width: 68px;
+}
+
 .topo {
   background-color: transparent;
   border: none;
