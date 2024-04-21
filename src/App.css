@@ -30,3 +30,7 @@ figcaption {
 strong {
   color: var(--color-primary-light);
 }
+
+svg:hover {
+  fill: var(--color-primary-light);
+}

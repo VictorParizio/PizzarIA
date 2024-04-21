@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import img404 from "../../assets/images/404.jpeg";
-import { Button } from "../../components/Button";
 import "./styles.css";
 
 export const NotFound = () => {
@@ -15,9 +14,9 @@ export const NotFound = () => {
           de pizzas feitas por inteligência artificial? Temos uma variedade de
           sabores que certamente irão satisfazer seu apetite.
         </p>
-        <Button variant={"large animation"}>
-          <Link to="/menu">Quero pedir a minha Pizza</Link>
-        </Button>
+        <Link to="/menu" className="base-button large animation">
+          Quero pedir a minha Pizza
+        </Link>
       </div>
     </section>
   );

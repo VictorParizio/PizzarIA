@@ -1,13 +1,12 @@
 import { Link } from "react-router-dom";
 import { Button } from "../../components/Button";
 import { InputForm } from "../../components/InputForm";
-import "./styles.css";
 
 export const Signup = () => {
   return (
     <>
-      <div className="background" />
-      <section className="signup-container">
+      <div className="auth-background" />
+      <section className="auth-container">
         <h2>Criar Conta</h2>
         <p className="subtitle">Crie já sua conta e faça seu pedido!</p>
 

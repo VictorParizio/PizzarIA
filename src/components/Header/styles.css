@@ -36,3 +36,7 @@
 .navigation nav a {
   margin-right: 15px;
 }
+
+.navigation .member-area svg {
+  font-size: 2.4rem;
+}

@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { FaCartShopping, FaUser } from "react-icons/fa6";
 import "./styles.css";
 
 export const Header = () => {
@@ -14,7 +15,7 @@ export const Header = () => {
             <a href="#about">Sobre</a>
           </li>
           <li>
-            <a href="#menu">Cardápio</a>
+            <Link to="/menu">Cardápio</Link>
           </li>
           <li>
             <a href="#testimonials">Depoimentos</a>
@@ -22,9 +23,13 @@ export const Header = () => {
         </ul>
       </nav>
 
-      <div>
-        <Link to="/cart">Carrinho</Link>
-        <Link to="/login">Entrar</Link>
+      <div className="member-area">
+        <Link to="/cart">
+          <FaCartShopping />
+        </Link>
+        <Link to="/login">
+          <FaUser />
+        </Link>
       </div>
     </header>
   );

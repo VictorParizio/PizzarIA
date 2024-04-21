@@ -6,8 +6,8 @@ import "./styles.css";
 export const Login = () => {
   return (
     <>
-      <div className="background" />
-      <section className="login-container">
+      <div className="auth-background" />
+      <section className="auth-container">
         <h2>Entrar</h2>
         <p className="subtitle">Que bom te ver novamente, entre e aproveite!</p>
 
