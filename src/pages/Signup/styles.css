@@ -8,7 +8,7 @@
   width: 100%;
 }
 
-.login-container {
+.signup-container {
   width: 450px;
   padding: 3rem;
   border-radius: 2rem;
@@ -16,36 +16,36 @@
   box-shadow: 0 4px 10px var(--color-dark);
 }
 
-.login-container,
-.login-container form {
+.signup-container,
+.signup-container form {
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   text-align: center;
 }
 
-.login-container .subtitle {
-  width: 250px;
+.signup-container .subtitle {
+  width: 300px;
   padding-top: 0;
   margin: 0 auto;
 }
 
-.login-container form {
+.signup-container form {
   width: 300px;
   gap: 1.4rem;
   margin-bottom: 14px;
 }
 
-.login-container form button {
+.signup-container form button {
   padding: 16px;
 }
 
-.login-container a {
+.signup-container a {
   max-width: fit-content;
   margin: 12px auto 0;
   transition: 0.2s ease-in-out;
 }
 
-.login-container a:hover {
+.signup-container a:hover {
   color: var(--color-primary);
 }

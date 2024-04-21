@@ -3,15 +3,21 @@ import { Button } from "../../components/Button";
 import { InputForm } from "../../components/InputForm";
 import "./styles.css";
 
-export const Login = () => {
+export const Signup = () => {
   return (
     <>
       <div className="background"></div>
-      <section className="login-container">
-        <h2>Entrar</h2>
-        <p className="subtitle">Que bom te ver novamente, entre e aproveite!</p>
+      <section className="signup-container">
+        <h2>Criar Conta</h2>
+        <p className="subtitle">Crie já sua conta e faça seu pedido!</p>
 
         <form>
+				<InputForm
+            textLabel={"Nome"}
+            type="text"
+            id="name"
+            placeholder="Digite seu nome"
+          />
           <InputForm
             textLabel={"Email"}
             type="email"
@@ -24,11 +30,17 @@ export const Login = () => {
             id="password"
             placeholder="Digite sua senha"
           />
+					<InputForm
+            textLabel={"Confirmar Senha"}
+            type="password"
+            id="confirmar-senha"
+            placeholder="Confirme sua senha"
+          />
 
-          <Button type="submit">Entrar</Button>
+          <Button type="submit">Cadastrar</Button>
         </form>
 
-        <Link to="/signup">Criar uma conta</Link>
+        <Link to="/login">Já tenho uma conta</Link>
       </section>
     </>
   );

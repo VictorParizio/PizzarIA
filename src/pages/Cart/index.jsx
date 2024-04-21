@@ -1,6 +1,6 @@
 import { Button } from "../../components/Button";
 import { Control } from "../../components/Control";
-const pizza = "/src/assets/images/OIG3 (1).gif";
+const pizza = "./src/assets/images/OIG3 (1).gif";
 import "./styles.css";
 
 export const Cart = () => {

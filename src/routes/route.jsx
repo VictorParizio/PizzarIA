@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import { Home } from "../pages/Home";
-import { Signin } from "../pages/Signin";
+import { Signup } from "../pages/Signup";
 import { Login } from "../pages/Login";
 import { Menu } from "../pages/Menu";
 import { Cart } from "../pages/Cart";
@@ -13,7 +13,7 @@ export const route = createBrowserRouter([
     element: <Root />,
     children: [
       { path: "/", element: <Home /> },
-      { path: "/signin", element: <Signin /> },
+      { path: "/signup", element: <Signup /> },
       { path: "/login", element: <Login /> },
       { path: "/menu", element: <Menu /> },
       { path: "/cart", element: <Cart /> },
