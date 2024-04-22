@@ -1,9 +1,9 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "../../components/Button";
 import { InputForm } from "../../components/InputForm";
 import "./styles.css";
-import { useState } from "react";
-// import axios from "axios";
+import axios from "axios";
 
 export const Login = () => {
   const [email, setEmail] = useState("");
@@ -15,19 +15,23 @@ export const Login = () => {
       email,
       password,
     };
-    console.log(usuario);
+    setEmail("");
+    setPassword("");
+
+    axios
+      .post("url", usuario)
+      .then(() => {
+        sessionStorage.setItem("token", resposta.data.access_token);
         setEmail("");
         setPassword("");
-    // axios
-    //   .get("url", usuario)
-    //   .then(() => {
-    //     console.log(usuario);
-    //     setEmail("");
-    //     setPassword("");
-    //   })
-    //   .catch(() => {
-    //     alert("Algo deu errado");
-    //   });
+      })
+      .catch((erro) => {
+        if (erro?.response?.data?.message) {
+          alert(erro.response.data.message);
+        } else {
+          alert("Algo deu errado");
+        }
+      });
   };
 
   return (

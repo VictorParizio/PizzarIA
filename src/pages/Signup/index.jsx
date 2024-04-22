@@ -1,8 +1,8 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "../../components/Button";
 import { InputForm } from "../../components/InputForm";
-import { useState } from "react";
-// import axios from "axios";
+import axios from "axios";
 
 export const Signup = () => {
   const [name, setName] = useState("");
@@ -18,20 +18,22 @@ export const Signup = () => {
       password,
       confirmPassword,
     };
-    console.log(novoUsuario);
 
-    // axios
-    //   .post("url", novoUsuario)
-    //   .then(() => {
-    //     console.log(novoUsuario);
-    //     setName("");
-    //     setEmail("");
-    //     setPassword("");
-    //     setConfirmPassword("");
-    //   })
-    //   .catch(() => {
-    //     alert("Algo deu errado");
-    //   });
+    axios
+      .post("url", novoUsuario)
+      .then(() => {
+        setName("");
+        setEmail("");
+        setPassword("");
+        setConfirmPassword("");
+      })
+      .catch((erro) => {
+        if (erro?.response?.data?.message) {
+          alert(erro.response.data.message);
+        } else {
+          alert("Algo deu errado");
+        }
+      });
   };
 
   return (
