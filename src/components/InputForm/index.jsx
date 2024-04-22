@@ -1,10 +1,23 @@
-import './styles.css'
+import "./styles.css";
 
-export const InputForm = ({ textLabel, type, id, placeholder }) => {
+export const InputForm = ({
+  textLabel,
+  type,
+  id,
+  placeholder,
+  value,
+  onChange,
+}) => {
   return (
     <>
       <label htmlFor={id}>{textLabel}</label>
-      <input type={type} id={id} placeholder={placeholder} />
+      <input
+        type={type}
+        id={id}
+        placeholder={placeholder}
+        value={value}
+        onChange={onChange}
+      />
     </>
   );
 };
