@@ -10,7 +10,7 @@ import sidebarIllustration from "../../assets/images/OIG3 (1).gif";
 import pizzaMargherita from "../../assets/images/pizza1.jpeg";
 import pizzaCalabresa from "../../assets/images/pizza2.jpeg";
 import pizzaVegetariana from "../../assets/images/pizza3.jpeg";
-import testimonialData from "../../api/testimunial.json"; 
+import testimonialData from "../../api/testimunial.json";
 
 import "./styles.css";
 
@@ -20,7 +20,8 @@ export const Home = () => {
   const containerRef = useRef(null);
 
   useEffect(() => {
-    axios.get("http://localhost:3000/testimonial")
+    axios
+      .get("http://localhost:3000/testimonial")
       .then((response) => {
         if (!response.ok) {
           throw new Error("Network response was not ok");
