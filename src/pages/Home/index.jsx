@@ -1,18 +1,16 @@
 import { useState, useEffect, useRef } from "react";
-
-import { Button } from "../../components/Button";
 import { Hero } from "../../components/Hero";
 import { Link } from "react-router-dom";
-
+import axios from "axios";
 import {
   addScrollListener,
   removeScrollListener,
 } from "../../utils/scrollAnimation";
-
 import sidebarIllustration from "../../assets/images/OIG3 (1).gif";
 import pizzaMargherita from "../../assets/images/pizza1.jpeg";
 import pizzaCalabresa from "../../assets/images/pizza2.jpeg";
 import pizzaVegetariana from "../../assets/images/pizza3.jpeg";
+import testimonialData from "../../api/testimunial.json"; 
 
 import "./styles.css";
 
@@ -22,10 +20,19 @@ export const Home = () => {
   const containerRef = useRef(null);
 
   useEffect(() => {
-    fetch("./src/api/testimunial.json")
-      .then((response) => response.json())
+    axios.get("http://localhost:3000/testimonial")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
       .then((data) => setTestimonialsData(data))
-      .catch((error) => console.log("Erro ao carregar Depoimentos:", error));
+      .catch((error) => {
+        console.log("Erro ao carregar Depoimentos:", error);
+        // Fetch falhou, preenchendo com dados do arquivo JSON local
+        setTestimonialsData(testimonialData); // Definir dados diretamente do arquivo JSON
+      });
   }, []);
 
   useEffect(() => {
@@ -170,17 +177,18 @@ export const Home = () => {
         </div>
 
         <div className="testimonial-container" ref={containerRef}>
-          {testimonialsData
-            .slice(currentIndex, currentIndex + 3)
-            .map((testimonial) => (
-              <div className="testimonial-card" key={testimonial.id}>
-                <div className="testimonial-star">
-                  <h3>{testimonial.name}</h3>
-                  <span>{testimonial.rating}</span>
+          {testimonialsData &&
+            testimonialsData
+              .slice(currentIndex, currentIndex + 3)
+              .map((testimonial, index) => (
+                <div className="testimonial-card" key={index}>
+                  <div className="testimonial-star">
+                    <h3>{testimonial.name}</h3>
+                    <span>{testimonial.rating}</span>
+                  </div>
+                  <p>{testimonial.review}</p>
                 </div>
-                <p>{testimonial.review}</p>
-              </div>
-            ))}
+              ))}
         </div>
       </section>
 
