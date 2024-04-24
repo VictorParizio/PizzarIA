@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Button } from "../../components/Button";
 import { InputForm } from "../../components/InputForm";
 import "./styles.css";
@@ -9,7 +9,9 @@ export const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = (e) => {
+  const navigate = useNavigate();
+
+  const handleSubmit = (event) => {
     event.preventDefault();
     const usuario = {
       email,
@@ -19,11 +21,12 @@ export const Login = () => {
     setPassword("");
 
     axios
-      .post("url", usuario)
-      .then(() => {
+      .post("http://localhost:3000/pizzaria/login", usuario)
+      .then((resposta) => {
         sessionStorage.setItem("token", resposta.data.access_token);
         setEmail("");
         setPassword("");
+        navigate("/menu");
       })
       .catch((erro) => {
         if (erro?.response?.data?.message) {

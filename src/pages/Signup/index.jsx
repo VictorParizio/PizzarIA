@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Button } from "../../components/Button";
 import { InputForm } from "../../components/InputForm";
 import axios from "axios";
@@ -9,9 +9,11 @@ export const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
+
     const novoUsuario = {
       name,
       email,
@@ -19,13 +21,20 @@ export const Signup = () => {
       confirmPassword,
     };
 
+    if (password != confirmPassword) {
+      return alert("A confirmação da senha não corresponde a senha fornecida");
+    }
+
     axios
-      .post("url", novoUsuario)
-      .then(() => {
+      .post("http://localhost:3000/pizzaria/usuario", novoUsuario)
+      .then((resposta) => {
+        alert(resposta.data.message);
+        sessionStorage.setItem("token", resposta.data.access_token);
         setName("");
         setEmail("");
         setPassword("");
         setConfirmPassword("");
+        navigate("/menu");
       })
       .catch((erro) => {
         if (erro?.response?.data?.message) {
