@@ -31,8 +31,7 @@ export const Home = () => {
       .then((data) => setTestimonialsData(data))
       .catch((error) => {
         console.log("Erro ao carregar Depoimentos:", error);
-        // Fetch falhou, preenchendo com dados do arquivo JSON local
-        setTestimonialsData(testimonialData); // Definir dados diretamente do arquivo JSON
+        setTestimonialsData(testimonialData); 
       });
   }, []);
 
