@@ -1,0 +1,26 @@
+.resume-cart {
+  background-color: var(--color-dark);
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 290px;
+  padding: 24px 32px;
+  text-align: center;
+  overflow-y: auto;
+}
+
+.resume-cart header {
+	display: flex;
+	align-items: center;
+}
+
+.order-list {
+  display: grid;
+  gap: 16px;
+  margin: 24px 0 32px;
+}
+
+.order-list li h3 {
+  padding: 20px 8px 0;
+}
