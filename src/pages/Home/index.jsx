@@ -20,8 +20,9 @@ export const Home = () => {
   const containerRef = useRef(null);
 
   useEffect(() => {
+    setTestimonialsData(testimonialData);
     axios
-      .get("http://localhost:3000/testimonial")
+      .get("url/da/api")
       .then((response) => {
         if (!response.ok) {
           throw new Error("Network response was not ok");
@@ -31,7 +32,6 @@ export const Home = () => {
       .then((data) => setTestimonialsData(data))
       .catch((error) => {
         console.log("Erro ao carregar Depoimentos:", error);
-        setTestimonialsData(testimonialData); 
       });
   }, []);
 
@@ -177,18 +177,17 @@ export const Home = () => {
         </div>
 
         <div className="testimonial-container" ref={containerRef}>
-          {testimonialsData &&
-            testimonialsData
-              .slice(currentIndex, currentIndex + 3)
-              .map((testimonial, index) => (
-                <div className="testimonial-card" key={index}>
-                  <div className="testimonial-star">
-                    <h3>{testimonial.name}</h3>
-                    <span>{testimonial.rating}</span>
-                  </div>
-                  <p>{testimonial.review}</p>
+          {testimonialsData
+            .slice(currentIndex, currentIndex + 3)
+            .map((testimonial, index) => (
+              <div className="testimonial-card" key={index}>
+                <div className="testimonial-star">
+                  <h3>{testimonial.name}</h3>
+                  <span>{testimonial.rating}</span>
                 </div>
-              ))}
+                <p>{testimonial.review}</p>
+              </div>
+            ))}
         </div>
       </section>
 
