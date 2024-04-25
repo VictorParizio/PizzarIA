@@ -3,7 +3,7 @@
     "id": 1,
     "nome": "Margherita",
     "descricao": "Clássica pizza italiana com molho de tomate, mozarela e manjericão fresco.",
-    "imagem": "/assets/pizzas/Margherita (1).jpeg",
+    "imagem": "https://github.com/VictorParizio/PizzarIA/blob/main/src/assets/pizzas/Margherita%20(1).jpeg",
     "ingredientes": ["Molho de tomate", "Mozzarella", "Manjericão fresco"],
     "preco": 25.99
   },
@@ -11,7 +11,7 @@
     "id": 2,
     "nome": "Pepperoni",
     "descricao": "Uma explosão de sabor com molho de tomate, mozarela e fatias generosas de pepperoni.",
-    "imagem": "/assets/pizzas/Pepperoni (1).jpeg",
+    "imagem": "https://github.com/VictorParizio/PizzarIA/blob/main/src/assets/pizzas/Pepperoni%20(1).jpeg",
     "ingredientes": ["Molho de tomate", "Mozzarella", "Pepperoni"],
     "preco": 27.99
   },
@@ -19,7 +19,7 @@
     "id": 3,
     "nome": "Quatro Queijos",
     "descricao": "Deliciosa combinação de molho de tomate, mozarela, gorgonzola, parmesão e provolone.",
-    "imagem": "/assets/pizzas/Quatro Queijos (1).jpeg",
+    "imagem": "https://github.com/VictorParizio/PizzarIA/blob/main/src/assets/pizzas/Quatro%20Queijos%20(1).jpeg",
     "ingredientes": [
       "Molho de tomate",
       "Mozzarella",
@@ -33,7 +33,7 @@
     "id": 4,
     "nome": "Calabresa",
     "descricao": "Saborosa pizza com molho de tomate, mozarela, calabresa, cebola e azeitonas.",
-    "imagem": "/assets/pizzas/Calabresa (2).jpeg",
+    "imagem": "https://github.com/VictorParizio/PizzarIA/blob/main/src/assets/pizzas/Calabresa%20(2).jpeg",
     "ingredientes": [
       "Molho de tomate",
       "Mozzarella",
@@ -47,7 +47,7 @@
     "id": 5,
     "nome": "Frango com Catupiry",
     "descricao": "Uma opção cremosa com molho de tomate, mozarela, frango desfiado e catupiry.",
-    "imagem": "/assets/pizzas/Frango com Catupiry (1).jpeg",
+    "imagem": "https://github.com/VictorParizio/PizzarIA/blob/main/src/assets/pizzas/Frango%20com%20Catupiry%20(1).jpeg",
     "ingredientes": [
       "Molho de tomate",
       "Mozzarella",
@@ -60,7 +60,7 @@
     "id": 6,
     "nome": "Portuguesa",
     "descricao": "Tradicional pizza com molho de tomate, mozarela, presunto, mussarela, ovo, cebola e azeitonas.",
-    "imagem": "/assets/pizzas/Portuguesa (1).jpeg",
+    "imagem": "https://github.com/VictorParizio/PizzarIA/blob/main/src/assets/pizzas/Portuguesa%20(1).jpeg",
     "ingredientes": [
       "Molho de tomate",
       "Mozzarella",
@@ -76,7 +76,7 @@
     "id": 7,
     "nome": "Vegetariana",
     "descricao": "Saborosa opção vegetariana com molho de tomate, mozarela, pimentão, cebola, tomate, azeitonas e ervilhas.",
-    "imagem": "/assets/pizzas/Vegetariana (4).jpeg",
+    "imagem": "https://github.com/VictorParizio/PizzarIA/blob/main/src/assets/pizzas/Vegetariana%20(4).jpeg",
     "ingredientes": [
       "Molho de tomate",
       "Mozzarella",
@@ -92,7 +92,7 @@
     "id": 8,
     "nome": "Bacon com Milho",
     "descricao": "Pizza com molho de tomate, mozarela, bacon, milho e cebola.",
-    "imagem": "/assets/pizzas/Bacon com Milho (1).jpeg",
+    "imagem": "https://github.com/VictorParizio/PizzarIA/blob/main/src/assets/pizzas/Bacon%20com%20Milho%20(1).jpeg",
     "ingredientes": [
       "Molho de tomate",
       "Mozzarella",
@@ -106,7 +106,7 @@
     "id": 9,
     "nome": "Margherita Especial",
     "descricao": "Versão especial da clássica Margherita, com mozarela de búfala e manjericão fresco.",
-    "imagem": "/assets/pizzas/Margherita Especial (1).jpeg",
+    "imagem": "https://github.com/VictorParizio/PizzarIA/blob/main/src/assets/pizzas/Margherita%20Especial%20(1).jpeg",
     "ingredientes": [
       "Molho de tomate",
       "Mozzarella de búfala",
@@ -118,7 +118,7 @@
     "id": 10,
     "nome": "Napolitana",
     "descricao": "Pizza com molho de tomate, mozarela, tomate em rodelas, azeitonas e manjericão fresco.",
-    "imagem": "/assets/pizzas/Napolitana (1).jpeg",
+    "imagem": "https://github.com/VictorParizio/PizzarIA/blob/main/src/assets/pizzas/Napolitana%20(1).jpeg",
     "ingredientes": [
       "Molho de tomate",
       "Mozzarella",
@@ -132,7 +132,7 @@
     "id": 11,
     "nome": "Toscana",
     "descricao": "Pizza com molho de tomate, mozarela, calabresa, bacon e cebola.",
-    "imagem": "/assets/pizzas/Toscana (1).jpeg",
+    "imagem": "https://github.com/VictorParizio/PizzarIA/blob/main/src/assets/pizzas/Toscana%20(1).jpeg",
     "ingredientes": [
       "Molho de tomate",
       "Mozzarella",
@@ -146,7 +146,7 @@
     "id": 12,
     "nome": "Rúcula com Tomate Seco",
     "descricao": "Pizza com molho de tomate, mozarela, rúcula e tomate seco.",
-    "imagem": "/assets/pizzas/Rúcula com Tomate Seco (1).jpeg",
+    "imagem": "https://github.com/VictorParizio/PizzarIA/blob/main/src/assets/pizzas/Rúcula%20com%20Tomate%20Seco%20(1).jpeg",
     "ingredientes": ["Molho de tomate", "Mozzarella", "Rúcula", "Tomate seco"],
     "preco": 32.99
   },
@@ -154,7 +154,7 @@
     "id": 13,
     "nome": "Siciliana",
     "descricao": "Pizza com molho de tomate, mozarela, aliche, orégano e azeitonas.",
-    "imagem": "/assets/pizzas/Siciliana (1).jpeg",
+    "imagem": "https://github.com/VictorParizio/PizzarIA/blob/main/src/assets/pizzas/Siciliana%20(1).jpeg",
     "ingredientes": [
       "Molho de tomate",
       "Mozzarella",
@@ -168,7 +168,7 @@
     "id": 14,
     "nome": "Mexicana",
     "descricao": "Pizza com molho de tomate, mozarela, carne moída, pimenta jalapeño, pimentão e cebola.",
-    "imagem": "/assets/pizzas/Mexicana (1).jpeg",
+    "imagem": "https://github.com/VictorParizio/PizzarIA/blob/main/src/assets/pizzas/Mexicana%20(1).jpeg",
     "ingredientes": [
       "Molho de tomate",
       "Mozzarella",
@@ -183,7 +183,7 @@
     "id": 15,
     "nome": "Camarão com Catupiry",
     "descricao": "Pizza com molho de tomate, mozarela, camarão, catupiry e cebola.",
-    "imagem": "/assets/pizzas/Camarão com Catupiry (1).jpeg",
+    "imagem": "https://github.com/VictorParizio/PizzarIA/blob/main/src/assets/pizzas/Camarão%20com%20Catupiry%20(1).jpeg",
     "ingredientes": [
       "Molho de tomate",
       "Mozzarella",
