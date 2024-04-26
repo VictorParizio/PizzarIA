@@ -1,37 +1,52 @@
 import { useState } from "react";
-import "./styles.css";
 import { Button } from "../Button";
+import "./styles.css";
 
-export const Control = ({ variant }) => {
-  const [counter, setCounter] = useState(0);
+export const Control = ({ variant, quantity = 0, textBtn = false, onAdd }) => {
+  const [counter, setCounter] = useState(quantity);
 
-  function handleChange(event) {
+  const handleChange = (event) => {
     const value = parseInt(event.target.value);
     setCounter(value);
-  }
+  };
 
-  function handleClickLess() {
-    counter <= 0 ? setCounter(0) : setCounter(counter - 1);
-  }
+  const handleClickLess = () => {
+    setCounter((prevCounter) => (prevCounter <= 0 ? 0 : prevCounter - 1));
+  };
 
-  function handleClickMore() {
-    setCounter(counter + 1);
-  }
+  const handleClickMore = () => {
+    setCounter((prevCounter) => prevCounter + 1);
+  };
+
+  const handleAdd = () => {
+    onAdd(counter);
+    setCounter(0);
+  };
 
   return (
     <div className="control">
-      <Button variant={variant} id="less" onClick={handleClickLess}>
-        -
-      </Button>
-      <input
-        className={`${variant}-input`}
-        type="number"
-        value={counter}
-        onChange={handleChange}
-      />
-      <Button variant={variant} id="more" onClick={handleClickMore}>
-        +
-      </Button>
+      <div>
+        <Button variant={variant} id="less" onClick={handleClickLess}>
+          -
+        </Button>
+
+        <input
+          className={`${variant}-input`}
+          type="number"
+          value={counter}
+          onChange={handleChange}
+        />
+
+        <Button variant={variant} id="more" onClick={handleClickMore}>
+          +
+        </Button>
+      </div>
+
+      {textBtn && (
+        <Button variant={"medium"} onClick={handleAdd}>
+          {textBtn}
+        </Button>
+      )}
     </div>
   );
 };

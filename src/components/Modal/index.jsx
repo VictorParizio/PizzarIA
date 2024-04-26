@@ -12,9 +12,11 @@ export const ModalCart = ({ isOpen, children }) => {
         </Button>
       </header>
       <div className="order-list">{children}</div>
-      <Link to="/cart" onClick={isOpen}>
-        <Button variant={"large"}>Finalizar pedido</Button>
-      </Link>
+      {children.length !== 0 && (
+        <Link to="/cart" onClick={isOpen}>
+          <Button variant={"large"}>Finalizar pedido</Button>
+        </Link>
+      )}
     </section>
   );
 };
