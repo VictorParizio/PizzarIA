@@ -11,7 +11,9 @@ export const ModalCart = ({ isOpen, children }) => {
           x
         </Button>
       </header>
+
       <div className="order-list">{children}</div>
+      
       {children.length !== 0 && (
         <Link to="/cart" onClick={isOpen}>
           <Button variant={"large"}>Finalizar pedido</Button>

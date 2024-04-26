@@ -1,49 +1,46 @@
-import { useState } from "react";
 import { Button } from "../Button";
 import "./styles.css";
+import { useCartContext } from "../../hooks/useCartContext";
 
-export const Control = ({ variant, quantity = 0, textBtn = false, onAdd }) => {
-  const [counter, setCounter] = useState(quantity);
-
-  const handleChange = (event) => {
-    const value = parseInt(event.target.value);
-    setCounter(value);
-  };
-
-  const handleClickLess = () => {
-    setCounter((prevCounter) => (prevCounter <= 0 ? 0 : prevCounter - 1));
-  };
-
-  const handleClickMore = () => {
-    setCounter((prevCounter) => prevCounter + 1);
-  };
-
-  const handleAddProduct = () => {
-    onAdd(counter);
-    setCounter(0);
-  };
-
+export const Control = ({ variant, textBtn, cartItem }) => {
+  const { addProductCart, removeProduct, removeProductCart } = useCartContext();
   return (
     <div className="control">
       <div>
-        <Button variant={variant} id="less" onClick={handleClickLess}>
+        <Button
+          variant={variant}
+          id="less"
+          onClick={() => {
+            removeProduct(cartItem.id);
+          }}
+        >
           -
         </Button>
 
         <input
           className={`${variant}-input`}
           type="number"
-          value={counter}
-          onChange={handleChange}
+          value={cartItem.quantity || 0}
         />
 
-        <Button variant={variant} id="more" onClick={handleClickMore}>
+        <Button
+          variant={variant}
+          id="more"
+          onClick={() => {
+            addProductCart(cartItem);
+          }}
+        >
           +
         </Button>
       </div>
 
       {textBtn && (
-        <Button variant={"medium"} onClick={handleAddProduct}>
+        <Button
+          variant={"medium"}
+          onClick={() => {
+            removeProductCart(cartItem.id);
+          }}
+        >
           {textBtn}
         </Button>
       )}
