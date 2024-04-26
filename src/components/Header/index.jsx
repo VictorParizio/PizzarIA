@@ -1,12 +1,14 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
 import { FaCartShopping, FaUser } from "react-icons/fa6";
 import { FiLogOut } from "react-icons/fi";
 
-import { ModalCart } from "../Modal";
+import { ModalCart } from "../CartModal";
 
 import "./styles.css";
+import { CartContext } from "../../context/cartContext";
+import { ResumeProduct } from "../ResumeProduct";
 
 export const Header = () => {
   const location = useLocation();
@@ -14,6 +16,7 @@ export const Header = () => {
 
   const [usuarioLogado, setUsuarioLogado] = useState(token != null);
   const [showModal, setShowModal] = useState(false);
+  const { cart } = useContext(CartContext);
 
   const handleLogout = () => {
     sessionStorage.clear();
@@ -77,7 +80,15 @@ export const Header = () => {
         )}
       </div>
 
-      {showModal && <ModalCart isOpen={handleModalToggle}></ModalCart>}
+      {showModal && (
+        <ModalCart isOpen={handleModalToggle}>
+          {cart.map((item) => (
+            <li className="pizza-card" key={item.id}>
+              <ResumeProduct cartItem={item} />
+            </li>
+          ))}
+        </ModalCart>
+      )}
     </header>
   );
 };

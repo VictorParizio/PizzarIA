@@ -1,23 +1,22 @@
 import { Control } from "../Control";
 
-export const ResumeProduct = ({ pizzaData, quantity }) => {
-  const { imagem, nome, preco } = pizzaData;
-
+export const ResumeProduct = ({ cartItem }) => {
+  console.log(cartItem.id);
   return (
-    <li className="pizza-card">
+    <>
       <figure>
-        <img src={imagem} />
-        <h3>{nome}</h3>
-        <strong>{preco}</strong>
+        <img src={cartItem.imagem} />
+        <h3>{cartItem.nome}</h3>
+        <strong>{cartItem.preco}</strong>
       </figure>
       <div className="add-cart">
         <Control
           variant={"medium"}
-          quantity={quantity}
+          quantity={cartItem.quantity}
           textBtn={"x"}
           onClick={false}
         />
       </div>
-    </li>
+    </>
   );
 };

@@ -1,14 +1,15 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Control } from "../../components/Control";
-import { menuPizzas } from "../../api/menu";
+import { menuPizzas } from "../../mocks/menu";
 import { formatCurrency } from "../../utils/formatCurrency";
-import { ResumeProduct } from "../../components/ResumeProduct";
 import axios from "axios";
 
 import "./styles.css";
+import { CartContext } from "../../context/cartContext";
 
 export const Menu = () => {
   const [menuData, setMenuData] = useState([]);
+  const { cart, setCart } = useContext(CartContext);
 
   useEffect(() => {
     setMenuData(menuPizzas);
@@ -27,9 +28,27 @@ export const Menu = () => {
   }, []);
 
   const handleAddProduct = (pizzaData, quantity) => {
-    if (quantity > 0) {
-      <ResumeProduct pizzaData={pizzaData} quantity={quantity} />;
+    if (quantity <= 0) {
+      alert("Defina uma quantidade antes de adicionar ao carrinho");
     }
+
+    const hasProduct = cart.some((cartItem) => {
+      cartItem.id === pizzaData.id;
+    });
+
+    if (!hasProduct) {
+      pizzaData.quantity = quantity;
+      return setCart((oldCart) => [...oldCart, pizzaData]);
+    }
+
+    setCart((oldCart) => {
+      oldCart.map((cartItem) => {
+        if (cartItem.id === pizzaData.id) {
+          cartItem.quantity += quantity;
+          return cartItem;
+        }
+      });
+    });
   };
 
   return (

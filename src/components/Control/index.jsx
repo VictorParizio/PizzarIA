@@ -18,7 +18,7 @@ export const Control = ({ variant, quantity = 0, textBtn = false, onAdd }) => {
     setCounter((prevCounter) => prevCounter + 1);
   };
 
-  const handleAdd = () => {
+  const handleAddProduct = () => {
     onAdd(counter);
     setCounter(0);
   };
@@ -43,7 +43,7 @@ export const Control = ({ variant, quantity = 0, textBtn = false, onAdd }) => {
       </div>
 
       {textBtn && (
-        <Button variant={"medium"} onClick={handleAdd}>
+        <Button variant={"medium"} onClick={handleAddProduct}>
           {textBtn}
         </Button>
       )}
