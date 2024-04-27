@@ -1,4 +1,5 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useContext } from "react";
+import { UserAuthContext } from "../../context/userAuthContext";
 import { Link } from "react-router-dom";
 import { Hero } from "../../components/Hero";
 
@@ -18,6 +19,7 @@ import testimonialData from "../../mocks/testimunial.json";
 import "./styles.css";
 
 export const Home = () => {
+  const { usuarioLogado } = useContext(UserAuthContext);
   const [testimonialsData, setTestimonialsData] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const containerRef = useRef(null);
@@ -151,7 +153,10 @@ export const Home = () => {
           vez!
         </p>
 
-        <Link to="/menu" className="base-button large animation">
+        <Link
+          to={usuarioLogado ? "/menu" : "/login"}
+          className="base-button large animation"
+        >
           Quero pedir a minha Pizza
         </Link>
       </section>

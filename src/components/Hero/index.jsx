@@ -1,7 +1,12 @@
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { UserAuthContext } from "../../context/userAuthContext";
+
 import "./styles.css";
 
 export const Hero = () => {
+  const { usuarioLogado } = useContext(UserAuthContext);
+
   return (
     <section className="hero-container">
       <div className="hero-background" />
@@ -15,7 +20,12 @@ export const Hero = () => {
           Bem, prepare-se para uma experiência gastronômica futurística!
         </p>
 
-          <Link to="/menu" className="base-button large animation" >Faça já o seu Pedido</Link>
+        <Link
+          to={usuarioLogado ? "/menu" : "/login"}
+          className="base-button large animation"
+        >
+          Faça já o seu Pedido
+        </Link>
       </div>
     </section>
   );

@@ -1,5 +1,6 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
+import { UserAuthContext } from "../../context/userAuthContext";
 
 import { FaCartShopping, FaUser } from "react-icons/fa6";
 import { FiLogOut } from "react-icons/fi";
@@ -13,12 +14,11 @@ import "./styles.css";
 
 export const Header = () => {
   const location = useLocation();
-  const token = sessionStorage.getItem("token");
 
   const { cart } = useContext(CartContext);
-  const { totalItens } = useCartContext();
+  const { totalItems } = useCartContext();
+  const { usuarioLogado, setUsuarioLogado } = useContext(UserAuthContext);
 
-  const [usuarioLogado, setUsuarioLogado] = useState(token != null);
   const [showModal, setShowModal] = useState(false);
 
   const handleLogout = () => {
@@ -30,47 +30,40 @@ export const Header = () => {
     setShowModal(!showModal);
   };
 
-  useEffect(() => {
-    if (token != null) {
-      return setUsuarioLogado(true);
-    }
-    setUsuarioLogado(false);
-  }, [token]);
-
   return (
     <header className="navigation">
       <Link to="/" className="logo">
         PizzarIA
       </Link>
 
-      <nav>
-        <ul>
-          <li>
-            <NavLink to="/menu">Cardápio</NavLink>
-          </li>
-          <li>
-            <NavLink to="/cart">Carrinho</NavLink>
-          </li>
-        </ul>
-      </nav>
+      {usuarioLogado && (
+        <nav>
+          <ul>
+            <li>
+              <NavLink to="/menu">Cardápio</NavLink>
+            </li>
+            <li>
+              <NavLink to="/cart">Carrinho</NavLink>
+            </li>
+          </ul>
+        </nav>
+      )}
 
       <div className="member-area">
         {!usuarioLogado && location.pathname !== "/login" && (
-          <>
-            <Link to="/login">Entrar</Link>
-          </>
+          <Link to="/login">Entrar</Link>
         )}
+
         {!usuarioLogado && location.pathname === "/login" && (
-          <>
-            <Link to="/signup">Cadastrar</Link>
-          </>
+          <Link to="/signup">Cadastrar</Link>
         )}
+
         {usuarioLogado && (
           <>
             <Link to="#" onClick={handleModalToggle}>
               <FaCartShopping title="Carrinho suspenso" />
               <strong title="Total de itens no carrinho">
-                {totalItens(cart)}
+                {totalItems(cart)}
               </strong>
             </Link>
             <Link to="/404">

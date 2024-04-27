@@ -3,6 +3,7 @@ import { Header } from "../Header";
 import { Footer } from "../Footer";
 import { Outlet, useLocation } from "react-router-dom";
 import { useEffect } from "react";
+import { UserProvider } from "../../context/userAuthContext";
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -16,13 +17,15 @@ const ScrollToTop = () => {
 
 export const Root = () => {
   return (
-    <CartProvider>
-      <ScrollToTop />
-      <Header />
-      <main>
-        <Outlet />
-      </main>
-      <Footer />
-    </CartProvider>
+    <UserProvider>
+      <CartProvider>
+        <ScrollToTop />
+        <Header />
+        <main>
+          <Outlet />
+        </main>
+        <Footer />
+      </CartProvider>
+    </UserProvider>
   );
 };

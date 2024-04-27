@@ -5,68 +5,48 @@ import { formatCurrency } from "../utils/formatCurrency";
 export const useCartContext = () => {
   const { cart, setCart } = useContext(CartContext);
 
-  const editQuantity = (id, quantity) => {
-    return cart.map((cartItem) => {
-      if (cartItem.id === id) {
-        cartItem.quantity += quantity;
+  const updateCart = (productId, quantityDelta) => {
+    const updatedCart = cart.map((item) => {
+      if (item.id === productId) {
+        return { ...item, quantity: item.quantity + quantityDelta };
       }
-      return cartItem;
+      return item;
     });
+    setCart(updatedCart);
   };
 
-  const addProductCart = (pizzaData) => {
-    const hasProduct = cart.some((cartItem) => {
-      return cartItem.id === pizzaData.id;
-    });
-
-    if (!hasProduct) {
-      pizzaData.quantity = 1;
-      return setCart((oldCart) => [...oldCart, pizzaData]);
+  const addProductCart = (productData) => {
+    const existingProduct = cart.find((item) => item.id === productData.id);
+    if (existingProduct) {
+      updateCart(productData.id, 1);
+    } else {
+      setCart([...cart, { ...productData, quantity: 1 }]);
     }
-
-    const updatedCart = editQuantity(pizzaData.id, 1);
-
-    setCart([...updatedCart]);
   };
 
-  const removeProduct = (id) => {
-    const product = cart.find((cartItem) => cartItem.id === id);
-
-    const decrease = product.quantity === 1;
-
-    if (decrease) {
-      return setCart((oldCart) => {
-        return oldCart.filter((cartItem) => cartItem.id !== id);
-      });
+  const removeProduct = (productId) => {
+    const existingProduct = cart.find((item) => item.id === productId);
+    if (existingProduct.quantity === 1) {
+      setCart(cart.filter((item) => item.id !== productId));
+    } else {
+      updateCart(productId, -1);
     }
-
-    const updatedCart = editQuantity(id, -1);
-
-    setCart([...updatedCart]);
   };
 
-  const removeProductCart = (id) => {
-    const product = cart.filter((cartItem) => cartItem.id !== id);
-    setCart(product);
+  const removeProductCart = (productId) => {
+    setCart(cart.filter((item) => item.id !== productId));
   };
 
   const totalCart = (cart) => {
-    let totalPrice = 0;
-
-    for (const item of cart) {
-      totalPrice += item.quantity * item.preco;
-    }
-
+    const totalPrice = cart.reduce(
+      (total, item) => total + item.quantity * item.preco,
+      0
+    );
     return formatCurrency(totalPrice);
   };
 
-  const totalItens = (cart) => {
-    let total = 0;
-
-    for (const item of cart) {
-      total += item.quantity;
-    }
-
+  const totalItems = (cart) => {
+    const total = cart.reduce((total, item) => total + item.quantity, 0);
     return total;
   };
 
@@ -77,6 +57,6 @@ export const useCartContext = () => {
     removeProduct,
     removeProductCart,
     totalCart,
-    totalItens,
+    totalItems,
   };
 };
