@@ -11,7 +11,7 @@ export const ModalCart = ({ isOpen }) => {
   const { cart } = useContext(CartContext);
   const { totalCart } = useCartContext();
 
-  const displayedCart = cart.slice(0, 3);
+  const displayedCart = cart.slice(-3).slice().reverse();
 
   return (
     <section className="resume-cart">
@@ -32,7 +32,9 @@ export const ModalCart = ({ isOpen }) => {
 
       {cart.length > 3 && <p>Para ver a lista completa acesse o carrinho</p>}
 
-      {cart.length !== 0 && (
+      {cart.length === 0 ? (
+        isOpen()
+      ) : (
         <>
           <p>
             Total <strong>{totalCart(cart)}</strong>

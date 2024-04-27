@@ -29,6 +29,10 @@ figcaption {
   letter-spacing: 1px;
 }
 
+a.active {
+  color: var(--color-primary-light);
+}
+
 strong {
   color: var(--color-primary-light);
 }

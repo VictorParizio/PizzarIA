@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "../../components/Button";
 import { menuPizzas } from "../../mocks/menu";
+import { ModalCart } from "../../components/CartModal";
 import { formatCurrency } from "../../utils/formatCurrency";
 import { useCartContext } from "../../hooks/useCartContext";
 import axios from "axios";
@@ -8,6 +9,7 @@ import axios from "axios";
 import "./styles.css";
 
 export const Menu = () => {
+  const [showModal, setShowModal] = useState(false);
   const [menuData, setMenuData] = useState([]);
   const { addProductCart } = useCartContext();
 
@@ -26,6 +28,11 @@ export const Menu = () => {
     //     console.error("Erro ao carregar os dados do menu:", error);
     //   });
   }, []);
+
+  const handleAddToCart = (item) => {
+    addProductCart(item, 1);
+    setShowModal(true);
+  };
 
   return (
     <>
@@ -47,7 +54,7 @@ export const Menu = () => {
                 <strong>{formatCurrency(item.preco)}</strong>
                 <Button
                   variant={"medium"}
-                  onClick={() => addProductCart(item, 1)}
+                  onClick={() => handleAddToCart(item)}
                 >
                   Adicionar
                 </Button>
@@ -56,6 +63,7 @@ export const Menu = () => {
           ))}
         </ul>
       </section>
+      {showModal && <ModalCart isOpen={() => setShowModal(false)} />}
     </>
   );
 };

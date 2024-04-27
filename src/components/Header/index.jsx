@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 
 import { FaCartShopping, FaUser } from "react-icons/fa6";
 import { FiLogOut } from "react-icons/fi";
@@ -46,13 +46,10 @@ export const Header = () => {
       <nav>
         <ul>
           <li>
-            <a href="#about">Sobre</a>
+            <NavLink to="/menu">Cardápio</NavLink>
           </li>
           <li>
-            <Link to="/menu">Cardápio</Link>
-          </li>
-          <li>
-            <a href="#testimonials">Depoimentos</a>
+            <NavLink to="/cart">Carrinho</NavLink>
           </li>
         </ul>
       </nav>
@@ -72,7 +69,9 @@ export const Header = () => {
           <>
             <Link to="#" onClick={handleModalToggle}>
               <FaCartShopping title="Carrinho suspenso" />
-              <strong title="Total de itens no carrinho">{totalItens(cart)}</strong>
+              <strong title="Total de itens no carrinho">
+                {totalItens(cart)}
+              </strong>
             </Link>
             <Link to="/404">
               <FaUser title="Perfil do usuário" />
