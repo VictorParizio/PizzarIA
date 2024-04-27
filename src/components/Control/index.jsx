@@ -1,6 +1,6 @@
+import { useCartContext } from "../../hooks/useCartContext";
 import { Button } from "../Button";
 import "./styles.css";
-import { useCartContext } from "../../hooks/useCartContext";
 
 export const Control = ({ variant, textBtn, cartItem }) => {
   const { addProductCart, removeProduct, removeProductCart } = useCartContext();

@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { CartContext } from "../context/cartContext";
+import { formatCurrency } from "../utils/formatCurrency";
 
 export const useCartContext = () => {
   const { cart, setCart } = useContext(CartContext);
@@ -44,10 +45,30 @@ export const useCartContext = () => {
     setCart([...updatedCart]);
   };
 
-  function removeProductCart(id) {
+  const removeProductCart = (id) => {
     const product = cart.filter((cartItem) => cartItem.id !== id);
     setCart(product);
-  }
+  };
+
+  const totalCart = (cart) => {
+    let totalPrice = 0;
+
+    for (const item of cart) {
+      totalPrice += item.quantity * item.preco;
+    }
+
+    return formatCurrency(totalPrice);
+  };
+
+  const totalItens = (cart) => {
+    let total = 0;
+
+    for (const item of cart) {
+      total += item.quantity;
+    }
+
+    return total;
+  };
 
   return {
     cart,
@@ -55,5 +76,7 @@ export const useCartContext = () => {
     addProductCart,
     removeProduct,
     removeProductCart,
+    totalCart,
+    totalItens,
   };
 };

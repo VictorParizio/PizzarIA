@@ -6,17 +6,20 @@ import { FiLogOut } from "react-icons/fi";
 
 import { ModalCart } from "../CartModal";
 
-import "./styles.css";
+import { useCartContext } from "../../hooks/useCartContext";
 import { CartContext } from "../../context/cartContext";
-import { ResumeProduct } from "../ResumeProduct";
+
+import "./styles.css";
 
 export const Header = () => {
   const location = useLocation();
   const token = sessionStorage.getItem("token");
 
+  const { cart } = useContext(CartContext);
+  const { totalItens } = useCartContext();
+
   const [usuarioLogado, setUsuarioLogado] = useState(token != null);
   const [showModal, setShowModal] = useState(false);
-  const { cart } = useContext(CartContext);
 
   const handleLogout = () => {
     sessionStorage.clear();
@@ -68,27 +71,20 @@ export const Header = () => {
         {usuarioLogado && (
           <>
             <Link to="#" onClick={handleModalToggle}>
-              <FaCartShopping />
+              <FaCartShopping title="Carrinho suspenso" />
+              <strong title="Total de itens no carrinho">{totalItens(cart)}</strong>
             </Link>
             <Link to="/404">
-              <FaUser />
+              <FaUser title="Perfil do usuário" />
             </Link>
             <Link to="/">
-              <FiLogOut onClick={handleLogout} />
+              <FiLogOut title="Sair" onClick={handleLogout} />
             </Link>
           </>
         )}
       </div>
 
-      {showModal && (
-        <ModalCart isOpen={handleModalToggle}>
-          {cart.map((item) => (
-            <li className="pizza-card" key={item.id}>
-              <ResumeProduct cartItem={item} />
-            </li>
-          ))}
-        </ModalCart>
-      )}
+      {showModal && <ModalCart isOpen={handleModalToggle} />}
     </header>
   );
 };

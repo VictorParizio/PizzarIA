@@ -37,6 +37,23 @@
   margin-right: 15px;
 }
 
+.navigation .member-area {
+  position: relative;
+}
+
 .navigation .member-area svg {
   font-size: 2.4rem;
+}
+
+.navigation .member-area strong {
+  position: absolute;
+  font-size: 1rem;
+  top: -10px;
+  left: 28px;
+
+  text-align: center;
+  width: 20px;
+  background-color: var(--color-light);
+  border-radius: 50px;
+  padding: 4px;
 }

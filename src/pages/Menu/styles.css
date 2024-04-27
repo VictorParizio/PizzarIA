@@ -13,19 +13,12 @@
 
 .menu-container {
   margin: 418px 0 60px;
-  width: 1024px;
-}
-
-.menu-list .control-button {
-  border-radius: 4px;
-  padding: 1rem 1.5rem;
-  box-shadow: none;
-  transition: 0.3s ease-in-out;
+  width: 1224px;
 }
 
 .menu-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(26.5rem, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(22rem, 1fr));
   margin-top: 32px;
   gap: 20px;
 }
@@ -38,8 +31,6 @@
   background-color: var(--color-light);
   box-shadow: var(--box-shadow);
   border-radius: 12px;
-  overflow: hidden;
-  transition: 0.3s ease-in-out;
 }
 
 .pizza-card img {
@@ -51,9 +42,6 @@
   color: var(--color-dark);
   font-size: 1.8rem;
   text-align: center;
-}
-
-.pizza-card h3 {
   padding: 20px;
 }
 
@@ -61,18 +49,19 @@
   color: var(--color-dark);
   font-size: 1.2rem;
   line-height: 18px;
-  margin: 0 20px 20px;
+  margin: 0 20px;
   min-height: 54px;
 }
 
 .pizza-card strong {
   display: block;
-  font-size: 1.8rem;
+  font-size: 2rem;
   text-align: center;
 }
 
 .pizza-card .add-cart {
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  padding: 20px;
+  padding: 12px 20px 20px;
 }

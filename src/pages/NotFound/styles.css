@@ -11,6 +11,6 @@
   border-radius: 32px;
 }
 
-.container-404 button {
-	margin-top: 24px;
+.container-404 a {
+  margin-top: 24px;
 }

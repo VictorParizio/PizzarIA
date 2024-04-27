@@ -65,19 +65,19 @@
   gap: 20px;
 }
 
-#testimonials .control {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 30px;
-}
-
 .control #back {
   margin-right: 10px;
 }
 
 #menu .menu-list {
   margin-top: 32px;
+}
+
+#testimonials .control {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30px;
 }
 
 .testimonial-card,
@@ -88,6 +88,11 @@
   border-radius: 10px;
   overflow: hidden;
   transition: 0.3s ease-in-out;
+}
+
+#menu .menu-list .pizza-card{
+  justify-content: flex-start;
+  padding-bottom: 20px;
 }
 
 .testimonial-card:hover,

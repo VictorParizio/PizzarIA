@@ -1,9 +1,17 @@
-import { Button } from "../../components/Button";
+import { useContext } from "react";
+import { CartContext } from "../../context/cartContext";
 import { Control } from "../../components/Control";
-const pizza = "./src/assets/images/OIG3 (1).gif";
+import { Button } from "../../components/Button";
 import "./styles.css";
+import { useCartContext } from "../../hooks/useCartContext";
+import { FaTrashAlt } from "react-icons/fa";
+import { formatCurrency } from "../../utils/formatCurrency";
 
 export const Cart = () => {
+  const { cart } = useContext(CartContext);
+  const { removeProductCart, totalCart } = useCartContext();
+  // console.log("Cart:", JSON.stringify(cart, null, 2));
+
   return (
     <section className="container-shopping">
       <section className="my-shopping-cart">
@@ -13,16 +21,18 @@ export const Cart = () => {
           <p>Quantidade</p>
           <p>Subtotal</p>
         </div>
-        <div className="product-card">
-          <div className="product">
-            <img src={pizza} alt="" />
-            <p>Pizza de Margherita</p>
-          </div>
-          <p>preço</p>
-          <Control variant={"small"} />
-          <p>subtotal</p>
-          <Button variant={"small"}>x</Button>
-        </div>
+        {cart.map((item) => (
+          <li className="product-card" key={item.id}>
+            <div className="product">
+              <img src={item.imagem} alt={item.nome} />
+              <p>{item.nome}</p>
+            </div>
+            <p>{formatCurrency(item.preco)}</p>
+            <Control variant={"small"} cartItem={item} />
+            <p>{formatCurrency(item.preco * item.quantity)}</p>
+            <FaTrashAlt onClick={() => removeProductCart(item.id)} />
+          </li>
+        ))}
       </section>
 
       <section className="cart-total">
@@ -36,9 +46,9 @@ export const Cart = () => {
           </div>
 
           <div className="cost">
-            <p>70,00</p>
+            <p>{totalCart(cart)}</p>
             <p>grátis</p>
-            <strong>70,00</strong>
+            <strong>{totalCart(cart)}</strong>
           </div>
         </div>
 
@@ -50,6 +60,7 @@ export const Cart = () => {
               name="method-payment"
               id="dinheiro"
               value="dinheiro"
+              checked={true}
             />
             <label htmlFor="dinheiro">Dinheiro</label>
             <br />

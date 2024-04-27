@@ -29,19 +29,22 @@ export const Menu = () => {
 
   return (
     <>
-      <div className="banner"></div>
+      <div className="banner" />
       <section className="menu-container">
         <h2>Cardápio</h2>
         <ul className="menu-list">
           {menuData.map((item) => (
             <li className="pizza-card" key={item.id}>
               <figure>
-                <img src={item.imagem} alt={item.nome} />
+                <img
+                  src={item.imagem}
+                  alt={`Pizza ${item.nome} com vários ingredientes em volta.`}
+                />
                 <h3>{item.nome}</h3>
                 <figcaption>{item.descricao}</figcaption>
-                <strong>{formatCurrency(item.preco)}</strong>
               </figure>
               <div className="add-cart">
+                <strong>{formatCurrency(item.preco)}</strong>
                 <Button
                   variant={"medium"}
                   onClick={() => addProductCart(item, 1)}
