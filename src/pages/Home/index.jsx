@@ -2,19 +2,17 @@ import { useState, useEffect, useRef, useContext } from "react";
 import { UserAuthContext } from "../../context/userAuthContext";
 import { Link } from "react-router-dom";
 import { Hero } from "../../components/Hero";
-
-import axios from "axios";
-
-import {
-  addScrollListener,
-  removeScrollListener,
-} from "../../utils/scrollAnimation";
+import { getAPI } from "../../http";
 
 import sidebarIllustration from "../../assets/images/OIG3 (1).gif";
 import pizzaMargherita from "../../assets/images/pizza1.jpeg";
 import pizzaCalabresa from "../../assets/images/pizza2.jpeg";
 import pizzaVegetariana from "../../assets/images/pizza3.jpeg";
-import testimonialData from "../../mocks/testimunial.json";
+
+import {
+  addScrollListener,
+  removeScrollListener,
+} from "../../utils/scrollAnimation";
 
 import "./styles.css";
 
@@ -25,19 +23,10 @@ export const Home = () => {
   const containerRef = useRef(null);
 
   useEffect(() => {
-    setTestimonialsData(testimonialData);
-    // axios
-    //   .get("url/da/api")
-    //   .then((response) => {
-    //     if (!response.ok) {
-    //       throw new Error("Network response was not ok");
-    //     }
-    //     return response.json();
-    //   })
-    //   .then((data) => setTestimonialsData(data))
-    //   .catch((error) => {
-    //     console.log("Erro ao carregar Depoimentos:", error);
-    //   });
+    (async function fetchAPI() {
+      const dataAPI = await getAPI("/testimunial.json");
+      setTestimonialsData(dataAPI);
+    })();
   }, []);
 
   useEffect(() => {

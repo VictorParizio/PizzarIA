@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "../../components/Button";
 import { InputForm } from "../../components/InputForm";
-import axios from "axios";
+import { postAPI } from "../../http";
 
 export const Signup = () => {
   const [name, setName] = useState("");
@@ -11,38 +11,34 @@ export const Signup = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const navigate = useNavigate();
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const novoUsuario = {
-      name,
-      email,
-      password,
-      confirmPassword,
-    };
-
-    if (password != confirmPassword) {
+    if (password !== confirmPassword) {
       return alert("A confirmação da senha não corresponde a senha fornecida");
     }
 
-    axios
-      .post("http://localhost:3000/pizzaria/usuario", novoUsuario)
-      .then((resposta) => {
-        alert(resposta.data.message);
-        sessionStorage.setItem("token", resposta.data.access_token);
-        setName("");
-        setEmail("");
-        setPassword("");
-        setConfirmPassword("");
-        navigate("/menu");
-      })
-      .catch((erro) => {
-        if (erro?.response?.data?.message) {
-          alert(erro.response.data.message);
-        } else {
-          alert("Algo deu errado");
-        }
-      });
+    try {
+      const novoUsuario = {
+        name,
+        email,
+        password,
+        confirmPassword,
+      };
+
+      const response = await postAPI("pizzaria/usuario", novoUsuario);
+
+      alert(response.data.access_token);
+      sessionStorage.setItem("token", response.data.access_token);
+      
+      setName("");
+      setEmail("");
+      setPassword("");
+      setConfirmPassword("");
+      navigate("/menu");
+    } catch (error) {
+      alert("Ocorreu um erro ao cadastrar usuário: " + error.message);
+    }
   };
 
   return (

@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react";
 import { Button } from "../../components/Button";
-import { menuPizzas } from "../../mocks/menu";
 import { ModalCart } from "../../components/CartModal";
 import { formatCurrency } from "../../utils/formatCurrency";
 import { useCartContext } from "../../hooks/useCartContext";
-import axios from "axios";
+import { getAPI } from "../../http";
 
 import "./styles.css";
 
@@ -14,20 +13,11 @@ export const Menu = () => {
   const { addProductCart } = useCartContext();
 
   useEffect(() => {
-    setMenuData(menuPizzas);
-    // axios
-    //   .get("url/da/api")
-    //   .then((response) => {
-    //     if (!response.ok) {
-    //       throw new Error("Network response was not ok");
-    //     }
-    //     return response.json();
-    //   })
-    //   .then((data) => setMenuData(data))
-    //   .catch((error) => {
-    //     console.error("Erro ao carregar os dados do menu:", error);
-    //   });
-  }, []);
+    (async function fetchAPI() {
+      const dataAPI = await getAPI("/menu.json");
+      setMenuData(dataAPI);
+    })();
+  }, []);  
 
   const handleAddToCart = (item) => {
     addProductCart(item, 1);

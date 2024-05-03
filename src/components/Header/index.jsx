@@ -22,7 +22,7 @@ export const Header = () => {
   const [showModal, setShowModal] = useState(false);
 
   const handleLogout = () => {
-    sessionStorage.clear();
+    sessionStorage.removeItem('token');
     setUsuarioLogado(false);
   };
 

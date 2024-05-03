@@ -2,8 +2,9 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "../../components/Button";
 import { InputForm } from "../../components/InputForm";
+import { postAPI } from "../../http";
+
 import "./styles.css";
-import axios from "axios";
 
 export const Login = () => {
   const [email, setEmail] = useState("");
@@ -11,30 +12,25 @@ export const Login = () => {
 
   const navigate = useNavigate();
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const usuario = {
-      email,
-      password,
-    };
-    setEmail("");
-    setPassword("");
 
-    axios
-      .post("http://localhost:3000/pizzaria/login", usuario)
-      .then((resposta) => {
-        sessionStorage.setItem("token", resposta.data.access_token);
-        setEmail("");
-        setPassword("");
-        navigate("/menu");
-      })
-      .catch((erro) => {
-        if (erro?.response?.data?.message) {
-          alert(erro.response.data.message);
-        } else {
-          alert("Algo deu errado");
-        }
-      });
+    try {
+      const usuario = {
+        email,
+        password,
+      };
+
+      const response = await postAPI("login", usuario);
+
+      sessionStorage.setItem("token", response.data.access_token);
+      
+      setEmail("");
+      setPassword("");
+      navigate("/menu");
+    } catch (error) {
+      console.log("Erro ao tentar fazer login:" + error);
+    }
   };
 
   return (
