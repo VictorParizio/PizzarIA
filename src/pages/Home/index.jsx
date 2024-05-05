@@ -23,7 +23,7 @@ export const Home = () => {
   const containerRef = useRef(null);
 
   useEffect(() => {
-    (async function fetchAPI() {
+    (async function () {
       const dataAPI = await getAPI("/testimunial.json");
       setTestimonialsData(dataAPI);
     })();

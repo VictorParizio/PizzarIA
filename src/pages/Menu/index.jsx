@@ -13,11 +13,11 @@ export const Menu = () => {
   const { addProductCart } = useCartContext();
 
   useEffect(() => {
-    (async function fetchAPI() {
+    (async function () {
       const dataAPI = await getAPI("/menu.json");
       setMenuData(dataAPI);
     })();
-  }, []);  
+  }, []);
 
   const handleAddToCart = (item) => {
     addProductCart(item, 1);
