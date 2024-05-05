@@ -70,7 +70,7 @@ export const Header = () => {
               <FaUser title="Perfil do usuário" />
             </Link>
             <Link to="/">
-              <FiLogOut title="Sair" onClick={handleLogout} />
+              <FiLogOut className="close" title="Sair" onClick={handleLogout} />
             </Link>
           </>
         )}

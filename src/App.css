@@ -37,6 +37,16 @@ strong {
   color: var(--color-primary-light);
 }
 
+svg {
+  transition: 0.3s ease-in-out;
+}
+
 svg:hover {
   fill: var(--color-primary-light);
+  cursor: pointer;
+}
+
+svg.close:hover {
+  fill: var(--color-dark);
+  stroke: var(--color-primary-light);
 }
