@@ -2,8 +2,9 @@ import { useCartContext } from "../../hooks/useCartContext";
 import { Button } from "../Button";
 import "./styles.css";
 
-export const Control = ({ variant, textBtn, cartItem }) => {
-  const { addProductCart, removeProduct, removeProductCart } = useCartContext();
+export const Control = ({ variant, cartItem }) => {
+  const { addProductCart, removeProduct } = useCartContext();
+  
   return (
     <div className="control">
       <div>
@@ -33,17 +34,6 @@ export const Control = ({ variant, textBtn, cartItem }) => {
           +
         </Button>
       </div>
-
-      {textBtn && (
-        <Button
-          variant={"medium"}
-          onClick={() => {
-            removeProductCart(cartItem.id);
-          }}
-        >
-          {textBtn}
-        </Button>
-      )}
     </div>
   );
 };

@@ -1,34 +1,49 @@
 import React, { useContext } from "react";
-import { CartContext } from "../../context/cartContext";
-import { useCartContext } from "../../hooks/useCartContext";
 import { Link } from "react-router-dom";
 import { Button } from "../Button";
-import { ResumeProduct } from "../ResumeProduct";
+import { Control } from "../Control";
+import { CartContext } from "../../context/cartContext";
+import { useCartContext } from "../../hooks/useCartContext";
+import { formatCurrency } from "../../utils/formatCurrency";
+import { FaTrashAlt } from "react-icons/fa";
 
 import "./styles.css";
+import { FiLogOut } from "react-icons/fi";
 
 export const ModalCart = ({ isOpen }) => {
   const { cart } = useContext(CartContext);
-  const { totalCart } = useCartContext();
+  const { removeProductCart, totalCart } = useCartContext();
 
   const displayedCart = cart.slice(-3).slice().reverse();
 
   return (
     <section className="resume-cart">
-      <header>
-        <h2>Resumo do Pedido</h2>
-        <Button variant={"small"} onClick={isOpen}>
-          x
-        </Button>
-      </header>
+      <h2>Resumo do Pedido</h2>
+      <div>
+        <FiLogOut className="close cart-modal" onClick={isOpen} />
+      </div>
 
-      <div className="order-list">
+      <ul className="order-list">
         {displayedCart.map((item) => (
           <li className="pizza-card" key={item.id}>
-            <ResumeProduct cartItem={item} />
+            <figure>
+              <img
+                src={item.imagem}
+                alt={`Pizza ${item.nome} com vários ingredientes em volta.`}
+              />
+              <h3>{item.nome}</h3>
+              <strong>{formatCurrency(item.preco)}</strong>
+            </figure>
+            <div className="add-cart">
+              <Control variant={"medium"} cartItem={item} />
+              <FaTrashAlt
+                className="trashIco"
+                onClick={() => removeProductCart(item.id)}
+              />
+            </div>
           </li>
         ))}
-      </div>
+      </ul>
 
       {cart.length > 3 && <p>Para ver a lista completa acesse o carrinho</p>}
 
