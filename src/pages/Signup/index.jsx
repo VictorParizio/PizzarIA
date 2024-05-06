@@ -23,21 +23,20 @@ export const Signup = () => {
         name,
         email,
         password,
-        confirmPassword,
       };
 
-      const response = await postAPI("pizzaria/usuario", novoUsuario);
+      const response = await postAPI("usuario", novoUsuario);
 
-      alert(response.data.access_token);
       sessionStorage.setItem("token", response.data.access_token);
-      
+
       setName("");
       setEmail("");
       setPassword("");
       setConfirmPassword("");
       navigate("/menu");
+      return;
     } catch (error) {
-      alert("Ocorreu um erro ao cadastrar usuário: " + error.message);
+      return console.log("erro ", error);
     }
   };
 

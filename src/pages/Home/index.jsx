@@ -24,7 +24,7 @@ export const Home = () => {
 
   useEffect(() => {
     (async function () {
-      const dataAPI = await getAPI("/testimunial.json");
+      const dataAPI = await getAPI("testimonial");
       setTestimonialsData(dataAPI);
     })();
   }, []);
@@ -178,11 +178,9 @@ export const Home = () => {
             .slice(currentIndex, currentIndex + 3)
             .map((testimonial, index) => (
               <div className="testimonial-card" key={index}>
-                <div className="testimonial-star">
                   <h3>{testimonial.name}</h3>
                   <span>{testimonial.rating}</span>
-                </div>
-                <p>{testimonial.review}</p>
+                <p>{testimonial.testimonial}</p>
               </div>
             ))}
         </div>

@@ -12,7 +12,7 @@ export const Control = ({ variant, cartItem }) => {
           variant={variant}
           id="less"
           onClick={() => {
-            removeProduct(cartItem.id);
+            removeProduct(cartItem.product_id);
           }}
         >
           -

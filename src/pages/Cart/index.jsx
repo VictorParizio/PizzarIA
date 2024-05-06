@@ -1,11 +1,12 @@
 import { useContext } from "react";
-import { CartContext } from "../../context/cartContext";
+import { FaTrashAlt } from "react-icons/fa";
 import { Control } from "../../components/Control";
 import { Button } from "../../components/Button";
-import "./styles.css";
+import { CartContext } from "../../context/cartContext";
 import { useCartContext } from "../../hooks/useCartContext";
-import { FaTrashAlt } from "react-icons/fa";
 import { formatCurrency } from "../../utils/formatCurrency";
+
+import "./styles.css";
 
 export const Cart = () => {
   const { cart } = useContext(CartContext);
@@ -21,18 +22,20 @@ export const Cart = () => {
           <p>Quantidade</p>
           <p>Subtotal</p>
         </div>
-        {cart.map((item) => (
-          <li className="product-card" key={item.id}>
-            <div className="product">
-              <img src={item.imagem} alt={item.nome} />
-              <p>{item.nome}</p>
-            </div>
-            <p>{formatCurrency(item.preco)}</p>
-            <Control variant={"small"} cartItem={item} />
-            <p>{formatCurrency(item.preco * item.quantity)}</p>
-            <FaTrashAlt onClick={() => removeProductCart(item.id)} />
-          </li>
-        ))}
+        <ul>
+          {cart.map((item) => (
+            <li className="product-card" key={item.product_id}>
+              <div className="product">
+                <img src={item.product_image_url} alt={item.product_name} />
+                <p>{item.product_name}</p>
+              </div>
+              <p>{formatCurrency(item.product_price)}</p>
+              <Control variant={"small"} cartItem={item} />
+              <p>{formatCurrency(item.product_price * item.quantity)}</p>
+              <FaTrashAlt onClick={() => removeProductCart(item.product_id)} />
+            </li>
+          ))}
+        </ul>
       </section>
 
       <section className="cart-total">

@@ -1,26 +1,26 @@
 import axios from "axios";
 
 export const http = axios.create({
-  baseURL: "./src/mocks",
+  baseURL: "https://pizzaria-backend-api.vercel.app/pizzaria/",
   headers: {
     Accept: "application/json",
     "Content-Type": "application/json",
   },
 });
 
-export const getAPI = async (path, errorMessage) => {
+export const getAPI = async (path) => {
   try {
     const response = await http.get(path);
     return response.data;
   } catch (error) {
-    alert(errorMessage);
-    throw new Error(errorMessage);
+    console.log("Erro do lado do servidor: " + error);
   }
 };
 
 export const postAPI = async (path, objectData) => {
   try {
     const response = await http.post(path, objectData);
+    console.log("resposta ", response);
     return response.data;
   } catch (error) {
     if (error?.response?.data?.message) {

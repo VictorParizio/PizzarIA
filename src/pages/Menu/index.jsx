@@ -14,7 +14,7 @@ export const Menu = () => {
 
   useEffect(() => {
     (async function () {
-      const dataAPI = await getAPI("/menu.json");
+      const dataAPI = await getAPI("produto");
       setMenuData(dataAPI);
     })();
   }, []);
@@ -31,17 +31,17 @@ export const Menu = () => {
         <h2>Cardápio</h2>
         <ul className="menu-list">
           {menuData.map((item) => (
-            <li className="pizza-card" key={item.id}>
+            <li className="pizza-card" key={item.product_id}>
               <figure>
                 <img
-                  src={item.imagem}
-                  alt={`Pizza ${item.nome} com vários ingredientes em volta.`}
+                  src={item.product_image_url}
+                  alt={`Pizza ${item.product_name} com vários ingredientes em volta.`}
                 />
-                <h3>{item.nome}</h3>
-                <figcaption>{item.descricao}</figcaption>
+                <h3>{item.product_name}</h3>
+                <figcaption>{item.product_description}</figcaption>
               </figure>
               <div className="add-cart">
-                <strong>{formatCurrency(item.preco)}</strong>
+                <strong>{formatCurrency(item.product_price)}</strong>
                 <Button
                   variant={"medium"}
                   onClick={() => handleAddToCart(item)}

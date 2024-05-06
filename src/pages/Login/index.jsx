@@ -24,7 +24,7 @@ export const Login = () => {
       const response = await postAPI("login", usuario);
 
       sessionStorage.setItem("token", response.data.access_token);
-      
+
       setEmail("");
       setPassword("");
       navigate("/menu");

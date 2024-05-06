@@ -25,20 +25,20 @@ export const ModalCart = ({ isOpen }) => {
 
       <ul className="order-list">
         {displayedCart.map((item) => (
-          <li className="pizza-card" key={item.id}>
+          <li className="pizza-card" key={item.product_id}>
             <figure>
               <img
-                src={item.imagem}
-                alt={`Pizza ${item.nome} com vários ingredientes em volta.`}
+                src={item.product_image_url}
+                alt={`Pizza ${item.product_name} com vários ingredientes em volta.`}
               />
-              <h3>{item.nome}</h3>
-              <strong>{formatCurrency(item.preco)}</strong>
+              <h3>{item.product_name}</h3>
+              <strong>{formatCurrency(item.product_price)}</strong>
             </figure>
             <div className="add-cart">
               <Control variant={"medium"} cartItem={item} />
               <FaTrashAlt
                 className="trashIco"
-                onClick={() => removeProductCart(item.id)}
+                onClick={() => removeProductCart(item.product_id)}
               />
             </div>
           </li>
