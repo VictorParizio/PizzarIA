@@ -1,14 +1,16 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "../../components/Button";
 import { InputForm } from "../../components/InputForm";
 import { postAPI } from "../../http";
+import { UserAuthContext } from "../../context/userAuthContext";
 
 export const Signup = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const { setUsuarioLogado } = useContext(UserAuthContext);
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
@@ -18,26 +20,22 @@ export const Signup = () => {
       return alert("A confirmação da senha não corresponde a senha fornecida");
     }
 
-    try {
-      const novoUsuario = {
-        name,
-        email,
-        password,
-      };
+    const novoUsuario = {
+      name,
+      email,
+      password,
+    };
 
-      const response = await postAPI("usuario", novoUsuario);
+    const response = await postAPI("usuario", novoUsuario);
+    
+    sessionStorage.setItem("token", response.access_token);
 
-      sessionStorage.setItem("token", response.data.access_token);
-
-      setName("");
-      setEmail("");
-      setPassword("");
-      setConfirmPassword("");
-      navigate("/menu");
-      return;
-    } catch (error) {
-      return console.log("erro ", error);
-    }
+    setName("");
+    setEmail("");
+    setPassword("");
+    setConfirmPassword("");
+    setUsuarioLogado(true);
+    navigate("/menu");
   };
 
   return (

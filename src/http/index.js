@@ -4,7 +4,7 @@ export const http = axios.create({
   baseURL: "https://pizzaria-backend-api.vercel.app/pizzaria/",
   headers: {
     Accept: "application/json",
-    "Content-Type": "application/json",
+    Content: "application/json",
   },
 });
 
@@ -20,7 +20,6 @@ export const getAPI = async (path) => {
 export const postAPI = async (path, objectData) => {
   try {
     const response = await http.post(path, objectData);
-    console.log("resposta ", response);
     return response.data;
   } catch (error) {
     if (error?.response?.data?.message) {

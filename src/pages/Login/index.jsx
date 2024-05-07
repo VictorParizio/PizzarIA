@@ -1,36 +1,34 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "../../components/Button";
 import { InputForm } from "../../components/InputForm";
 import { postAPI } from "../../http";
+import { UserAuthContext } from "../../context/userAuthContext";
 
 import "./styles.css";
 
 export const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const { setUsuarioLogado } = useContext(UserAuthContext);
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    try {
-      const usuario = {
-        email,
-        password,
-      };
+    const usuario = {
+      email,
+      password,
+    };
 
-      const response = await postAPI("login", usuario);
+    const response = await postAPI("login", usuario);
+    
+    sessionStorage.setItem("token", response.access_token);
 
-      sessionStorage.setItem("token", response.data.access_token);
-
-      setEmail("");
-      setPassword("");
-      navigate("/menu");
-    } catch (error) {
-      console.log("Erro ao tentar fazer login:" + error);
-    }
+    setEmail("");
+    setPassword("");
+    setUsuarioLogado(true);
+    navigate("/menu");
   };
 
   return (
