@@ -1,0 +1,8 @@
+.fast-message-container {
+  position: absolute;
+  right: 0;
+  background-color: var(--color-dark);
+  padding: 24px;
+  border-bottom-left-radius: 12px;
+  animation: moveRightToLeft 1s ease-in-out;
+}

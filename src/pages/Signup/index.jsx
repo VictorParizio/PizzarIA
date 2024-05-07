@@ -1,23 +1,42 @@
 import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useFastMessage } from "../../context/modalContext";
+import { UserAuthContext } from "../../context/userAuthContext";
 import { Button } from "../../components/Button";
 import { InputForm } from "../../components/InputForm";
 import { postAPI } from "../../http";
-import { UserAuthContext } from "../../context/userAuthContext";
 
 export const Signup = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
   const { setUsuarioLogado } = useContext(UserAuthContext);
+  const { showMessage } = useFastMessage();
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    if (password !== confirmPassword) {
-      return alert("A confirmação da senha não corresponde a senha fornecida");
+    if (name.trim() === "" && email.trim() === "" && password.trim() === "") {
+      showMessage("Todos os campos são obrigatórios");
+      return;
+    }
+
+    if (name.length < 3) {
+      showMessage("O Nome deve conter ao menos 3 digitos");
+      return;
+    }
+
+    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+    if (!emailRegex.test(email)) {
+      showMessage("Formato de email inválido");
+      return;
+    }
+
+    if (password.length < 6) {
+      showMessage("Senha deve conter ao menos 6 digitos");
+      return;
     }
 
     const novoUsuario = {
@@ -26,14 +45,13 @@ export const Signup = () => {
       password,
     };
 
-    const response = await postAPI("usuario", novoUsuario);
-    
+    const response = await postAPI("usuario", novoUsuario, showMessage);
+
     sessionStorage.setItem("token", response.access_token);
 
     setName("");
     setEmail("");
     setPassword("");
-    setConfirmPassword("");
     setUsuarioLogado(true);
     navigate("/menu");
   };
@@ -69,14 +87,6 @@ export const Signup = () => {
             placeholder="Digite sua senha"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-          />
-          <InputForm
-            textLabel={"Confirmar Senha"}
-            type="password"
-            id="confirm-password"
-            placeholder="Confirme sua senha"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
           />
           <Button type="submit">Cadastrar</Button>
         </form>

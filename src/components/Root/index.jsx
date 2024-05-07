@@ -1,9 +1,10 @@
+import { useEffect } from "react";
+import { Outlet, useLocation } from "react-router-dom";
 import { CartProvider } from "../../context/cartContext";
+import { UserProvider } from "../../context/userAuthContext";
 import { Header } from "../Header";
 import { Footer } from "../Footer";
-import { Outlet, useLocation } from "react-router-dom";
-import { useEffect } from "react";
-import { UserProvider } from "../../context/userAuthContext";
+import { FastMessageProvider } from "../../context/modalContext";
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -17,15 +18,17 @@ const ScrollToTop = () => {
 
 export const Root = () => {
   return (
-    <UserProvider>
-      <CartProvider>
-        <ScrollToTop />
-        <Header />
-        <main>
-          <Outlet />
-        </main>
-        <Footer />
-      </CartProvider>
-    </UserProvider>
+    <FastMessageProvider>
+      <UserProvider>
+        <CartProvider>
+          <ScrollToTop />
+          <Header />
+          <main>
+            <Outlet />
+          </main>
+          <Footer />
+        </CartProvider>
+      </UserProvider>
+    </FastMessageProvider>
   );
 };

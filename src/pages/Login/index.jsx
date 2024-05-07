@@ -1,9 +1,10 @@
-import { useContext, useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { UserAuthContext } from "../../context/userAuthContext";
+import { useFastMessage } from "../../context/modalContext";
 import { Button } from "../../components/Button";
 import { InputForm } from "../../components/InputForm";
 import { postAPI } from "../../http";
-import { UserAuthContext } from "../../context/userAuthContext";
 
 import "./styles.css";
 
@@ -11,24 +12,34 @@ export const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { setUsuarioLogado } = useContext(UserAuthContext);
+  const { showMessage } = useFastMessage();
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
+    if (email.trim() === "" || password.trim() === "") {
+      showMessage("Todos os campos são obrigatórios");
+      return;
+    }
 
     const usuario = {
       email,
       password,
     };
 
-    const response = await postAPI("login", usuario);
-    
-    sessionStorage.setItem("token", response.access_token);
-
-    setEmail("");
-    setPassword("");
-    setUsuarioLogado(true);
-    navigate("/menu");
+    try {
+      const response = await postAPI("login", usuario, showMessage);
+      sessionStorage.setItem("token", response.access_token);
+      setEmail("");
+      setPassword("");
+      setUsuarioLogado(true);
+      navigate("/menu");
+    } catch (error) {
+      setErrorMessage(
+        "Ocorreu um erro ao tentar fazer login. Por favor, tente novamente mais tarde."
+      );
+    }
   };
 
   return (
@@ -37,7 +48,6 @@ export const Login = () => {
       <section className="auth-container">
         <h2>Entrar</h2>
         <p className="subtitle">Que bom te ver novamente, entre e aproveite!</p>
-
         <form onSubmit={handleSubmit}>
           <InputForm
             textLabel={"Email"}

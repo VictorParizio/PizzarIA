@@ -17,18 +17,20 @@ export const getAPI = async (path) => {
   }
 };
 
-export const postAPI = async (path, objectData) => {
+export const postAPI = async (path, objectData, showMessage) => {
   try {
     const response = await http.post(path, objectData);
     return response.data;
   } catch (error) {
     if (error?.response?.data?.message) {
-      console.log(error.response.data.message);
+      showMessage(error.response.data.message);
     } else {
       console.log("Erro do lado do servidor: " + error);
     }
+    throw error;
   }
 };
+
 
 http.interceptors.request.use(
   function (config) {
