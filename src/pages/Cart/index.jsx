@@ -1,17 +1,28 @@
 import { useContext } from "react";
 import { FaTrashAlt } from "react-icons/fa";
-import { Control } from "../../components/Control";
-import { Button } from "../../components/Button";
 import { CartContext } from "../../context/cartContext";
+import { useMessage } from "../../context/modalContext";
 import { useCartContext } from "../../hooks/useCartContext";
 import { formatCurrency } from "../../utils/formatCurrency";
+import { Control } from "../../components/Control";
+import { Button } from "../../components/Button";
 
 import "./styles.css";
 
 export const Cart = () => {
-  const { cart } = useContext(CartContext);
+  const { cart, setCart } = useContext(CartContext);
   const { removeProductCart, totalCart } = useCartContext();
+  const { showMessage } = useMessage();
   // console.log("Cart:", JSON.stringify(cart, null, 2));
+
+  const handleSubmit = () => {
+    showMessage(
+      "Pedido Finalizado com Sucesso",
+      "Parabéns! Sua pizza está a caminho. Nossa IA preparou cuidadosamente sua pedido. Agradecemos por escolher a PizzarIA"
+    );
+    
+    setCart([])
+  };
 
   return (
     <section className="container-shopping">
@@ -75,7 +86,14 @@ export const Cart = () => {
             />
             <label htmlFor="cartao">Cartão</label>
           </div>
-          <Button variant={"medium"}>Finalizar Compra</Button>
+
+          <Button
+            variant={"medium"}
+            onClick={handleSubmit}
+            disabled={cart.length === 0}
+          >
+            Finalizar Compra
+          </Button>
         </div>
       </section>
     </section>

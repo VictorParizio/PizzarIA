@@ -4,7 +4,7 @@ import { CartProvider } from "../../context/cartContext";
 import { UserProvider } from "../../context/userAuthContext";
 import { Header } from "../Header";
 import { Footer } from "../Footer";
-import { FastMessageProvider } from "../../context/modalContext";
+import { MessageProvider } from "../../context/modalContext";
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -18,7 +18,7 @@ const ScrollToTop = () => {
 
 export const Root = () => {
   return (
-    <FastMessageProvider>
+    <MessageProvider>
       <UserProvider>
         <CartProvider>
           <ScrollToTop />
@@ -29,6 +29,6 @@ export const Root = () => {
           <Footer />
         </CartProvider>
       </UserProvider>
-    </FastMessageProvider>
+    </MessageProvider>
   );
 };

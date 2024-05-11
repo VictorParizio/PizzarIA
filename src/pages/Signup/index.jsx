@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useFastMessage } from "../../context/modalContext";
+import { useMessage } from "../../context/modalContext";
 import { UserAuthContext } from "../../context/userAuthContext";
 import { Button } from "../../components/Button";
 import { InputForm } from "../../components/InputForm";
@@ -11,7 +11,7 @@ export const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { setUsuarioLogado } = useContext(UserAuthContext);
-  const { showMessage } = useFastMessage();
+  const { showMessage } = useMessage();
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {

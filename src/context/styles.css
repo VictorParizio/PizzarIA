@@ -1,3 +1,33 @@
+.modal-wrapper,
+.modal-background {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.modal-background {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(8px);
+  z-index: 1;
+}
+
+.modal-message {
+  background-color: var(--color-dark);
+  width: 300px;
+  padding: 24px;
+  border-radius: 24px;
+  position: relative;
+  z-index: 2;
+}
+
+.modal-message button{
+  position: absolute;
+  right: 24px;
+}
+
 .fast-message-container {
   position: absolute;
   right: 0;
