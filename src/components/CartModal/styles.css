@@ -4,16 +4,21 @@
   top: 0;
   right: 0;
   height: 100vh;
-  width: 290px;
-  padding: 24px 32px 66px;
+  width: 300px;
+  padding: 24px 24px 66px;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   overflow-y: auto;
+  overflow-x: hidden;
+  animation: moveRightToLeft 0.7s ease-in-out;
 }
 
 .close.cart-modal {
   background-color: var(--color-dark);
   position: fixed;
-  right: 270px;
+  right: 280px;
   top: 42%;
   height: 58px;
   width: 32px;
@@ -23,17 +28,44 @@
 
 .order-list {
   display: grid;
-  gap: 16px;
+  gap: 12px;
   margin: 24px 0 32px;
 }
 
-.order-list li h3 {
-  padding: 20px 8px 0;
+.order-list .item-card {
+  background-color: var(--color-light);
+  border-radius: 12px;
+  display: flex;
+  animation: moveRightToLeft 0.7s ease-in-out;
 }
 
-.resume-cart > p strong {
-  margin: 24px 0 12px;
-  font-size: 2.4rem;
+.item-card figure,
+.item-card figure img {
+  height: 90px;
+  width: 90px;
+  border-radius: 8px 0 0 8px;
+}
+
+.item-card .info {
+  height: 52px;
+  width: 162px;
+  padding: 4px 8px;
+}
+
+.item-card h3 {
+  font-size: 1.4rem;
+  color: var(--color-dark);
+}
+
+.item-card strong {
+  font-size: 1.4rem;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 8px 8px;
 }
 
 .trashIco {
@@ -43,4 +75,22 @@
 
 .trashIco:hover {
   fill: var(--color-primary);
+}
+
+.resume-cart div > p strong {
+  margin: 24px 0 12px;
+  font-size: 2.4rem;
+}
+
+.item-card.remove-item {
+  animation: removeLeftToRight 1s ease-in-out;
+}
+
+@keyframes removeLeftToRight {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(400px);
+  }
 }
