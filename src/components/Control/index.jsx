@@ -3,7 +3,7 @@ import { Button } from "../Button";
 import "./styles.css";
 
 export const Control = ({ variant, cartItem }) => {
-  const { addProductCart, removeProduct } = useCartContext();
+  const { addProductCart, reduceProduct } = useCartContext();
   
   return (
     <div className="control">
@@ -12,7 +12,7 @@ export const Control = ({ variant, cartItem }) => {
           variant={variant}
           id="less"
           onClick={() => {
-            removeProduct(cartItem.product_id);
+            reduceProduct(cartItem.product_id);
           }}
         >
           -

@@ -26,10 +26,10 @@ export const useCartContext = () => {
     }
   };
 
-  const removeProduct = (productId) => {
+  const reduceProduct = (productId) => {
     const existingProduct = cart.find((item) => item.product_id === productId);
     if (existingProduct.quantity === 1) {
-      setCart(cart.filter((item) => item.product_id !== productId));
+      removeProductCart(productId);
     } else {
       updateCart(productId, -1);
     }
@@ -56,7 +56,7 @@ export const useCartContext = () => {
     cart,
     setCart,
     addProductCart,
-    removeProduct,
+    reduceProduct,
     removeProductCart,
     totalCart,
     totalItems,
