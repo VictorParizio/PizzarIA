@@ -13,25 +13,37 @@ import "./styles.css";
 export const ModalCart = ({ isOpen }) => {
   const { cart } = useContext(CartContext);
   const { removeProductCart, totalCart } = useCartContext();
-
   const [removingItemId, setRemovingItemId] = useState(null);
+  const [isClosingModalCart, setIsClosingModalCart] = useState(false);
 
-  const handleClick = (id) => {
+  const handleRemoveProduct = (id) => {
     setRemovingItemId(id);
+    if (cart.length === 1) {
+      setIsClosingModalCart(true);
+    }
     setTimeout(() => {
       removeProductCart(id);
       setRemovingItemId(null);
+      setIsClosingModalCart(false);
+    }, 600);
+  };
+
+  const closeModalCart = () => {
+    setIsClosingModalCart(true);
+    setTimeout(() => {
+      isOpen();
+      setIsClosingModalCart(false);
     }, 600);
   };
 
   return (
     <>
       {cart.length !== 0 && (
-        <section className="resume-cart">
+        <section className={`resume-cart ${isClosingModalCart ? "empty" : ""}`}>
           <div>
             <h2>Resumo do Pedido</h2>
             <div>
-              <FiLogOut className="close cart-modal" onClick={isOpen} />
+              <FiLogOut className="close cart-modal" onClick={closeModalCart} />
             </div>
 
             <ul className="order-list">
@@ -54,10 +66,14 @@ export const ModalCart = ({ isOpen }) => {
                       <strong>{formatCurrency(item.product_price)}</strong>
                     </div>
                     <div className="controls">
-                      <Control variant={"small"} cartItem={item} />
+                      <Control
+                        variant={"small"}
+                        cartItem={item}
+                        remove={handleRemoveProduct}
+                      />
                       <FaTrashAlt
                         className="trashIco"
-                        onClick={() => handleClick(item.product_id)}
+                        onClick={() => handleRemoveProduct(item.product_id)}
                       />
                     </div>
                   </div>

@@ -26,6 +26,10 @@
   border-radius: 8px;
 }
 
+.resume-cart.empty {
+  animation: removeLeftToRight 1s ease-in-out;
+}
+
 .order-list {
   display: grid;
   gap: 12px;
