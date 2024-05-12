@@ -2,9 +2,9 @@ import { useCartContext } from "../../hooks/useCartContext";
 import { Button } from "../Button";
 import "./styles.css";
 
-export const Control = ({ variant, cartItem }) => {
+export const Control = ({ variant, cartItem, remove }) => {
   const { addProductCart, reduceProduct } = useCartContext();
-  
+
   return (
     <div className="control">
       <div>
@@ -12,7 +12,9 @@ export const Control = ({ variant, cartItem }) => {
           variant={variant}
           id="less"
           onClick={() => {
-            reduceProduct(cartItem.product_id);
+            cartItem.quantity === 1
+              ? remove(cartItem.product_id)
+              : reduceProduct(cartItem.product_id);
           }}
         >
           -
@@ -22,6 +24,7 @@ export const Control = ({ variant, cartItem }) => {
           className={`${variant}-input`}
           type="number"
           value={cartItem.quantity || 0}
+          onChange={(e) => {}}
         />
 
         <Button

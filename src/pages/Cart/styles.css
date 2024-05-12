@@ -21,7 +21,7 @@
   gap: 12px;
 }
 
-.my-shopping-cart li:last-child{
+.my-shopping-cart li:last-child {
   border-bottom: none;
 }
 
@@ -48,9 +48,19 @@
   border-radius: 8px;
 }
 
+.product-card {
+  transform: scale(1);
+  overflow: hidden;
+  transition: transform 1s ease;
+}
+
+.product-card.remove-item {
+  transform: scale(0);
+}
+
 /* ------------------------------ */
 
-.cart-total{
+.cart-total {
   height: 400px;
 }
 

@@ -19,7 +19,7 @@ export const Header = () => {
   const { totalItems } = useCartContext();
   const { usuarioLogado, setUsuarioLogado } = useContext(UserAuthContext);
 
-  const [showModal, setShowModal] = useState(false);
+  const [showModalCart, setShowModalCart] = useState(false);
 
   const handleLogout = () => {
     sessionStorage.removeItem("token");
@@ -27,7 +27,7 @@ export const Header = () => {
   };
 
   const handleModalToggle = () => {
-    setShowModal(!showModal);
+    setShowModalCart(!showModalCart);
   };
 
   return (
@@ -76,7 +76,7 @@ export const Header = () => {
         )}
       </div>
 
-      {showModal && <ModalCart isOpen={handleModalToggle} />}
+      {showModalCart && <ModalCart  isOpen={handleModalToggle} />}
     </header>
   );
 };

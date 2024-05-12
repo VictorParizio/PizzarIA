@@ -1,18 +1,27 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { FaTrashAlt } from "react-icons/fa";
 import { CartContext } from "../../context/cartContext";
-import { useMessage } from "../../context/modalContext";
 import { useCartContext } from "../../hooks/useCartContext";
 import { formatCurrency } from "../../utils/formatCurrency";
+import { MessageContext } from "../../context/modalContext";
 import { Control } from "../../components/Control";
 import { Button } from "../../components/Button";
 
 import "./styles.css";
 
 export const Cart = () => {
+  const { showMessage } = useContext(MessageContext);
   const { cart, setCart } = useContext(CartContext);
   const { removeProductCart, totalCart } = useCartContext();
-  const { showMessage } = useMessage();
+  const [removingItemId, setRemovingItemId] = useState(null);
+
+  const handleRemoveProduct = (id) => {
+    setRemovingItemId(id);
+    setTimeout(() => {
+      removeProductCart(id);
+      setRemovingItemId(null);
+    }, 600);
+  };
 
   const handleSubmit = () => {
     showMessage(
@@ -34,15 +43,26 @@ export const Cart = () => {
         </div>
         <ul>
           {cart.map((item) => (
-            <li className="product-card" key={item.product_id}>
+            <li
+              className={`product-card ${
+                removingItemId === item.product_id ? "remove-item" : ""
+              }`}
+              key={item.product_id}
+            >
               <div className="product">
                 <img src={item.product_image_url} alt={item.product_name} />
                 <p>{item.product_name}</p>
               </div>
               <p>{formatCurrency(item.product_price)}</p>
-              <Control variant={"small"} cartItem={item} />
+              <Control
+                variant={"small"}
+                cartItem={item}
+                remove={handleRemoveProduct}
+              />
               <p>{formatCurrency(item.product_price * item.quantity)}</p>
-              <FaTrashAlt onClick={() => removeProductCart(item.product_id)} />
+              <FaTrashAlt
+                onClick={() => handleRemoveProduct(item.product_id)}
+              />
             </li>
           ))}
         </ul>
