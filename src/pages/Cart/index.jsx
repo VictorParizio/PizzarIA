@@ -13,15 +13,14 @@ export const Cart = () => {
   const { cart, setCart } = useContext(CartContext);
   const { removeProductCart, totalCart } = useCartContext();
   const { showMessage } = useMessage();
-  // console.log("Cart:", JSON.stringify(cart, null, 2));
 
   const handleSubmit = () => {
     showMessage(
       "Pedido Finalizado com Sucesso",
       "Parabéns! Sua pizza está a caminho. Nossa IA preparou cuidadosamente sua pedido. Agradecemos por escolher a PizzarIA"
     );
-    
-    setCart([])
+
+    setCart([]);
   };
 
   return (
@@ -74,7 +73,6 @@ export const Cart = () => {
               name="method-payment"
               id="dinheiro"
               value="dinheiro"
-              checked={true}
             />
             <label htmlFor="dinheiro">Dinheiro</label>
             <br />

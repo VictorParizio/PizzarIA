@@ -86,12 +86,14 @@
 
 .cart-total input[type="radio"] {
   width: 20px;
+  cursor: pointer;
 }
 
 .cart-total label {
   font-size: 1.6rem;
   padding: 4px 0 4px 4px;
   display: inline-block;
+  cursor: pointer;
 }
 
 .payment button {
