@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useMessage } from "../../context/modalContext";
 import { UserAuthContext } from "../../context/userAuthContext";
+import { MessageContext } from "../../context/modalContext";
 import { Button } from "../../components/Button";
 import { InputForm } from "../../components/InputForm";
 import { postAPI } from "../../http";
@@ -11,7 +11,7 @@ export const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { setUsuarioLogado } = useContext(UserAuthContext);
-  const { showMessage } = useMessage();
+  const { showMessage } = useContext(MessageContext);
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {

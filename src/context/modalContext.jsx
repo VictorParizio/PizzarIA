@@ -1,13 +1,9 @@
-import { createContext, useContext, useState } from "react";
-
-import "./styles.css";
+import { createContext, useState } from "react";
 import { Button } from "../components/Button";
 
-const MessageContext = createContext();
+import "./styles.css";
 
-export const useMessage = () => {
-  return useContext(MessageContext);
-};
+export const MessageContext = createContext();
 
 export const MessageProvider = ({ children }) => {
   const [title, setTitle] = useState(false);
