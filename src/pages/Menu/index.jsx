@@ -16,6 +16,11 @@ export const Menu = () => {
     (async function () {
       const dataAPI = await getAPI("produto");
       setMenuData(dataAPI);
+
+      window.scrollTo({
+        top: window.innerHeight * 0.8,
+        behavior: "smooth",
+      });
     })();
   }, []);
 
