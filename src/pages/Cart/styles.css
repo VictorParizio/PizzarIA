@@ -181,3 +181,18 @@
     margin-top: 8px;
   }
 }
+
+@media (max-width: 360px) {
+  .my-shopping-cart li {
+    padding: 0 8px 0 0;
+  }
+
+  .product-card img {
+    width: 60px;
+    border-radius: 8px 0 0 8px;
+  }
+
+  .product-card p {
+    line-height: normal;
+  }
+}
