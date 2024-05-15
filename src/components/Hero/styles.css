@@ -38,7 +38,8 @@
   width: 360px;
   margin-bottom: 36px;
   backdrop-filter: blur(8px);
-  border-radius: 2rem;
+  padding: 8px 0;
+  border-radius: 1rem;
 }
 
 @media (max-width: 400px) {
