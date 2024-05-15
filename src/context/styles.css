@@ -23,7 +23,11 @@
   z-index: 2;
 }
 
-.modal-message button{
+.modal-message h2 {
+  width: 220px;
+}
+
+.modal-message button {
   position: absolute;
   right: 24px;
 }
