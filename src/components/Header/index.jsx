@@ -6,6 +6,7 @@ import { FaCartShopping, FaUser } from "react-icons/fa6";
 import { FiLogOut } from "react-icons/fi";
 
 import { ModalCart } from "../CartModal";
+import { MenuMobile } from "../MenuMobile";
 
 import { useCartContext } from "../../hooks/useCartContext";
 import { CartContext } from "../../context/cartContext";
@@ -51,11 +52,22 @@ export const Header = () => {
 
   return (
     <>
-      {" "}
       <header className="navigation">
         <Link to="/" className="logo">
           PizzarIA
         </Link>
+
+        {!usuarioLogado && (
+          <div className="member-area">
+            {!usuarioLogado && location.pathname !== "/login" && (
+              <Link to="/login">Entrar</Link>
+            )}
+
+            {!usuarioLogado && location.pathname === "/login" && (
+              <Link to="/signup">Cadastrar</Link>
+            )}
+          </div>
+        )}
 
         {!isMobile && (
           <>
@@ -73,14 +85,6 @@ export const Header = () => {
             )}
 
             <div className="member-area">
-              {!usuarioLogado && location.pathname !== "/login" && (
-                <Link to="/login">Entrar</Link>
-              )}
-
-              {!usuarioLogado && location.pathname === "/login" && (
-                <Link to="/signup">Cadastrar</Link>
-              )}
-
               {usuarioLogado && (
                 <>
                   <Link to="/404">
@@ -96,64 +100,29 @@ export const Header = () => {
                 </>
               )}
             </div>
-
-            {showModalCart && <ModalCart isOpen={handleModalToggle} />}
           </>
         )}
+
+        {showModalCart && <ModalCart isOpen={handleModalToggle} />}
 
         {isMobile && usuarioLogado && (
-          <>
-            <div
-              className={activeMenu ? "icon iconActive" : "icon"}
-              onClick={ToggleMode}
-            >
-              <div className="hamburger hamburgerIcon" />
-            </div>
+          <MenuMobile
+            activeMenu={activeMenu}
+            ToggleMode={ToggleMode}
+            isClose={isClose}
+            handleLogout={handleLogout}
+          />
+        )}
 
-            <div
-              className={
-                activeMenu ? "menu menuOpen" : `menu menuClose ${!isClose}`
-              }
-            >
-              <nav className="list">
-                <ul className="listItems">
-                  <li>
-                    <NavLink to="/menu" onClick={ToggleMode}>
-                      Cardápio
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink to="/cart" onClick={ToggleMode}>
-                      Carrinho
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink to="/404" onClick={ToggleMode}>
-                      Perfil
-                    </NavLink>
-                  </li>
-                  <li>
-                    <Link
-                      to="/"
-                      className="close"
-                      title="Sair"
-                      onClick={handleLogout}
-                    >
-                      Sair
-                    </Link>
-                  </li>
-                </ul>
-              </nav>
-            </div>
-          </>
+        {usuarioLogado && (
+          <Link to="#" className="cart" onClick={handleModalToggle}>
+            <FaCartShopping title="Carrinho suspenso" />
+            <strong title="Total de itens no carrinho">
+              {totalItems(cart)}
+            </strong>
+          </Link>
         )}
       </header>
-      {usuarioLogado && (
-        <Link to="#" className="cart" onClick={handleModalToggle}>
-          <FaCartShopping title="Carrinho suspenso" />
-          <strong title="Total de itens no carrinho">{totalItems(cart)}</strong>
-        </Link>
-      )}
     </>
   );
 };
