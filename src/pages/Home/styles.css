@@ -3,7 +3,7 @@
 #menu,
 #cta-section,
 #testimonials,
-#attention-section {
+.attention-section {
   width: 70%;
   max-width: 87rem;
   margin-top: 96px;
@@ -51,7 +51,7 @@
   width: 68%;
 }
 
-.cta-section,
+#cta-section,
 .attention-section {
   width: 75%;
   max-width: 75rem;
