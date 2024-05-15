@@ -1,12 +1,12 @@
 import { useEffect, useContext } from "react";
-import { UserAuthContext } from "../../context/userAuthContext";
 import { Link } from "react-router-dom";
+import { UserAuthContext } from "../../context/userAuthContext";
+
 import { Hero } from "../../components/Hero";
+import { Testimonial } from "../../components/Testimonial";
+import { MenuHighlights } from "../../components/MenuHighlights";
 
 import sidebarIllustration from "../../assets/images/OIG3 (1).gif";
-import pizzaMargherita from "../../assets/images/pizza1.jpeg";
-import pizzaCalabresa from "../../assets/images/pizza2.jpeg";
-import pizzaVegetariana from "../../assets/images/pizza3.jpeg";
 
 import {
   addScrollListener,
@@ -14,7 +14,6 @@ import {
 } from "../../utils/scrollAnimation";
 
 import "./styles.css";
-import { Testimonial } from "../../components/Testimonial";
 
 export const Home = () => {
   const { usuarioLogado } = useContext(UserAuthContext);
@@ -70,47 +69,7 @@ export const Home = () => {
         </ol>
       </section>
 
-      <section id="menu">
-        <h2>Destaques do Cardápio</h2>
-        <div className="menu-list">
-          <figure className="pizza-card">
-            <img
-              src={pizzaMargherita}
-              alt="Pizza margherita, com molho de tomate,
-                queijo mozarela fresco e manjericão"
-            />
-            <h3>Pizza Margherita</h3>
-            <figcaption>
-              Uma clássica e deliciosa pizza margherita, com molho de tomate,
-              queijo mozarela fresco e manjericão.
-            </figcaption>
-          </figure>
-          <figure className="pizza-card">
-            <img
-              src={pizzaCalabresa}
-              alt="Pizza de calabresa com um toque especial da nossa IA, que
-                garante a combinação perfeita de sabores"
-            />
-            <h3>Pizza Calabresa</h3>
-            <figcaption>
-              Uma pizza de calabresa com um toque especial da nossa IA, que
-              garante a combinação perfeita de sabores.
-            </figcaption>
-          </figure>
-          <figure className="pizza-card">
-            <img
-              src={pizzaVegetariana}
-              alt="Pizza vegetariana com molho de tomate, mozarela, pimentão, cebola, tomate, azeitonas e ervilhas"
-            />
-            <h3>Pizza Vegetariana</h3>
-            <figcaption>
-              Para os amantes de vegetais, nossa pizza vegetariana é uma
-              explosão de sabor e cores, com ingredientes frescos e
-              selecionados.
-            </figcaption>
-          </figure>
-        </div>
-      </section>
+      <MenuHighlights />
 
       <section className="cta-section" id="cta-section">
         <p>

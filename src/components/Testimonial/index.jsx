@@ -5,6 +5,20 @@ export const Testimonial = () => {
   const [testimonialsData, setTestimonialsData] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const containerRef = useRef(null);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 658);
+  const slidesToShow = isMobile ? 1 : 3;
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 658);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   useEffect(() => {
     (async function () {
@@ -14,7 +28,7 @@ export const Testimonial = () => {
   }, []);
 
   const handleNext = () => {
-    if (currentIndex < testimonialsData.length - 3) {
+    if (currentIndex < testimonialsData.length - slidesToShow) {
       setCurrentIndex(currentIndex + 1);
     }
   };
@@ -42,7 +56,7 @@ export const Testimonial = () => {
             className="base-button"
             id="next"
             onClick={handleNext}
-            disabled={currentIndex === testimonialsData.length - 3}
+            disabled={currentIndex === testimonialsData.length - slidesToShow}
           >
             &gt;
           </button>
@@ -51,7 +65,7 @@ export const Testimonial = () => {
 
       <div className="testimonial-container" ref={containerRef}>
         {testimonialsData
-          .slice(currentIndex, currentIndex + 3)
+          .slice(currentIndex, currentIndex + slidesToShow)
           .map((testimonial, index) => (
             <div className="testimonial-card" key={index}>
               <h3>{testimonial.name}</h3>
