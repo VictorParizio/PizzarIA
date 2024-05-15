@@ -142,6 +142,7 @@ figure.pizza-card:hover {
 
   .pizza-card {
     flex: 0 0 auto;
+    margin-right: 20px;
   }
 
   figure.pizza-card:hover {
