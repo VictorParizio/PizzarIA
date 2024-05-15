@@ -137,11 +137,12 @@ figure.pizza-card:hover {
   }
 
   .menu-list.mobile {
+    width: 100vw;
     overflow-x: auto;
   }
 
   .pizza-card {
-    flex: 0 0 auto;
+    flex: 0 0 300px;
   }
 
   figure.pizza-card:hover {
