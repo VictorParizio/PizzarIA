@@ -133,7 +133,14 @@ export const Header = () => {
                     </NavLink>
                   </li>
                   <li>
-                    <Link to="/">Sair</Link>
+                    <Link
+                      to="/"
+                      className="close"
+                      title="Sair"
+                      onClick={handleLogout}
+                    >
+                      Sair
+                    </Link>
                   </li>
                 </ul>
               </nav>
