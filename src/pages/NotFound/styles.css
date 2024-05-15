@@ -7,10 +7,29 @@
 
 .img404 {
   width: 40%;
-  border-radius: 50%;
   border-radius: 32px;
 }
 
 .container-404 a {
   margin-top: 24px;
+}
+
+@media(max-width: 678px) {
+  .container-404 {
+    flex-direction: column;
+  }
+
+  .img404 {
+    width: 80%;
+  }
+
+  .container-404 h2 {
+    width: 250px;
+    margin-bottom: 24px;
+  }
+
+  .container-404 div {
+    width: 312px;
+    margin-bottom: 120px;
+  }
 }
