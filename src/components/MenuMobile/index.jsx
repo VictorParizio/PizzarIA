@@ -1,67 +1,55 @@
+import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 
 import "./styles.css";
 
-export const MenuMobile = ({
-  activeMenu,
-  ToggleMode,
-  isClose,
-  handleLogout,
-}) => {
-  const nav = [
-    {
-      name: "Home",
-      to: "/",
-    },
-    {
-      name: "Cardápio",
-      to: "/menu",
-    },
-    {
-      name: "Carinho",
-      to: "/cart",
-    },
-    {
-      name: "Perfil",
-      to: "/404",
-    },
-  ];
+const nav = [
+  {
+    name: "Home",
+    to: "/",
+  },
+  {
+    name: "Cardápio",
+    to: "/menu",
+  },
+  {
+    name: "Carinho",
+    to: "/cart",
+  },
+  {
+    name: "Perfil",
+    to: "/404",
+  },
+];
+
+export const MenuMobile = ({ handleLogout }) => {
+  const [toggle, setToggle] = useState(false);
+console.log(toggle)
+  const btnMobile = () => {
+    setToggle(!toggle);
+  };
 
   return (
-    <>
-      <div
-        className={activeMenu ? "icon iconActive" : "icon"}
-        onClick={ToggleMode}
-      >
-        <div className="hamburger hamburgerIcon" />
-      </div>
+    <nav className={`mobile ${toggle ? "active" : ""}`}>
+      <button className="btn-mobile" onClick={btnMobile}>
+        <span className="hamburguer"></span>
+      </button>
 
-      <div
-        className={activeMenu ? "menu menuOpen" : `menu menuClose ${!isClose}`}
-      >
-        <nav className="list">
-          <ul className="listItems">
-            {nav.map((route) => (
-              <li key={route.name}>
-                <NavLink to={route.to} onClick={ToggleMode}>
-                  {route.name}
-                </NavLink>
-              </li>
-            ))}
+      <ul className="menu">
+        {nav.map((route) => (
+          <li key={route.name}>
+            <NavLink to={route.to} onClick={btnMobile}>
+              {route.name}
+            </NavLink>
+          </li>
+        ))}
 
-            <li>
-              <Link
-                to="/"
-                className="close"
-                title="Sair"
-                onClick={handleLogout}
-              >
-                Sair
-              </Link>
-            </li>
-          </ul>
-        </nav>
-      </div>
-    </>
+        <li>
+          <Link to="/" title="Sair" onClick={handleLogout}>
+            Sair
+          </Link>
+        </li>
+      </ul>
+    </nav>
   );
 };

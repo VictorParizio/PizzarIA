@@ -1,15 +1,14 @@
 import { useContext, useEffect, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
-import { UserAuthContext } from "../../context/userAuthContext";
-
 import { FaCartShopping, FaUser } from "react-icons/fa6";
 import { FiLogOut } from "react-icons/fi";
 
-import { ModalCart } from "../CartModal";
-import { MenuMobile } from "../MenuMobile";
-
+import { UserAuthContext } from "../../context/userAuthContext";
 import { useCartContext } from "../../hooks/useCartContext";
 import { CartContext } from "../../context/cartContext";
+
+import { ModalCart } from "../CartModal";
+import { MenuMobile } from "../MenuMobile";
 
 import "./styles.css";
 
@@ -22,8 +21,6 @@ export const Header = () => {
 
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 500);
   const [showModalCart, setShowModalCart] = useState(false);
-  const [activeMenu, setActiveMenu] = useState(false);
-  const [isClose, setIsClose] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
@@ -41,13 +38,6 @@ export const Header = () => {
 
   const handleModalToggle = () => {
     setShowModalCart(!showModalCart);
-  };
-
-  const ToggleMode = () => {
-    setActiveMenu(!activeMenu);
-    setTimeout(() => {
-      setIsClose(!isClose);
-    }, 1000);
   };
 
   return (
@@ -106,12 +96,7 @@ export const Header = () => {
         {showModalCart && <ModalCart isOpen={handleModalToggle} />}
 
         {isMobile && usuarioLogado && (
-          <MenuMobile
-            activeMenu={activeMenu}
-            ToggleMode={ToggleMode}
-            isClose={isClose}
-            handleLogout={handleLogout}
-          />
+          <MenuMobile handleLogout={handleLogout} />
         )}
 
         {usuarioLogado && (
