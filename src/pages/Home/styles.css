@@ -127,13 +127,25 @@ figure.pizza-card:hover {
 }
 
 @media (max-width: 658px) {
+  #about,
+  #how-it-works,
+  #menu,
+  #cta-section,
+  #testimonials,
+  .attention-section {
+    width: 100vw;
+    padding: 0 5%;
+  }
+}
+
+@media (max-width: 568px) {
   .steps-list {
     width: 100%;
   }
-  
-  .testimonial-card {
-    min-height: 12rem;
-    width: 100%;
+
+  #menu {
+    width: 100vw;
+    padding: 0;
   }
 
   .menu-list.mobile {
@@ -165,19 +177,14 @@ figure.pizza-card:hover {
     line-height: 18px;
     text-align: justify;
   }
+
+  .testimonial-card {
+    min-height: 12rem;
+    width: 100%;
+  }
 }
 
 @media (max-width: 400px) {
-  #about,
-  #how-it-works,
-  #menu,
-  #cta-section,
-  #testimonials,
-  .attention-section {
-    width: 100vw;
-    padding: 0 5%;
-  }
-
   .pizza-image {
     display: none;
   }

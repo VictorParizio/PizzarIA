@@ -42,7 +42,7 @@ export const MenuMobile = ({
         <nav className="list">
           <ul className="listItems">
             {nav.map((route) => (
-              <li>
+              <li key={route.name}>
                 <NavLink to={route.to} onClick={ToggleMode}>
                   {route.name}
                 </NavLink>

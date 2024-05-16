@@ -5,12 +5,12 @@ export const Testimonial = () => {
   const [testimonialsData, setTestimonialsData] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const containerRef = useRef(null);
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 658);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 568);
   const slidesToShow = isMobile ? 1 : 3;
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth <= 658);
+      setIsMobile(window.innerWidth <= 568);
     };
 
     window.addEventListener("resize", handleResize);
