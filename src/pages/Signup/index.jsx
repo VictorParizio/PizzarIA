@@ -1,9 +1,11 @@
 import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+
 import { UserAuthContext } from "../../context/userAuthContext";
 import { MessageContext } from "../../context/modalContext";
-import { Button } from "../../components/Button";
+
 import { InputForm } from "../../components/InputForm";
+import { Button } from "../../components/Button";
 import { postAPI } from "../../http";
 
 export const Signup = () => {

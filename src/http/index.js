@@ -30,19 +30,3 @@ export const postAPI = async (path, objectData, showMessage) => {
     throw error;
   }
 };
-
-
-http.interceptors.request.use(
-  function (config) {
-    const token = sessionStorage.getItem("token");
-
-    if (token && config.headers) {
-      config.headers.Authorization = `Bearer ${token}`;
-    }
-
-    return config;
-  },
-  function (erro) {
-    return Promise.reject(erro);
-  }
-);

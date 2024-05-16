@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
-import { Button } from "../../components/Button";
-import { ModalCart } from "../../components/CartModal";
-import { formatCurrency } from "../../utils/formatCurrency";
+
 import { useCartContext } from "../../hooks/useCartContext";
+import { formatCurrency } from "../../utils/formatCurrency";
+
+import { ModalCart } from "../../components/CartModal";
+import { Button } from "../../components/Button";
 import { getAPI } from "../../http";
 
 import "./styles.css";

@@ -35,8 +35,7 @@ export const Footer = () => {
           Desenvolvido por <strong>Victor Parizio</strong>
         </p>
 
-        <div className="top">
-        </div>
+        <div className="top"></div>
       </footer>
     </div>
   );

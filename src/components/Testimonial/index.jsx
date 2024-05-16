@@ -7,7 +7,7 @@ export const Testimonial = () => {
 
   const [testimonialsData, setTestimonialsData] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
-  
+
   const isMobile = useMediaQuery(568);
   const slidesToShow = isMobile ? 1 : 3;
 
