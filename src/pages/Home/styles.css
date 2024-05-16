@@ -154,6 +154,7 @@ figure.pizza-card:hover {
 
   .menu-list.mobile {
     width: 100vw;
+    padding: 0 5%;
     overflow-x: auto;
   }
 
