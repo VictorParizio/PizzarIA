@@ -1,24 +1,15 @@
 import { useState, useEffect, useRef } from "react";
 import { getAPI } from "../../http";
+import { useMediaQuery } from "../../hooks/useMediaQuery";
 
 export const Testimonial = () => {
+  const containerRef = useRef(null);
+
   const [testimonialsData, setTestimonialsData] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const containerRef = useRef(null);
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 568);
+  
+  const isMobile = useMediaQuery(568);
   const slidesToShow = isMobile ? 1 : 3;
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 568);
-    };
-
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
 
   useEffect(() => {
     (async function () {

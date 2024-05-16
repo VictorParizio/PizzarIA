@@ -1,32 +1,24 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState } from "react";
 import { FaTrashAlt } from "react-icons/fa";
+
 import { CartContext } from "../../context/cartContext";
 import { useCartContext } from "../../hooks/useCartContext";
-import { formatCurrency } from "../../utils/formatCurrency";
 import { MessageContext } from "../../context/modalContext";
+import { formatCurrency } from "../../utils/formatCurrency";
+
 import { Control } from "../../components/Control";
 import { Button } from "../../components/Button";
 
 import "./styles.css";
+import { useMediaQuery } from "../../hooks/useMediaQuery";
 
 export const Cart = () => {
   const { showMessage } = useContext(MessageContext);
   const { cart, setCart } = useContext(CartContext);
   const { removeProductCart, totalCart } = useCartContext();
   const [removingItemId, setRemovingItemId] = useState(null);
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 568);
 
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 568);
-    };
-
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
+  const isMobile = useMediaQuery(568);
 
   const handleRemoveProduct = (id) => {
     setRemovingItemId(id);
@@ -110,7 +102,7 @@ export const Cart = () => {
                   <p className="label">Subtotal</p>
                   <p>{formatCurrency(item.product_price * item.quantity)}</p>
                 </div>
-                
+
                 <FaTrashAlt
                   onClick={() => handleRemoveProduct(item.product_id)}
                 />

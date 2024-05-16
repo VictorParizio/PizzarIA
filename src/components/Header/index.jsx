@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { FaCartShopping, FaUser } from "react-icons/fa6";
 import { FiLogOut } from "react-icons/fi";
@@ -11,6 +11,7 @@ import { ModalCart } from "../CartModal";
 import { MenuMobile } from "../MenuMobile";
 
 import "./styles.css";
+import { useMediaQuery } from "../../hooks/useMediaQuery";
 
 export const Header = () => {
   const location = useLocation();
@@ -19,17 +20,8 @@ export const Header = () => {
   const { totalItems } = useCartContext();
   const { usuarioLogado, setUsuarioLogado } = useContext(UserAuthContext);
 
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 500);
+  const isMobile = useMediaQuery(500);
   const [showModalCart, setShowModalCart] = useState(false);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 500);
-    };
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
 
   const handleLogout = () => {
     sessionStorage.removeItem("token");
@@ -74,22 +66,20 @@ export const Header = () => {
               </nav>
             )}
 
-            <div className="member-area">
-              {usuarioLogado && (
-                <>
-                  <Link to="/404">
-                    <FaUser title="Perfil do usuário" />
-                  </Link>
-                  <Link to="/">
-                    <FiLogOut
-                      className="close"
-                      title="Sair"
-                      onClick={handleLogout}
-                    />
-                  </Link>
-                </>
-              )}
-            </div>
+            {usuarioLogado && (
+              <div className="member-area">
+                <Link to="/404">
+                  <FaUser title="Perfil do usuário" />
+                </Link>
+                <Link to="/">
+                  <FiLogOut
+                    className="close"
+                    title="Sair"
+                    onClick={handleLogout}
+                  />
+                </Link>
+              </div>
+            )}
           </>
         )}
 
