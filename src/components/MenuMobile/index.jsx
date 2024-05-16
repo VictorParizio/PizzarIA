@@ -24,7 +24,7 @@ const nav = [
 
 export const MenuMobile = ({ handleLogout }) => {
   const [toggle, setToggle] = useState(false);
-console.log(toggle)
+
   const btnMobile = () => {
     setToggle(!toggle);
   };
