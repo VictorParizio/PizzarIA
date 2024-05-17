@@ -44,20 +44,6 @@
   box-shadow: var(--box-shadow);
 }
 
-/* ANIMATION */
-
 .large.animation {
   animation: moveUpDown 2s infinite;
-}
-
-@keyframes moveUpDown {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-  100% {
-    transform: translateY(0);
-  }
 }
