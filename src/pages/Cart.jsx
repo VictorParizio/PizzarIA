@@ -1,15 +1,15 @@
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import { FaTrashAlt } from "react-icons/fa";
 
-import { CartContext } from "../../context/cartContext";
-import { useCartContext } from "../../hooks/useCartContext";
-import { MessageContext } from "../../context/modalContext";
-import { formatCurrency } from "../../utils/formatCurrency";
+import { CartContext } from "../context/cartContext";
+import { useCartContext } from "../hooks/useCartContext";
+import { MessageContext } from "../context/modalContext";
+import { formatCurrency } from "../utils/formatCurrency";
 
-import { Control } from "../../components/Control";
-import { Button } from "../../components/Button";
+import { useMediaQuery } from "../hooks/useMediaQuery";
 
-import { useMediaQuery } from "../../hooks/useMediaQuery";
+import { Control } from "../components/Control";
+import { Button } from "../components/Button";
 
 export const Cart = () => {
   const { showMessage } = useContext(MessageContext);

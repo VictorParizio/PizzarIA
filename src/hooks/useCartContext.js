@@ -41,8 +41,7 @@ export const useCartContext = () => {
 
   const totalCart = (cart) => {
     const totalPrice = cart.reduce(
-      (total, item) => total + item.quantity * item.product_price,
-      0
+      (total, item) => total + item.quantity * item.product_price, 0
     );
     return formatCurrency(totalPrice);
   };

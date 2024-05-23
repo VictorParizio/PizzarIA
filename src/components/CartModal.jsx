@@ -3,12 +3,12 @@ import { Link } from "react-router-dom";
 import { FaTrashAlt } from "react-icons/fa";
 import { FiLogOut } from "react-icons/fi";
 
-import { CartContext } from "../../context/cartContext";
-import { useCartContext } from "../../hooks/useCartContext";
-import { formatCurrency } from "../../utils/formatCurrency";
+import { CartContext } from "../context/cartContext";
+import { useCartContext } from "../hooks/useCartContext";
+import { formatCurrency } from "../utils/formatCurrency";
 
-import { Control } from "../Control";
-import { Button } from "../Button";
+import { Control } from "./Control";
+import { Button } from "./Button";
 
 export const ModalCart = ({ isOpen }) => {
   const { cart } = useContext(CartContext);

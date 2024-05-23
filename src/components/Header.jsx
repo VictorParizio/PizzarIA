@@ -3,14 +3,14 @@ import { Link, NavLink, useLocation } from "react-router-dom";
 import { FaCartShopping, FaUser } from "react-icons/fa6";
 import { FiLogOut } from "react-icons/fi";
 
-import { UserAuthContext } from "../../context/userAuthContext";
-import { useCartContext } from "../../hooks/useCartContext";
-import { CartContext } from "../../context/cartContext";
+import { UserAuthContext } from "../context/userAuthContext";
+import { useCartContext } from "../hooks/useCartContext";
+import { CartContext } from "../context/cartContext";
 
-import { ModalCart } from "../CartModal";
-import { MenuMobile } from "../MenuMobile";
+import { ModalCart } from "./CartModal";
+import { MenuMobile } from "./MenuMobile";
 
-import { useMediaQuery } from "../../hooks/useMediaQuery";
+import { useMediaQuery } from "../hooks/useMediaQuery";
 
 export const Header = () => {
   const location = useLocation();

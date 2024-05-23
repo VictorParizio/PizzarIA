@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 
-import { useCartContext } from "../../hooks/useCartContext";
-import { formatCurrency } from "../../utils/formatCurrency";
+import { useCartContext } from "../hooks/useCartContext";
+import { formatCurrency } from "../utils/formatCurrency";
 
-import { ModalCart } from "../../components/CartModal";
-import { Button } from "../../components/Button";
-import { getAPI } from "../../http";
+import { ModalCart } from "../components/CartModal";
+import { Button } from "../components/Button";
+import { getAPI } from "../http";
 
 export const Menu = () => {
   const [showModal, setShowModal] = useState(false);

@@ -1,5 +1,5 @@
-import { useCartContext } from "../../hooks/useCartContext";
-import { Button } from "../Button";
+import { useCartContext } from "../hooks/useCartContext";
+import { Button } from "./Button";
 
 export const Control = ({ variant, cartItem, remove }) => {
   const { addProductCart, reduceProduct } = useCartContext();

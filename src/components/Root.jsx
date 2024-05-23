@@ -1,12 +1,12 @@
 import { useEffect } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 
-import { CartProvider } from "../../context/cartContext";
-import { UserProvider } from "../../context/userAuthContext";
-import { MessageProvider } from "../../context/modalContext";
+import { CartProvider } from "../context/cartContext";
+import { UserProvider } from "../context/userAuthContext";
+import { MessageProvider } from "../context/modalContext";
 
-import { Header } from "../Header";
-import { Footer } from "../Footer";
+import { Header } from "./Header";
+import { Footer } from "./Footer";
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();

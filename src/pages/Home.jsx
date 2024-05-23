@@ -1,18 +1,18 @@
 import { useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 
-import { UserAuthContext } from "../../context/userAuthContext";
+import { UserAuthContext } from "../context/userAuthContext";
 
-import { Hero } from "../../components/Hero";
-import { Testimonial } from "../../components/Testimonial";
-import { MenuHighlights } from "../../components/MenuHighlights";
+import { MenuHighlights } from "../components/MenuHighlights";
+import { Testimonial } from "../components/Testimonial";
+import { Hero } from "../components/Hero";
 
-import sidebarIllustration from "../../assets/images/OIG3 (1).gif";
+import sidebarIllustration from "../assets/images/OIG3.gif";
 
 import {
   addScrollListener,
   removeScrollListener,
-} from "../../utils/scrollAnimation";
+} from "../utils/scrollAnimation";
 
 export const Home = () => {
   const { usuarioLogado } = useContext(UserAuthContext);

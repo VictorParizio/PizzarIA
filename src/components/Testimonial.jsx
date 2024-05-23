@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
-import { getAPI } from "../../http";
-import { useMediaQuery } from "../../hooks/useMediaQuery";
+import { getAPI } from "../http";
+import { useMediaQuery } from "../hooks/useMediaQuery";
 
 export const Testimonial = () => {
   const containerRef = useRef(null);

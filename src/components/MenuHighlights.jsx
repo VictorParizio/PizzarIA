@@ -1,6 +1,6 @@
-import pizzaMargherita from "../../assets/images/pizza1.jpeg";
-import pizzaCalabresa from "../../assets/images/pizza2.jpeg";
-import pizzaVegetariana from "../../assets/images/pizza3.jpeg";
+import pizzaMargherita from "../assets/images/pizza1.jpeg";
+import pizzaCalabresa from "../assets/images/pizza2.jpeg";
+import pizzaVegetariana from "../assets/images/pizza3.jpeg";
 
 export const MenuHighlights = () => {
   return (
