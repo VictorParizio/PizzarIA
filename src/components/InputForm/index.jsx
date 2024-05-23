@@ -1,5 +1,3 @@
-import "./styles.css";
-
 export const InputForm = ({
   textLabel,
   type,

@@ -1,0 +1,37 @@
+.bg-container
+  position: absolute
+  bottom: 0
+  z-index: 1
+
+  background-color: $color-dark
+  width: 100%
+
+  footer
+    display: flex
+    align-items: center
+    justify-content: space-between
+
+    max-width: 1440px
+    margin: 0 auto
+    padding: 12px 5%
+
+    .links-utils
+      display: flex
+      height: 16px
+      gap: 10px
+
+    p
+      font-size: 1.4rem
+      margin: 0
+
+    .top
+      width: 68px
+
+@media (max-width: 568px)
+  .bg-container
+    footer
+      flex-direction: column
+      gap: 12px
+
+    .top
+      display: none

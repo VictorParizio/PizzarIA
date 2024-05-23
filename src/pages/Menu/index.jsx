@@ -7,8 +7,6 @@ import { ModalCart } from "../../components/CartModal";
 import { Button } from "../../components/Button";
 import { getAPI } from "../../http";
 
-import "./styles.css";
-
 export const Menu = () => {
   const [showModal, setShowModal] = useState(false);
   const [menuData, setMenuData] = useState([]);

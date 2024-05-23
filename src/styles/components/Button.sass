@@ -1,0 +1,42 @@
+.base-button
+  display: inline-block
+  background: $color-primary-light
+  background: $color-gradient
+  color: $color-light
+  font-size: 1.6rem
+  padding: 10px 20px
+  border: none
+  border-radius: 50px
+  cursor: pointer
+  transition: 0.3s ease-in-out
+
+  &:hover
+    scale: 1.05
+    box-shadow: 0 0 12px $color-primary
+
+  &[disabled]
+    background: transparent
+    border: 1px solid $color-secondary
+    color: $color-secondary
+    cursor: not-allowed
+    scale: 1
+    box-shadow: none
+
+.small
+  border-radius: 4px
+  width: 28px
+  padding: 0.4rem 0.8rem
+
+.medium
+  border-radius: 4px
+  height: 38px
+  min-width: 38px
+  padding: 0.4rem 1.4rem
+
+.large
+  font-weight: 700
+  padding: 20px 20px
+  box-shadow: $box-shadow
+
+  &.animation
+    animation: moveUpDown 2s infinite

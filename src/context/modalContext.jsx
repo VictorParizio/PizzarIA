@@ -1,8 +1,6 @@
 import { createContext, useState } from "react";
 import { Button } from "../components/Button";
 
-import "./styles.css";
-
 export const MessageContext = createContext();
 
 export const MessageProvider = ({ children }) => {

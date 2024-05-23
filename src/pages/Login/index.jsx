@@ -9,8 +9,6 @@ import { InputForm } from "../../components/InputForm";
 
 import { postAPI } from "../../http";
 
-import "./styles.css";
-
 export const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

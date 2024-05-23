@@ -9,7 +9,6 @@ import { formatCurrency } from "../../utils/formatCurrency";
 import { Control } from "../../components/Control";
 import { Button } from "../../components/Button";
 
-import "./styles.css";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
 
 export const Cart = () => {
@@ -40,13 +39,16 @@ export const Cart = () => {
   return (
     <section className="container-shopping">
       {!isMobile && (
-        <section className="my-shopping-cart">
-          <div className="th-product-card">
+        <section
+          className={`my-shopping-cart ${cart.length > 0 ? "fit-content" : ""}`}
+        >
+          <div className={`th-product-card`}>
             <p>Produto</p>
             <p>Preço</p>
             <p>Quantidade</p>
             <p>Subtotal</p>
           </div>
+
           <ul>
             {cart.map((item) => (
               <li
@@ -76,7 +78,9 @@ export const Cart = () => {
       )}
 
       {isMobile && (
-        <section className="my-shopping-cart">
+        <section
+          className={`my-shopping-cart ${cart.length === 0 ? "no-border" : ""}`}
+        >
           <ul>
             {cart.map((item) => (
               <li

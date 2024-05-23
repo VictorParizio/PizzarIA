@@ -10,7 +10,6 @@ import { CartContext } from "../../context/cartContext";
 import { ModalCart } from "../CartModal";
 import { MenuMobile } from "../MenuMobile";
 
-import "./styles.css";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
 
 export const Header = () => {

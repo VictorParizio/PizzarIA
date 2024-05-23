@@ -1,0 +1,56 @@
+.navigation
+  display: flex
+  align-items: center
+  justify-content: space-between
+  width: 100vw
+  max-width: 1440px
+  padding: 20px 6%
+
+  .logo
+    color: $color-primary-light
+    font-size: 2.8rem
+    font-weight: 800
+    padding: 0
+
+    &:hover
+      scale: 1.1
+
+  .member-area
+    a
+      color: $color-light
+      font-size: 1.6rem
+      font-weight: 800
+      padding: 0 10px
+      transition: 0.3s ease-in-out
+
+      &:hover
+        color: $color-primary-light
+
+  nav
+    ul
+      display: flex
+
+      a
+        font-weight: 800
+        padding: 0 10px
+
+.cart
+  position: fixed
+  bottom: 10%
+  right: 44px
+  z-index: 2
+
+  svg
+    font-size: 2.4rem
+
+  strong
+    position: fixed
+    bottom: 13%
+    right: 32px
+
+    background-color: $color-light
+    font-size: 1rem
+    text-align: center
+    width: 20px
+    padding: 4px
+    border-radius: 50px

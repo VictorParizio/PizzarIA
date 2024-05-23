@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import img404 from "../../assets/images/404.jpeg";
-import "./styles.css";
 
 export const NotFound = () => {
   return (

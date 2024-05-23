@@ -10,8 +10,6 @@ import { formatCurrency } from "../../utils/formatCurrency";
 import { Control } from "../Control";
 import { Button } from "../Button";
 
-import "./styles.css";
-
 export const ModalCart = ({ isOpen }) => {
   const { cart } = useContext(CartContext);
   const { removeProductCart, totalCart } = useCartContext();

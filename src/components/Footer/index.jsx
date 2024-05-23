@@ -1,5 +1,4 @@
 import { FaLinkedin, FaGithub, FaUserTie } from "react-icons/fa";
-import "./styles.css";
 
 export const Footer = () => {
   return (

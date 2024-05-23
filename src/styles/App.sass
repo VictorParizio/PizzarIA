@@ -1,0 +1,38 @@
+main
+  min-height: calc(100vh - (63px + 48px))
+  max-width: 144rem
+
+  display: flex
+  flex-direction: column
+  align-items: center
+  justify-content: center
+
+  overflow-x: hidden
+
+section
+  h2
+    color: $color-primary-light
+    font-size: 2.4rem
+
+section > p 
+    padding: 20px 0
+
+p
+  margin: 12px 0
+  line-height: 24px
+  letter-spacing: 1px
+
+a.active,
+strong
+  color: $color-primary-light
+
+svg
+  transition: 0.3s ease-in-out
+
+svg:hover
+  fill: $color-primary-light
+  cursor: pointer
+
+svg.close:hover
+  fill: $color-dark
+  stroke: $color-primary-light

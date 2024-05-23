@@ -1,0 +1,44 @@
+.auth-background
+  background: url(../../assets/images/pizza-hero2.jpeg) no-repeat 100%/100%
+  background-size: cover
+  position: absolute
+  top: 0
+  z-index: -1
+  height: 100%
+  width: 100%
+
+.auth-container
+  width: 450px
+  padding: 3rem
+  border-radius: 2rem
+  backdrop-filter: blur(4px)
+  box-shadow: 0 4px 10px $color-dark
+
+.auth-container,
+  form
+    margin: 0 auto
+    display: flex
+    flex-direction: column
+    text-align: center
+
+.auth-container
+  .subtitle
+    width: 250px
+    padding-top: 0
+    margin: 0 auto
+
+  form
+    width: 300px
+    gap: 1.4rem
+    margin-bottom: 14px
+
+    button
+      padding: 16px
+
+  a
+    max-width: fit-content
+    margin: 12px auto 0
+    transition: 0.2s ease-in-out
+
+    &:hover
+      color: $color-primary

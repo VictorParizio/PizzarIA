@@ -1,0 +1,62 @@
+.hero-container
+  width: 100vw
+  max-width: 1440px
+
+  .hero-background
+    position: absolute
+    top: 0
+    left: 0
+    z-index: -2
+    height: 490px
+    width: 100%
+
+    background-image: url(../../assets/images/pizza-hero.jpeg)
+    background-size: cover
+    background-repeat: no-repeat
+    background-position: 0 25%
+    box-shadow: $box-shadow
+
+  .hero-content
+    height: 354px
+    width: 100%
+    margin: 44px 0 0
+    padding: 0 5%
+    position: relative
+
+    h1,
+    strong
+      font-size: 4.2rem
+      margin-bottom: 32px
+
+    p
+      width: 360px
+      margin-bottom: 36px
+      padding: 8px 0
+      border-radius: 1rem
+
+@media (max-width: 765px)
+  .hero-container
+    .hero-content
+      height: fit-content
+      width: fit-content
+      margin: 20px auto 0
+      padding: 5%
+      border-radius: 2rem
+      backdrop-filter: blur(4px)
+      box-shadow: 0 4px 10px $color-dark
+
+@media (max-width: 400px)
+  .hero-container
+    .hero-background
+      background-size: 150%
+      background-position: -30px 0
+
+    .hero-content
+      h1,
+      strong
+        width: 300px
+        font-size: 3.6rem
+        margin-bottom: 32px
+
+      p
+        width: 290px

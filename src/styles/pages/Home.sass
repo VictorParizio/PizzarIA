@@ -1,0 +1,223 @@
+#about,
+#how-it-works,
+#menu,
+#cta-section,
+#testimonials,
+.attention-section
+  width: 70%
+  max-width: 87rem
+  margin-top: 96px
+
+#how-it-works
+  display: flex
+  align-items: center
+  justify-content: center
+  position: relative
+
+  .pizza-image
+    position: absolute
+    left: -65rem
+    top: -21rem
+    z-index: -1
+    width: 70rem
+    filter: drop-shadow(12px 24px 20px rgb(0, 0, 0))
+
+  .steps-list
+    width: 80%
+
+    .step
+      display: flex
+      align-items: center
+
+      &:nth-child(odd)
+        justify-content: end
+
+      strong
+        font-size: 5.6rem
+        margin-right: 12px
+        color: transparent
+        background: $color-gradient
+        -webkit-background-clip: text
+        background-clip: text
+
+      p
+        width: 68%
+
+#cta-section,
+.attention-section
+  width: 75%
+  max-width: 75rem
+  text-align: center
+
+.attention-section
+  margin-bottom: 96px
+
+#testimonials .testimonial-container,
+#menu .menu-list
+  display: flex
+  gap: 20px
+
+#testimonials
+  .control
+    display: flex
+    align-items: center
+    justify-content: space-between
+    height: 48px
+    margin-bottom: 30px
+
+    #back
+      margin-right: 10px
+
+  .testimonial-card
+    min-height: 200px
+    padding: 20px
+
+#testimonials .testimonial-card,
+#menu .pizza-card
+  width: 27rem
+  background-color: $color-light
+  box-shadow: $box-shadow
+  border-radius: 10px
+  overflow: hidden
+  transition: 0.3s ease-in-out
+
+#menu
+  .menu-list
+    margin-top: 32px
+
+    .pizza-card
+      justify-content: flex-start
+      padding-bottom: 20px
+
+      &:hover
+        transform: scale(1.05)
+
+      img
+        width: 100%
+        box-shadow: $box-shadow
+
+#testimonials .testimonial-card h3,
+#menu .pizza-card h3
+  color: $color-dark
+  font-size: 1.8rem
+
+#menu .pizza-card h3
+  text-align: center
+  padding: 16px 16px 20px
+
+#menu
+  .pizza-card
+    figcaption
+      padding: 0 20px
+
+#testimonials  .testimonial-card p,
+#menu .pizza-card figcaption
+  color: $color-dark
+  font-size: 1.2rem
+  line-height: 18px
+  text-align: justify
+
+@media (max-width: 658px)
+  #about,
+  #how-it-works,
+  #menu,
+  #cta-section,
+  #testimonials,
+  .attention-section
+    width: 100vw
+    padding: 0 5%
+
+@media (max-width: 568px)
+  .steps-list
+    width: 100%
+
+  #menu
+    width: 100vw
+    padding: 0
+
+    h2
+      margin-left: 5%
+
+    .menu-list.mobile
+      width: 100vw
+      padding: 0 5%
+      overflow-x: auto
+
+      &::-webkit-scrollbar
+        width: 5px
+        background-color: rgba(255, 255, 255, 0)
+
+      .pizza-card
+        flex: 0 0 300px
+
+        &:hover
+          transform: none
+
+          img
+            width: 100%
+
+            h3
+              color: $color-dark
+              font-size: 1.8rem
+              padding: 20px
+
+            figcaption
+              color: $color-dark
+              font-size: 1.2rem
+              line-height: 18px
+              text-align: justify
+
+  #testimonials
+    .testimonial-card
+      min-height: 12rem
+      width: 100%
+
+@media (max-width: 400px)
+  #how-it-works
+    .pizza-image
+      display: none
+
+    .steps-list
+      width: 100%
+
+    .step
+      align-items: start
+
+    &:nth-child(odd)
+      justify-content: start
+
+      strong
+        margin-top: 6px
+
+      p
+        width: 100%
+
+  #testimonials
+    .testimonial-card
+      min-height: 18rem
+
+/* ANIMATION */
+#about,
+.cta-section
+  transform: scale(0)
+  overflow: hidden
+  transition: transform 2s ease
+
+#about.visible,
+.cta-section.visible
+  transform: scale(1)
+
+#how-it-works.visible li:nth-child(odd)
+  animation: moveLeftToRight 1.5s ease-in-out
+
+#how-it-works.visible li:nth-child(even)
+  animation: moveRightToLeft 1.5s ease-in-out
+
+#menu
+  opacity: 0
+  transform: translateY(100px)
+  transition: opacity 2s ease, transform 2s ease
+
+  &.visible
+    opacity: 1
+    transform: translateY(0)

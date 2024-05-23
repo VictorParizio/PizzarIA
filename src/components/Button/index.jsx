@@ -1,5 +1,3 @@
-import "./styles.css";
-
 export const Button = ({ variant, onClick, children, disabled = false }) => {
   return (
     <button

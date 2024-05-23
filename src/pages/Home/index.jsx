@@ -14,8 +14,6 @@ import {
   removeScrollListener,
 } from "../../utils/scrollAnimation";
 
-import "./styles.css";
-
 export const Home = () => {
   const { usuarioLogado } = useContext(UserAuthContext);
 

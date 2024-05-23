@@ -2,8 +2,6 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { UserAuthContext } from "../../context/userAuthContext";
 
-import "./styles.css";
-
 export const Hero = () => {
   const { usuarioLogado } = useContext(UserAuthContext);
 
