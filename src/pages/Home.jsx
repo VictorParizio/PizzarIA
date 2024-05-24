@@ -1,7 +1,6 @@
-import { useEffect, useContext } from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
-
-import { UserAuthContext } from "../context/userAuthContext";
+import { useSelector } from "react-redux";
 
 import { MenuHighlights } from "../components/MenuHighlights";
 import { Testimonial } from "../components/Testimonial";
@@ -15,7 +14,8 @@ import {
 } from "../utils/scrollAnimation";
 
 export const Home = () => {
-  const { usuarioLogado } = useContext(UserAuthContext);
+  const { user } = useSelector((rootReducer) => rootReducer.userReducer);
+  const usuarioLogado = user;
 
   useEffect(() => {
     addScrollListener();

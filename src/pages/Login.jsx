@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
-import { UserAuthContext } from "../context/userAuthContext";
 import { MessageContext } from "../context/modalContext";
 
 import { InputForm } from "../components/InputForm";
@@ -11,9 +11,10 @@ import { postAPI } from "../http";
 export const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { setUsuarioLogado } = useContext(UserAuthContext);
+  useSelector((rootReducer) => rootReducer.userReducer);
   const { showMessage } = useContext(MessageContext);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -33,7 +34,10 @@ export const Login = () => {
       sessionStorage.setItem("token", response.access_token);
       setEmail("");
       setPassword("");
-      setUsuarioLogado(true);
+      dispatch({
+        type: "user/login",
+        payload: true,
+      });
       navigate("/menu");
     } catch (error) {
       showMessage(

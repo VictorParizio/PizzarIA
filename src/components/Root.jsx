@@ -1,8 +1,9 @@
 import { useEffect } from "react";
 import { Outlet, useLocation } from "react-router-dom";
+import { Provider } from "react-redux";
+import { store } from "../redux/store";
 
 import { CartProvider } from "../context/cartContext";
-import { UserProvider } from "../context/userAuthContext";
 import { MessageProvider } from "../context/modalContext";
 
 import { Header } from "./Header";
@@ -21,7 +22,7 @@ const ScrollToTop = () => {
 export const Root = () => {
   return (
     <MessageProvider>
-      <UserProvider>
+      <Provider store={store}>
         <CartProvider>
           <ScrollToTop />
           <Header />
@@ -30,7 +31,7 @@ export const Root = () => {
           </main>
           <Footer />
         </CartProvider>
-      </UserProvider>
+      </Provider>
     </MessageProvider>
   );
 };

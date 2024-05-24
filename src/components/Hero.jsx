@@ -1,9 +1,9 @@
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { useContext } from "react";
-import { UserAuthContext } from "../context/userAuthContext";
 
 export const Hero = () => {
-  const { usuarioLogado } = useContext(UserAuthContext);
+  const { user } = useSelector((rootReducer) => rootReducer.userReducer);
+  const usuarioLogado = user;
 
   return (
     <section className="hero-container">

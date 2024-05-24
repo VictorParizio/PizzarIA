@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
-import { UserAuthContext } from "../context/userAuthContext";
 import { MessageContext } from "../context/modalContext";
 
 import { InputForm } from "../components/InputForm";
@@ -12,7 +12,9 @@ export const Signup = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { setUsuarioLogado } = useContext(UserAuthContext);
+  useSelector((rootReducer) => rootReducer.userReducer);
+  const dispatch = useDispatch();
+
   const { showMessage } = useContext(MessageContext);
   const navigate = useNavigate();
 
@@ -54,7 +56,10 @@ export const Signup = () => {
     setName("");
     setEmail("");
     setPassword("");
-    setUsuarioLogado(true);
+    dispatch({
+      type: "user/login",
+      payload: true,
+    });
     navigate("/menu");
   };
 

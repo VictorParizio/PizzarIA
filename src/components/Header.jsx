@@ -1,9 +1,9 @@
 import { useContext, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import { FaCartShopping, FaUser } from "react-icons/fa6";
 import { FiLogOut } from "react-icons/fi";
 
-import { UserAuthContext } from "../context/userAuthContext";
 import { useCartContext } from "../hooks/useCartContext";
 import { CartContext } from "../context/cartContext";
 
@@ -17,14 +17,16 @@ export const Header = () => {
 
   const { cart } = useContext(CartContext);
   const { totalItems } = useCartContext();
-  const { usuarioLogado, setUsuarioLogado } = useContext(UserAuthContext);
+  const { user } = useSelector((rootReducer) => rootReducer.userReducer);
+  const usuarioLogado = user;
+  const dispatch = useDispatch();
 
   const isMobile = useMediaQuery(500);
   const [showModalCart, setShowModalCart] = useState(false);
 
   const handleLogout = () => {
     sessionStorage.removeItem("token");
-    setUsuarioLogado(false);
+    dispatch({ type: "user/logout" });
   };
 
   const handleModalToggle = () => {
