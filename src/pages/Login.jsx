@@ -7,6 +7,7 @@ import { MessageContext } from "../context/modalContext";
 import { InputForm } from "../components/InputForm";
 import { Button } from "../components/Button";
 import { postAPI } from "../http";
+import { login } from "../redux/user/slice";
 
 export const Login = () => {
   const [email, setEmail] = useState("");
@@ -34,10 +35,7 @@ export const Login = () => {
       sessionStorage.setItem("token", response.access_token);
       setEmail("");
       setPassword("");
-      dispatch({
-        type: "user/login",
-        payload: true,
-      });
+      dispatch(login(true));
       navigate("/menu");
     } catch (error) {
       showMessage(

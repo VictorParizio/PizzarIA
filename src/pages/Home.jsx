@@ -14,7 +14,7 @@ import {
 } from "../utils/scrollAnimation";
 
 export const Home = () => {
-  const { user } = useSelector((rootReducer) => rootReducer.userReducer);
+  const { user } = useSelector((rootReducer) => rootReducer.userSlice);
   const usuarioLogado = user;
 
   useEffect(() => {
