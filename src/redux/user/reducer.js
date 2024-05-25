@@ -1,5 +1,7 @@
+const token = sessionStorage.getItem("token");
+
 const initialState = {
-  user: null,
+  user: null || token,
 };
 
 export const userReducer = (state = initialState, action) => {
