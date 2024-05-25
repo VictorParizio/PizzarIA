@@ -12,7 +12,7 @@ import { selectTotalPrice } from "../redux/cart/cart.selectors";
 import { removeProductCart } from "../redux/cart/slice";
 
 export const ModalCart = ({ isOpen }) => {
-  const { cart } = useSelector((rootReducer) => rootReducer.cartReducer);
+  const { cart } = useSelector((rootReducer) => rootReducer.cartSlice);
   const totalPrice = useSelector(selectTotalPrice);
   const dispatch = useDispatch();
 

@@ -13,7 +13,7 @@ import { removeProductCart, submitOrder } from "../redux/cart/slice";
 
 export const Cart = () => {
   const { showMessage } = useContext(MessageContext);
-  const { cart } = useSelector((rootReducer) => rootReducer.cartReducer);
+  const { cart } = useSelector((rootReducer) => rootReducer.cartSlice);
   const [removingItemId, setRemovingItemId] = useState(null);
 
   const totalPrice = useSelector(selectTotalPrice);

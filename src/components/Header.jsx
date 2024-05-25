@@ -9,12 +9,13 @@ import { MenuMobile } from "./MenuMobile";
 
 import { useMediaQuery } from "../hooks/useMediaQuery";
 import { selectTotalItems } from "../redux/cart/cart.selectors";
+import { logout } from "../redux/user/slice";
 
 export const Header = () => {
   const [showModalCart, setShowModalCart] = useState(false);
 
-  const { cart } = useSelector((rootReducer) => rootReducer.cartReducer);
-  const { user } = useSelector((rootReducer) => rootReducer.userReducer);
+  const { cart } = useSelector((rootReducer) => rootReducer.cartSlice);
+  const { user } = useSelector((rootReducer) => rootReducer.userSlice);
 
   const usuarioLogado = user;
   const totalItems = useSelector(selectTotalItems);
@@ -24,7 +25,7 @@ export const Header = () => {
 
   const handleLogout = () => {
     sessionStorage.removeItem("token");
-    dispatch({ type: "user/logout" });
+    dispatch(logout);
   };
 
   const handleModalToggle = () => {
