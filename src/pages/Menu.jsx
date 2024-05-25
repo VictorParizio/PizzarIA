@@ -6,6 +6,7 @@ import { formatCurrency } from "../utils/formatCurrency";
 import { ModalCart } from "../components/CartModal";
 import { Button } from "../components/Button";
 import { getAPI } from "../http";
+import { addProduct } from "../redux/cart/slice";
 
 export const Menu = () => {
   const [showModal, setShowModal] = useState(false);
@@ -25,7 +26,7 @@ export const Menu = () => {
   }, []);
 
   const handleAddToCart = (item) => {
-    dispatch({ type: "cart/addProduct", payload: item });
+    dispatch(addProduct(item));
     setShowModal(true);
   };
 

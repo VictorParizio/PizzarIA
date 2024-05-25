@@ -9,6 +9,7 @@ import { Button } from "./Button";
 
 import { formatCurrency } from "../utils/formatCurrency";
 import { selectTotalPrice } from "../redux/cart/cart.selectors";
+import { removeProductCart } from "../redux/cart/slice";
 
 export const ModalCart = ({ isOpen }) => {
   const { cart } = useSelector((rootReducer) => rootReducer.cartReducer);
@@ -24,7 +25,7 @@ export const ModalCart = ({ isOpen }) => {
       setIsClosingModalCart(true);
     }
     setTimeout(() => {
-      dispatch({ type: "cart/removeProductCart", payload: id });
+      dispatch(removeProductCart(id));
       setRemovingItemId(null);
       setIsClosingModalCart(false);
     }, 600);

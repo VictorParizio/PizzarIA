@@ -1,5 +1,6 @@
 import { useDispatch } from "react-redux";
 import { Button } from "./Button";
+import { addProduct, reduceProduct } from "../redux/cart/slice";
 
 export const Control = ({ variant, cartItem, remove }) => {
   const dispatch = useDispatch();
@@ -13,7 +14,7 @@ export const Control = ({ variant, cartItem, remove }) => {
           onClick={() => {
             cartItem.quantity === 1
               ? remove(cartItem.product_id)
-              : dispatch({ type: "cart/reduceProduct", payload: cartItem });
+              : dispatch(reduceProduct(cartItem));
           }}
         >
           -
@@ -30,7 +31,7 @@ export const Control = ({ variant, cartItem, remove }) => {
           variant={variant}
           id="more"
           onClick={() => {
-            dispatch({ type: "cart/addProduct", payload: cartItem });
+            dispatch(addProduct(cartItem));
           }}
         >
           +

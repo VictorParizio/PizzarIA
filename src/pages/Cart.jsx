@@ -9,6 +9,7 @@ import { selectTotalPrice } from "../redux/cart/cart.selectors";
 
 import { Control } from "../components/Control";
 import { Button } from "../components/Button";
+import { removeProductCart, submitOrder } from "../redux/cart/slice";
 
 export const Cart = () => {
   const { showMessage } = useContext(MessageContext);
@@ -22,7 +23,7 @@ export const Cart = () => {
   const handleRemoveProduct = (id) => {
     setRemovingItemId(id);
     setTimeout(() => {
-      dispatch({ type: "cart/removeProductCart", payload: id });
+      dispatch(removeProductCart(id));
       setRemovingItemId(null);
     }, 600);
   };
@@ -33,7 +34,7 @@ export const Cart = () => {
       "Parabéns! Sua pizza está a caminho. Nossa IA preparou cuidadosamente sua pedido. Agradecemos por escolher a PizzarIA"
     );
 
-    dispatch({ type: "cart/submitOrder" });
+    dispatch(submitOrder());
   };
 
   return (
@@ -127,9 +128,9 @@ export const Cart = () => {
           </div>
 
           <div className="cost">
-            <p>{formatCurrency(totalPrice)}</p>
+            <p>{totalPrice}</p>
             <p>grátis</p>
-            <strong>{formatCurrency(totalPrice)}</strong>
+            <strong>{totalPrice}</strong>
           </div>
         </div>
 
