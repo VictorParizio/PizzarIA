@@ -1,28 +1,26 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { FaCartShopping, FaUser } from "react-icons/fa6";
 import { FiLogOut } from "react-icons/fi";
 
-import { useCartContext } from "../hooks/useCartContext";
-import { CartContext } from "../context/cartContext";
-
 import { ModalCart } from "./CartModal";
 import { MenuMobile } from "./MenuMobile";
 
 import { useMediaQuery } from "../hooks/useMediaQuery";
+import { selectTotalItems } from "../redux/cart/cart.selectors";
 
 export const Header = () => {
-  const location = useLocation();
-
-  const { cart } = useContext(CartContext);
-  const { totalItems } = useCartContext();
-  const { user } = useSelector((rootReducer) => rootReducer.userReducer);
-  const usuarioLogado = user;
-  const dispatch = useDispatch();
-
-  const isMobile = useMediaQuery(500);
   const [showModalCart, setShowModalCart] = useState(false);
+
+  const { cart } = useSelector((rootReducer) => rootReducer.cartReducer);
+  const { user } = useSelector((rootReducer) => rootReducer.userReducer);
+
+  const usuarioLogado = user;
+  const totalItems = useSelector(selectTotalItems);
+  const dispatch = useDispatch();
+  const location = useLocation();
+  const isMobile = useMediaQuery(500);
 
   const handleLogout = () => {
     sessionStorage.removeItem("token");
@@ -93,9 +91,7 @@ export const Header = () => {
         {usuarioLogado && (
           <Link to="#" className="cart" onClick={handleModalToggle}>
             <FaCartShopping title="Carrinho suspenso" />
-            <strong title="Total de itens no carrinho">
-              {totalItems(cart)}
-            </strong>
+            <strong title="Total de itens no carrinho">{totalItems}</strong>
           </Link>
         )}
       </header>

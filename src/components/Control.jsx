@@ -1,8 +1,8 @@
-import { useCartContext } from "../hooks/useCartContext";
+import { useDispatch } from "react-redux";
 import { Button } from "./Button";
 
 export const Control = ({ variant, cartItem, remove }) => {
-  const { addProductCart, reduceProduct } = useCartContext();
+  const dispatch = useDispatch();
 
   return (
     <div className="control">
@@ -13,7 +13,7 @@ export const Control = ({ variant, cartItem, remove }) => {
           onClick={() => {
             cartItem.quantity === 1
               ? remove(cartItem.product_id)
-              : reduceProduct(cartItem.product_id);
+              : dispatch({ type: "cart/reduceProduct", payload: cartItem });
           }}
         >
           -
@@ -30,7 +30,7 @@ export const Control = ({ variant, cartItem, remove }) => {
           variant={variant}
           id="more"
           onClick={() => {
-            addProductCart(cartItem);
+            dispatch({ type: "cart/addProduct", payload: cartItem });
           }}
         >
           +

@@ -1,28 +1,28 @@
 import { useContext, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { FaTrashAlt } from "react-icons/fa";
 
-import { CartContext } from "../context/cartContext";
-import { useCartContext } from "../hooks/useCartContext";
 import { MessageContext } from "../context/modalContext";
 import { formatCurrency } from "../utils/formatCurrency";
-
 import { useMediaQuery } from "../hooks/useMediaQuery";
+import { selectTotalPrice } from "../redux/cart/cart.selectors";
 
 import { Control } from "../components/Control";
 import { Button } from "../components/Button";
 
 export const Cart = () => {
   const { showMessage } = useContext(MessageContext);
-  const { cart, setCart } = useContext(CartContext);
-  const { removeProductCart, totalCart } = useCartContext();
+  const { cart } = useSelector((rootReducer) => rootReducer.cartReducer);
   const [removingItemId, setRemovingItemId] = useState(null);
 
+  const totalPrice = useSelector(selectTotalPrice);
   const isMobile = useMediaQuery(568);
+  const dispatch = useDispatch();
 
   const handleRemoveProduct = (id) => {
     setRemovingItemId(id);
     setTimeout(() => {
-      removeProductCart(id);
+      dispatch({ type: "cart/removeProductCart", payload: id });
       setRemovingItemId(null);
     }, 600);
   };
@@ -33,7 +33,7 @@ export const Cart = () => {
       "Parabéns! Sua pizza está a caminho. Nossa IA preparou cuidadosamente sua pedido. Agradecemos por escolher a PizzarIA"
     );
 
-    setCart([]);
+    dispatch({ type: "cart/submitOrder" });
   };
 
   return (
@@ -127,9 +127,9 @@ export const Cart = () => {
           </div>
 
           <div className="cost">
-            <p>{totalCart(cart)}</p>
+            <p>{formatCurrency(totalPrice)}</p>
             <p>grátis</p>
-            <strong>{totalCart(cart)}</strong>
+            <strong>{formatCurrency(totalPrice)}</strong>
           </div>
         </div>
 

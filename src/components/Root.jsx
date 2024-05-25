@@ -3,7 +3,6 @@ import { Outlet, useLocation } from "react-router-dom";
 import { Provider } from "react-redux";
 import { store } from "../redux/store";
 
-import { CartProvider } from "../context/cartContext";
 import { MessageProvider } from "../context/modalContext";
 
 import { Header } from "./Header";
@@ -23,14 +22,12 @@ export const Root = () => {
   return (
     <MessageProvider>
       <Provider store={store}>
-        <CartProvider>
-          <ScrollToTop />
-          <Header />
-          <main>
-            <Outlet />
-          </main>
-          <Footer />
-        </CartProvider>
+        <ScrollToTop />
+        <Header />
+        <main>
+          <Outlet />
+        </main>
+        <Footer />
       </Provider>
     </MessageProvider>
   );

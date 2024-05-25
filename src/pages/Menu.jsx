@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
 
-import { useCartContext } from "../hooks/useCartContext";
 import { formatCurrency } from "../utils/formatCurrency";
 
 import { ModalCart } from "../components/CartModal";
@@ -10,7 +10,7 @@ import { getAPI } from "../http";
 export const Menu = () => {
   const [showModal, setShowModal] = useState(false);
   const [menuData, setMenuData] = useState([]);
-  const { addProductCart } = useCartContext();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     (async function () {
@@ -25,7 +25,7 @@ export const Menu = () => {
   }, []);
 
   const handleAddToCart = (item) => {
-    addProductCart(item, 1);
+    dispatch({ type: "cart/addProduct", payload: item });
     setShowModal(true);
   };
 

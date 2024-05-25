@@ -1,18 +1,19 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import { FaTrashAlt } from "react-icons/fa";
 import { FiLogOut } from "react-icons/fi";
-
-import { CartContext } from "../context/cartContext";
-import { useCartContext } from "../hooks/useCartContext";
-import { formatCurrency } from "../utils/formatCurrency";
 
 import { Control } from "./Control";
 import { Button } from "./Button";
 
+import { formatCurrency } from "../utils/formatCurrency";
+import { selectTotalPrice } from "../redux/cart/cart.selectors";
+
 export const ModalCart = ({ isOpen }) => {
-  const { cart } = useContext(CartContext);
-  const { removeProductCart, totalCart } = useCartContext();
+  const { cart } = useSelector((rootReducer) => rootReducer.cartReducer);
+  const totalPrice = useSelector(selectTotalPrice);
+  const dispatch = useDispatch();
 
   const [removingItemId, setRemovingItemId] = useState(null);
   const [isClosingModalCart, setIsClosingModalCart] = useState(false);
@@ -23,7 +24,7 @@ export const ModalCart = ({ isOpen }) => {
       setIsClosingModalCart(true);
     }
     setTimeout(() => {
-      removeProductCart(id);
+      dispatch({ type: "cart/removeProductCart", payload: id });
       setRemovingItemId(null);
       setIsClosingModalCart(false);
     }, 600);
@@ -85,7 +86,7 @@ export const ModalCart = ({ isOpen }) => {
 
           <div>
             <p>
-              Total <strong>{totalCart(cart)}</strong>
+              Total <strong>{totalPrice}</strong>
             </p>
             <Link to="/cart" onClick={isOpen}>
               <Button variant={"large"}>Finalizar pedido</Button>
