@@ -25,7 +25,7 @@ export const Header = () => {
 
   const handleLogout = () => {
     sessionStorage.removeItem("token");
-    dispatch(logout);
+    dispatch(logout());
   };
 
   const handleModalToggle = () => {
