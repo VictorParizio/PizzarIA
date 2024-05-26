@@ -36,12 +36,20 @@ export const MessageProvider = ({ children }) => {
       {isModal ? (
         <div className="modal-wrapper">
           <div className="modal-background" />
-          <section className="modal-message">
-            <Button variant={"small"} onClick={closeModal}>
+          <section
+            className="modal-message"
+            aria-labelledby="modal-title"
+            aria-describedby="modal-description"
+          >
+            <Button
+              variant={"small"}
+              onClick={closeModal}
+              aria-label="Fechar modal"
+            >
               x
             </Button>
-            <h2>{title}</h2>
-            <p>{message}</p>
+            <h2 id="modal-title">{title}</h2>
+            <p id="modal-description">{message}</p>
           </section>
         </div>
       ) : (

@@ -32,12 +32,12 @@ export const Menu = () => {
 
   return (
     <>
-      <div className="banner" />
-      <section className="menu-container">
+      <div className="banner" role="banner" />
+      <section className="menu-container" role="region" aria-label="Cardápio">
         <h2>Cardápio</h2>
-        <ul className="menu-list">
+        <ul className="menu-list" role="list">
           {menuData.map((item) => (
-            <li className="pizza-card" key={item.product_id}>
+            <li className="pizza-card" key={item.product_id} role="listitem">
               <figure>
                 <img
                   src={item.product_image_url}
@@ -51,6 +51,7 @@ export const Menu = () => {
                 <Button
                   variant={"medium"}
                   onClick={() => handleAddToCart(item)}
+                  aria-label={`Adicionar ${item.product_name} ao carrinho`}
                 >
                   Adicionar
                 </Button>
@@ -59,7 +60,9 @@ export const Menu = () => {
           ))}
         </ul>
       </section>
-      {showModal && <ModalCart isOpen={() => setShowModal(false)} />}
+      {showModal && (
+        <ModalCart isOpen={() => setShowModal(false)} />
+      )}
     </>
   );
 };

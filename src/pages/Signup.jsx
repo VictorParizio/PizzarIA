@@ -84,7 +84,9 @@ export const Signup = () => {
             value={password}
             onChange={handleInputChange}
           />
-          <Button type="submit">Cadastrar</Button>
+          <Button type="submit" aria-label="Enviar formulário de cadastro">
+            Cadastrar
+          </Button>
         </form>
 
         <Link to="/login">Já tenho uma conta</Link>

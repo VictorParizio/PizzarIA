@@ -64,7 +64,9 @@ export const Login = () => {
             onChange={handleInputChange}
           />
 
-          <Button type="submit">Entrar</Button>
+          <Button type="submit" aria-label="Enviar formulário de login">
+            Entrar
+          </Button>
         </form>
 
         <Link to="/signup">Criar uma conta</Link>

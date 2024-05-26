@@ -16,6 +16,7 @@ export const Control = ({ variant, cartItem, remove }) => {
               ? remove(cartItem.product_id)
               : dispatch(reduceProduct(cartItem));
           }}
+          aria-label="Remover um item do carrinho"
         >
           -
         </Button>
@@ -25,6 +26,7 @@ export const Control = ({ variant, cartItem, remove }) => {
           type="number"
           value={cartItem.quantity || 0}
           onChange={(e) => {}}
+          aria-label="Quantidade do produto no carrinho"
         />
 
         <Button
@@ -33,6 +35,7 @@ export const Control = ({ variant, cartItem, remove }) => {
           onClick={() => {
             dispatch(addProduct(cartItem));
           }}
+          aria-label="Adicionar um item ao carrinho"
         >
           +
         </Button>

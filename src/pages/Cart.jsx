@@ -65,7 +65,10 @@ export const Cart = () => {
                 key={item.product_id}
               >
                 <div className="product">
-                  <img src={item.product_image_url} alt={item.product_name} />
+                  <img
+                    src={item.product_image_url}
+                    alt={`Imagem de ${item.product_name}`}
+                  />
                   <p>{item.product_name}</p>
                 </div>
                 <p>{formatCurrency(item.product_price)}</p>
@@ -77,6 +80,7 @@ export const Cart = () => {
                 <p>{formatCurrency(item.product_price * item.quantity)}</p>
                 <FaTrashAlt
                   onClick={() => handleRemoveProduct(item.product_id)}
+                  aria-label={`Remover ${item.product_name} do carrinho`}
                 />
               </li>
             ))}
@@ -96,8 +100,10 @@ export const Cart = () => {
                 }`}
                 key={item.product_id}
               >
-                <img src={item.product_image_url} alt={item.product_name} />
-
+                <img
+                  src={item.product_image_url}
+                  alt={`Imagem de ${item.product_name}`}
+                />
                 <div>
                   <p className="product-name">{item.product_name}</p>
                   <Control
@@ -116,6 +122,7 @@ export const Cart = () => {
 
                 <FaTrashAlt
                   onClick={() => handleRemoveProduct(item.product_id)}
+                  aria-label={`Remover ${item.product_name} do carrinho`}
                 />
               </li>
             ))}

@@ -28,7 +28,7 @@ export const Home = () => {
     <>
       <Hero />
 
-      <section id="about">
+      <section id="about" role="region" aria-label="Sobre">
         <h2>Pizzas feitas por IA!</h2>
         <p>
           Na PizzarIA, nossas pizzas são mais do que apenas uma combinação de
@@ -39,10 +39,14 @@ export const Home = () => {
         </p>
       </section>
 
-      <section id="how-it-works">
-        <img className="pizza-image" src={sidebarIllustration} alt="" />
-        <ol className="steps-list">
-          <li className="step">
+      <section id="how-it-works" role="region" aria-label="Como funciona">
+        <img
+          className="pizza-image"
+          src={sidebarIllustration}
+          alt="Imagem de uma pizza feita por IA"
+        />
+        <ol className="steps-list" role="list">
+          <li className="step" role="listitem">
             <strong>01</strong>
             <p>
               Faça seu Pedido: Navegue pelo nosso cardápio virtual e escolha
@@ -50,7 +54,7 @@ export const Home = () => {
               nossa IA.
             </p>
           </li>
-          <li className="step">
+          <li className="step" role="listitem">
             <strong>02</strong>
             <p>
               Personalize sua Pizza: Quer adicionar ou remover algum
@@ -58,7 +62,7 @@ export const Home = () => {
               perfeita para você.
             </p>
           </li>
-          <li className="step">
+          <li className="step" role="listitem">
             <strong>03</strong>
             <p>
               Entrega Rápida: Em um piscar de olhos, sua pizza estará pronta
@@ -81,6 +85,7 @@ export const Home = () => {
         <Link
           to={isLogged ? "/menu" : "/login"}
           className="base-button large animation"
+          aria-label={isLogged ? "Acessar menu" : "Acessar página de login"}
         >
           Quero pedir a minha Pizza
         </Link>

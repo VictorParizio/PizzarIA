@@ -31,15 +31,17 @@ export const Testimonial = () => {
   };
 
   return (
-    <section id="testimonials">
+    <section id="testimonials" role="region" aria-label="Depoimentos de nossos clientes">
       <div className="control">
-        <h2>Depoimentos</h2>
+        <h2 id="testimonials-heading">Depoimentos</h2>
         <div>
           <button
             className="base-button"
             id="back"
             onClick={handlePrev}
             disabled={currentIndex === 0}
+            aria-label="Slide anterior"
+            aria-disabled={currentIndex === 0}
           >
             &lt;
           </button>
@@ -48,13 +50,22 @@ export const Testimonial = () => {
             id="next"
             onClick={handleNext}
             disabled={currentIndex === testimonialsData.length - slidesToShow}
+            aria-label="Próximo slide"
+            aria-disabled={
+              currentIndex === testimonialsData.length - slidesToShow
+            }
           >
             &gt;
           </button>
         </div>
       </div>
 
-      <div className="testimonial-container" ref={containerRef}>
+      <div
+        className="testimonial-container"
+        ref={containerRef}
+        role="region"
+        aria-labelledby="testimonials-heading"
+      >
         {testimonialsData
           .slice(currentIndex, currentIndex + slidesToShow)
           .map((testimonial, index) => (

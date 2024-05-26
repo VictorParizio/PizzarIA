@@ -11,10 +11,12 @@ export const InputForm = ({
       <label htmlFor={name}>{textLabel}</label>
       <input
         type={type}
+        id={name}
         name={name}
         value={value}
         placeholder={placeholder}
         onChange={onChange}
+        aria-label={textLabel}
       />
     </>
   );

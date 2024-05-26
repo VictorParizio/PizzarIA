@@ -42,11 +42,19 @@ export const ModalCart = ({ isOpen }) => {
   return (
     <>
       {cart.length !== 0 && (
-        <section className={`resume-cart ${isClosingModalCart ? "empty" : ""}`}>
+        <section
+          className={`resume-cart ${isClosingModalCart ? "empty" : ""}`}
+          role="region"
+          aria-label="Modal do carrinho"
+        >
           <div>
             <h2>Resumo do Pedido</h2>
             <div>
-              <FiLogOut className="close cart-modal" onClick={closeModalCart} />
+              <FiLogOut
+                className="close cart-modal"
+                onClick={closeModalCart}
+                aria-label="Fechar modal do carrinho"
+              />
             </div>
 
             <ul className="order-list">

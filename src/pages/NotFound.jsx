@@ -4,7 +4,11 @@ import img404 from "../assets/images/404.jpeg";
 export const NotFound = () => {
   return (
     <section className="container-404">
-      <img src={img404} alt="página não encontrada" className="img404" />
+      <img
+        src={img404}
+        alt="Erro 404: página não encontrada"
+        className="img404"
+      />
       <div>
         <h2>Ops! Nenhuma fatia por aqui</h2>
         <p>A página que você está procurando não existe ou foi movida.</p>

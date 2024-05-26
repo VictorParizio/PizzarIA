@@ -32,8 +32,12 @@ export const Header = () => {
 
   return (
     <>
-      <header className="navigation">
-        <Link to="/" className="logo">
+      <header
+        className="navigation"
+        role="region"
+        aria-label="Cabeçalho e navegação da página"
+      >
+        <Link to="/" className="logo" aria-label="Página inicial">
           PizzarIA
         </Link>
 
@@ -66,14 +70,15 @@ export const Header = () => {
 
             {isLogged && (
               <div className="member-area">
-                <Link to="/404">
+                <Link to="/404" aria-label="Perfil do usuário">
                   <FaUser title="Perfil do usuário" />
                 </Link>
                 <Link to="/">
                   <FiLogOut
                     className="close"
-                    title="Sair"
+                    title="Encerrar sessão"
                     onClick={handleLogout}
+                    aria-label="Encerrar sessão"
                   />
                 </Link>
               </div>
@@ -83,12 +88,15 @@ export const Header = () => {
 
         {showModalCart && <ModalCart isOpen={handleModalToggle} />}
 
-        {isMobile && isLogged && (
-          <MenuMobile handleLogout={handleLogout} />
-        )}
+        {isMobile && isLogged && <MenuMobile handleLogout={handleLogout} />}
 
         {isLogged && (
-          <Link to="#" className="cart" onClick={handleModalToggle}>
+          <Link
+            to="#"
+            className="cart"
+            onClick={handleModalToggle}
+            aria-label="Abrir modal do carrinho"
+          >
             <FaCartShopping title="Carrinho suspenso" />
             <strong title="Total de itens no carrinho">{totalItems}</strong>
           </Link>

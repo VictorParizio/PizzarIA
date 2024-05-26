@@ -6,8 +6,16 @@ export const Hero = () => {
   const isLogged = user;
 
   return (
-    <section className="hero-container">
-      <div className="hero-background" />
+    <section
+      className="hero-container"
+      role="region"
+      aria-label="Seção de destaque"
+    >
+      <div
+        className="hero-background"
+        role="banner"
+        aria-label="Background da PizzarIA: uma mesa rústica de madeira com uma pizza em um suporte redondo e ingredientes ao redor."
+      />
       <div className="hero-content">
         <h1>
           Bem-vindo à <strong>PizzarIA</strong>
@@ -21,6 +29,7 @@ export const Hero = () => {
         <Link
           to={isLogged ? "/menu" : "/login"}
           className="base-button large animation"
+          aria-label={isLogged ? "Acessar menu" : "Acessar página de login"}
         >
           Faça já o seu Pedido
         </Link>
