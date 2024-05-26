@@ -1,18 +1,18 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 import { MessageContext } from "../context/modalContext";
 
 import { InputForm } from "../components/InputForm";
 import { Button } from "../components/Button";
-import { postAPI } from "../http";
 import { login } from "../redux/user/slice";
+import { useForm } from "../hooks/useForm";
+import { postAPI } from "../http";
 
 export const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  useSelector((rootReducer) => rootReducer.userReducer);
+  const [formValues, handleInputChange] = useForm({ email: "", password: "" });
+  const { email, password } = formValues;
   const { showMessage } = useContext(MessageContext);
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -25,19 +25,15 @@ export const Login = () => {
       return;
     }
 
-    const usuario = {
-      email,
-      password,
-    };
-
     try {
-      const response = await postAPI("login", usuario, showMessage);
+      const response = await postAPI("login", formValues, showMessage);
       sessionStorage.setItem("token", response.access_token);
-      setEmail("");
-      setPassword("");
       dispatch(login(true));
       navigate("/menu");
     } catch (error) {
+      if (error.response.data.message) {
+        return showMessage(error.response.data.message);
+      }
       showMessage(
         "Ocorreu um erro ao tentar fazer login. Por favor, tente novamente mais tarde."
       );
@@ -54,18 +50,18 @@ export const Login = () => {
           <InputForm
             textLabel={"Email"}
             type="email"
-            id="email"
-            placeholder="Digite seu email"
+            name="email"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            placeholder="Digite seu email"
+            onChange={handleInputChange}
           />
           <InputForm
             textLabel={"Senha"}
             type="password"
-            id="password"
-            placeholder="Digite sua senha"
+            name="password"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            placeholder="Digite sua senha"
+            onChange={handleInputChange}
           />
 
           <Button type="submit">Entrar</Button>

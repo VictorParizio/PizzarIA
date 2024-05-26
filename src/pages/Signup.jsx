@@ -1,21 +1,23 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 import { MessageContext } from "../context/modalContext";
-
 import { InputForm } from "../components/InputForm";
 import { Button } from "../components/Button";
+import { useForm } from "../hooks/useForm";
 import { postAPI } from "../http";
 
 export const Signup = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  useSelector((rootReducer) => rootReducer.userReducer);
-  const dispatch = useDispatch();
+  const [formValues, handleInputChange] = useForm({
+    name: "",
+    email: "",
+    password: "",
+  });
 
+  const { name, email, password } = formValues;
   const { showMessage } = useContext(MessageContext);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
@@ -43,23 +45,9 @@ export const Signup = () => {
       return;
     }
 
-    const novoUsuario = {
-      name,
-      email,
-      password,
-    };
-
-    const response = await postAPI("usuario", novoUsuario, showMessage);
-
+    const response = await postAPI("usuario", formValues, showMessage);
     sessionStorage.setItem("token", response.access_token);
-
-    setName("");
-    setEmail("");
-    setPassword("");
-    dispatch({
-      type: "user/login",
-      payload: true,
-    });
+    dispatch({ type: "user/login", payload: true });
     navigate("/menu");
   };
 
@@ -74,26 +62,26 @@ export const Signup = () => {
           <InputForm
             textLabel={"Nome"}
             type="text"
-            id="name"
+            name="name"
             placeholder="Digite seu nome"
             value={name}
-            onChange={(e) => setName(e.target.value)}
+            onChange={handleInputChange}
           />
           <InputForm
             textLabel={"Email"}
             type="email"
-            id="email"
+            name="email"
             placeholder="Digite seu email"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={handleInputChange}
           />
           <InputForm
             textLabel={"Senha"}
             type="password"
-            id="password"
+            name="password"
             placeholder="Digite sua senha"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={handleInputChange}
           />
           <Button type="submit">Cadastrar</Button>
         </form>

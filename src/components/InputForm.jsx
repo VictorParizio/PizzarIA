@@ -1,19 +1,19 @@
 export const InputForm = ({
   textLabel,
   type,
-  id,
-  placeholder,
+  name,
   value,
+  placeholder,
   onChange,
 }) => {
   return (
     <>
-      <label htmlFor={id}>{textLabel}</label>
+      <label htmlFor={name}>{textLabel}</label>
       <input
         type={type}
-        id={id}
-        placeholder={placeholder}
+        name={name}
         value={value}
+        placeholder={placeholder}
         onChange={onChange}
       />
     </>
