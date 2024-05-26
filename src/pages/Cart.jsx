@@ -41,9 +41,15 @@ export const Cart = () => {
     <section className="container-shopping">
       {!isMobile && (
         <section
-          className={`my-shopping-cart ${cart.length > 0 ? "fit-content" : ""}`}
+          className={`my-shopping-cart ${
+            cart.length > 0 ? "fit-content" : "no-border"
+          }`}
         >
-          <div className={`th-product-card`}>
+          <div
+            className={`th-product-card ${
+              cart.length === 0 ? "no-border" : ""
+            }`}
+          >
             <p>Produto</p>
             <p>Preço</p>
             <p>Quantidade</p>
