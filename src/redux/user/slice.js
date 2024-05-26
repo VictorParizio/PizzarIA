@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const token = sessionStorage.getItem("token");
 
 const initialState = {
-  user: null || token,
+  user: token ? { token } : null,
 };
 
 const userSlice = createSlice({

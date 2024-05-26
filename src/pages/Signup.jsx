@@ -7,6 +7,7 @@ import { InputForm } from "../components/InputForm";
 import { Button } from "../components/Button";
 import { useForm } from "../hooks/useForm";
 import { postAPI } from "../http";
+import { login } from "../redux/user/slice";
 
 export const Signup = () => {
   const [formValues, handleInputChange] = useForm({
@@ -47,7 +48,7 @@ export const Signup = () => {
 
     const response = await postAPI("usuario", formValues, showMessage);
     sessionStorage.setItem("token", response.access_token);
-    dispatch({ type: "user/login", payload: true });
+    dispatch(login(true));
     navigate("/menu");
   };
 

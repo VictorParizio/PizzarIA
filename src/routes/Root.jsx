@@ -1,12 +1,11 @@
 import { useEffect } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import { Provider } from "react-redux";
-import { store } from "../redux/store";
 
 import { MessageProvider } from "../context/modalContext";
-
-import { Header } from "./Header";
-import { Footer } from "./Footer";
+import { Header } from "../components/Header";
+import { Footer } from "../components/Footer";
+import { store } from "../redux/store";
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
