@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export const Hero = () => {
   const { user } = useSelector((rootReducer) => rootReducer.userSlice);
-  const usuarioLogado = user;
+  const isLogged = user;
 
   return (
     <section className="hero-container">
@@ -19,7 +19,7 @@ export const Hero = () => {
         </p>
 
         <Link
-          to={usuarioLogado ? "/menu" : "/login"}
+          to={isLogged ? "/menu" : "/login"}
           className="base-button large animation"
         >
           Faça já o seu Pedido

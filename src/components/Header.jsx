@@ -14,10 +14,8 @@ import { logout } from "../redux/user/slice";
 export const Header = () => {
   const [showModalCart, setShowModalCart] = useState(false);
 
-  const { cart } = useSelector((rootReducer) => rootReducer.cartSlice);
   const { user } = useSelector((rootReducer) => rootReducer.userSlice);
-
-  const usuarioLogado = user;
+  const isLogged = user;
   const totalItems = useSelector(selectTotalItems);
   const dispatch = useDispatch();
   const location = useLocation();
@@ -39,13 +37,13 @@ export const Header = () => {
           PizzarIA
         </Link>
 
-        {!usuarioLogado && (
+        {!isLogged && (
           <div className="member-area">
-            {!usuarioLogado && location.pathname !== "/login" && (
+            {!isLogged && location.pathname !== "/login" && (
               <Link to="/login">Entrar</Link>
             )}
 
-            {!usuarioLogado && location.pathname === "/login" && (
+            {!isLogged && location.pathname === "/login" && (
               <Link to="/signup">Cadastrar</Link>
             )}
           </div>
@@ -53,7 +51,7 @@ export const Header = () => {
 
         {!isMobile && (
           <>
-            {usuarioLogado && (
+            {isLogged && (
               <nav>
                 <ul>
                   <li>
@@ -66,7 +64,7 @@ export const Header = () => {
               </nav>
             )}
 
-            {usuarioLogado && (
+            {isLogged && (
               <div className="member-area">
                 <Link to="/404">
                   <FaUser title="Perfil do usuário" />
@@ -85,11 +83,11 @@ export const Header = () => {
 
         {showModalCart && <ModalCart isOpen={handleModalToggle} />}
 
-        {isMobile && usuarioLogado && (
+        {isMobile && isLogged && (
           <MenuMobile handleLogout={handleLogout} />
         )}
 
-        {usuarioLogado && (
+        {isLogged && (
           <Link to="#" className="cart" onClick={handleModalToggle}>
             <FaCartShopping title="Carrinho suspenso" />
             <strong title="Total de itens no carrinho">{totalItems}</strong>

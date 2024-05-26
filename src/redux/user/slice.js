@@ -1,9 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { isTokenValid } from "../../utils/isTokinValid";
 
 const token = sessionStorage.getItem("token");
+const isAuthenticated = isTokenValid(token);
 
 const initialState = {
-  user: token ? { token } : null,
+  user: isAuthenticated ? { token } : null,
 };
 
 const userSlice = createSlice({

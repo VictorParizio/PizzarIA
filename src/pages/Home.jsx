@@ -15,7 +15,7 @@ import {
 
 export const Home = () => {
   const { user } = useSelector((rootReducer) => rootReducer.userSlice);
-  const usuarioLogado = user;
+  const isLogged = user;
 
   useEffect(() => {
     addScrollListener();
@@ -79,7 +79,7 @@ export const Home = () => {
         </p>
 
         <Link
-          to={usuarioLogado ? "/menu" : "/login"}
+          to={isLogged ? "/menu" : "/login"}
           className="base-button large animation"
         >
           Quero pedir a minha Pizza
