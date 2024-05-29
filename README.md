@@ -1,48 +1,111 @@
-# ProsperTech - Case prático | Pizzaria
+# Sistema de Pedido Online para Pizzaria
 
-Atenção! Este Projeto está em andamento, caso o repositório esteja vazio, não se assuste, em breve teremos novidades. Obrigado pela compreensão!
+## Visão Geral
 
-## Visão Geral:
+Este é um sistema desenvolvido em React para permitir aos usuários realizar pedidos online em uma pizzaria. Os usuários podem se registrar, entrar, visualizar o cardápio, adicionar pizzas ao carrinho, editar a quantidade e remover itens do carrinho.
 
-Este projeto consiste no desenvolvimento de um Sistema de Pedido Online para uma pizzaria, utilizando React para ser visualizado em um navegador web. Será uma oportunidade para aplicar uma variedade de conceitos, desde a estilização em CSS até a implementação de funcionalidades dinâmicas e o gerenciamento de estados com React.
+## Funcionalidades Principais
 
-## Funcionalidades Principais:
+1. **Cadastro de Usuário**
 
-1. **Autenticação e Formulário de Login:**
-   - Implementar um formulário de login com cantos arredondados, utilizando as propriedades em CSS.
-   - Adicionar uma sombra sutil aos botões de login para destacá-los.
+   - Cadastro de usuário fornecendo nome, e-mail e senha.
+   - Validação de entrada de dados fornecidos garantindo que sejam corretos e seguros.
+   - Os dados do usuário são enviados para a API, onde são armazenados de forma segura.
 
-2. **Listagem de Pizzas:**
-   - Exibir dinamicamente as opções de pizzas disponíveis, utilizando componentes React para representar cada item do cardápio.
-   - Aplicar estilos utilizando Tailwind CSS para garantir uma apresentação moderna e responsiva.
+2. **Login de Usuário**
 
-3. **Seleção de Pizzas:**
-   - Permitir aos usuários selecionar a quantidade desejada de cada pizza, utilizando componentes controlados e estados em React.
-   - Utilizar funções de transformação CSS, se possível, para animar a interação do usuário durante a seleção.
+   - Os usuários podem fazer login na plataforma utilizando seu e-mail e senha cadastrados anteriormente.
+   - Após a autenticação bem-sucedida, a API retorna um token JWT que é armazenado no navegador do usuário para futuras requisições.
+   - O token é armazenado na `sessionStorage`, uma opção segura para armazenar informações sensíveis, pois não persistem após o fechamento da aba ou janela, reduzindo a exposição a ataques de roubo de token.
 
-4. **Carrinho de Compras:**
-   - Implementar um carrinho de compras dinâmico que exibe as pizzas selecionadas, a quantidade e o total.
-   - Utilizar propriedades CSS para controle de transições, proporcionando uma experiência suave ao adicionar ou remover itens do carrinho.
+3. **Autenticação com Redux**
 
-5. **Finalização do Pedido:**
-   - Permitir aos usuários revisar o pedido, ajustar as quantidades e finalizar a compra.
-   - Utilizar o Next.js para otimizar o carregamento da página de confirmação do pedido, aproveitando as vantagens do SSR.
-
-6. **Autenticação com Redux:**
    - Introduzir o Redux para gerenciar o estado global da aplicação, incluindo informações sobre o usuário autenticado.
 
-7. **Responsividade e Material UI:**
-   - Garantir que a aplicação seja totalmente responsiva, utilizando classes do Material UI para componentes específicos.
-   - Implementar breakpoints para garantir uma experiência de usuário consistente em diferentes dispositivos.
+4. **Proteção de Rotas**
 
-8. **Acessibilidade e Atributos ARIA:**
-   - Integrar atributos ARIA para melhorar a acessibilidade da aplicação, tornando-a mais amigável para usuários com deficiência.
+   - Rotas sensíveis, como o cardápio, carrinho e perfil do usuário, são protegidas e requerem autenticação.
+   - É feita a validação do JWT em cada requisição para validar a identidade do usuário e conceder acesso aos recursos protegidos.
 
-9. **Controle de Versão com Git:**
-   - Configurar um repositório Git para o projeto, garantindo um histórico de alterações e facilitando a colaboração entre os membros da equipe.
+5. **Gerenciamento de Sessão**
 
-10. **Docker para Ambiente de Desenvolvimento:**
-    - Comentar sobre como poderia configurar um ambiente de desenvolvimento utilizando Docker, garantindo consistência entre as máquinas dos desenvolvedores.
+   - A sessão do usuário é mantida ativa enquanto o token JWT não expirar.
+   - Caso o token expire, o usuário é automaticamente redirecionado para fazer login novamente.
 
-11. **Scrum:**
-    - Comentar sobre como poderia ser utilizado a metodologia Scrum para o desenvolvimento desse sistema e quais seriam os ganhos para a equipe e para o projeto.
+6. **Listagem de Pizzas**
+
+   - Exibição dinâmica das opções de pizzas disponíveis fornecidas pela API, utilizando componentes React para representar cada item do cardápio.
+
+7. **Seleção de Pizzas**
+
+   - Permite aos usuários selecionar a quantidade desejada de cada pizza.
+
+8. **Carrinho de Compras**
+
+   - Implementação de um carrinho de compras dinâmico que exibe as pizzas selecionadas, a quantidade e o total.
+   - Permite ao usuário ajustar a quantidade ou remover itens do carrinho.
+
+9. **Finalização do Pedido**
+
+   - Permitir aos usuários revisar o pedido, ajustar as quantidades, remover itens e finalizar a compra.
+
+10. **Animações**
+
+    - Utilização de propriedades CSS para controle de transições, proporcionando uma experiência suave ao navegar pela aplicação e adicionar ou remover itens do carrinho.
+    - Uso de funções de transformação CSS para animar a interação do usuário durante a seleção.
+
+11. **Responsividade**
+
+    - Implementação de breakpoints para garantir uma experiência de usuário consistente em diferentes dispositivos.
+
+12. **Acessibilidade e Atributos ARIA**
+
+    - Integração de atributos ARIA para melhorar a acessibilidade da aplicação, tornando-a mais amigável para usuários com deficiência.
+
+13. **Controle de Versão com Git**
+    - Configuração de um repositório Git para o projeto, garantindo um histórico de alterações e facilitando a colaboração entre os membros da equipe.
+
+## Tecnologias Utilizadas
+
+- [JavaScript](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)
+- [React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+- [React Router DOM](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white)
+- [Redux Toolkit](https://img.shields.io/badge/Redux-593D88?style=for-the-badge&logo=redux&logoColor=white)
+- [Axios](https://img.shields.io/badge/axios-671ddf?&style=for-the-badge&logo=axios&logoColor=white)
+- [Sass](https://img.shields.io/badge/Sass-CC6699?style=for-the-badge&logo=sass&logoColor=white)
+- [VSCode](https://img.shields.io/badge/VSCode-0078D4?style=for-the-badge&logo=visual%20studio%20code&logoColor=white)
+
+## Pré-requisitos
+
+Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
+
+- [Node.js](https://nodejs.org/en/)
+- [Git](https://git-scm.com/)
+- [VSCode](https://code.visualstudio.com/).
+
+## Instalação
+
+1. Clone este repositório:
+   ```bash
+   git clone https://github.com/VictorParizio/PizzarIA.git
+   
+   ```
+2. Acesse a pasta do projeto no terminal:
+   ```bash
+   cd PizzarIA
+   ```
+3. Instale as dependências:
+   ```bash
+   npm install
+   ```
+
+## Uso
+
+1. Execute a aplicação:
+   ```bash
+   npm run dev
+   ```
+2. Acesse no seu navegador:
+   ```plaintext
+   http://localhost:3000
+   ```
