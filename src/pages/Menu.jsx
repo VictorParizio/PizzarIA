@@ -15,8 +15,17 @@ export const Menu = () => {
 
   useEffect(() => {
     (async function () {
-      const dataAPI = await getAPI("produto");
-      setMenuData(dataAPI);
+      try {
+        const dataAPI = await getAPI("produto");
+        if (dataAPI) {
+          setMenuData(dataAPI);
+        } else {
+          setMenuData([]);
+        }
+      } catch (error) {
+        console.error("Failed to fetch products data:", error);
+        setMenuData([]);
+      }
 
       window.scrollTo({
         top: window.innerHeight * 0.8,
@@ -60,9 +69,7 @@ export const Menu = () => {
           ))}
         </ul>
       </section>
-      {showModal && (
-        <ModalCart isOpen={() => setShowModal(false)} />
-      )}
+      {showModal && <ModalCart isOpen={() => setShowModal(false)} />}
     </>
   );
 };

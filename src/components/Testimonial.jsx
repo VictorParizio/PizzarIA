@@ -13,8 +13,17 @@ export const Testimonial = () => {
 
   useEffect(() => {
     (async function () {
-      const dataAPI = await getAPI("testimonial");
-      setTestimonialsData(dataAPI);
+      try {
+        const dataAPI = await getAPI("testimonial");
+        if (dataAPI) {
+          setTestimonialsData(dataAPI);
+        } else {
+          setTestimonialsData([]);
+        }
+      } catch (error) {
+        console.error("Failed to fetch testimonials data:", error);
+        setTestimonialsData([]);
+      }
     })();
   }, []);
 
@@ -31,7 +40,11 @@ export const Testimonial = () => {
   };
 
   return (
-    <section id="testimonials" role="region" aria-label="Depoimentos de nossos clientes">
+    <section
+      id="testimonials"
+      role="region"
+      aria-label="Depoimentos de nossos clientes"
+    >
       <div className="control">
         <h2 id="testimonials-heading">Depoimentos</h2>
         <div>

@@ -7,6 +7,9 @@
 ![Sass](https://img.shields.io/badge/Sass-CC6699?style=for-the-badge&logo=sass&logoColor=white)
 ![VSCode](https://img.shields.io/badge/VSCode-0078D4?style=for-the-badge&logo=visual%20studio%20code&logoColor=white)
 
+- Site da [PizzarIA](pizzar-ia.vercel.app)
+- [Back-End da PizzarIA](https://github.com/VictorParizio/backend-pizzarIA)
+
 ## Visão Geral
 
 Este é um sistema desenvolvido em React para permitir aos usuários realizar pedidos online em uma pizzaria. Os usuários podem se registrar, entrar, visualizar o cardápio, adicionar pizzas ao carrinho, editar a quantidade e remover itens do carrinho.
