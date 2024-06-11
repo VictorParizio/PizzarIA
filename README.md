@@ -8,7 +8,7 @@
 ![VSCode](https://img.shields.io/badge/VSCode-0078D4?style=for-the-badge&logo=visual%20studio%20code&logoColor=white)
 
 - Site da [PizzarIA](pizzar-ia.vercel.app)
-- [Back-End da PizzarIA](https://github.com/VictorParizio/backend-pizzarIA)
+- [Back-End da PizzarIA](https://github.com/VictorParizio/pizzaria-backend)
 
 ## Visão Geral
 
@@ -30,7 +30,7 @@ Este é um sistema desenvolvido em React para permitir aos usuários realizar pe
 
 3. **Autenticação com Redux**
 
-   - Introduzir o Redux para gerenciar o estado global da aplicação, incluindo informações sobre o usuário autenticado.
+   - O Redux gerencia o estado global da aplicação, incluindo informações sobre o usuário autenticado.
 
 4. **Proteção de Rotas**
 
@@ -70,7 +70,7 @@ Este é um sistema desenvolvido em React para permitir aos usuários realizar pe
 
 12. **Acessibilidade e Atributos ARIA**
 
-    - Integração de atributos ARIA para melhorar a acessibilidade da aplicação, tornando-a mais amigável para usuários com deficiência.
+    - Integração de atributos ARIA para melhorar a acessibilidade da aplicação, tornando-a mais amigável para usuários com limitações.
 
 13. **Controle de Versão com Git**
     - Configuração de um repositório Git para o projeto, garantindo um histórico de alterações e facilitando a colaboração entre os membros da equipe.
@@ -78,14 +78,14 @@ Este é um sistema desenvolvido em React para permitir aos usuários realizar pe
 ## Tecnologias Utilizadas
 
 - React
+- React Router DOM
 - Redux Toolkit
 - Axios
-- React Router DOM
 - Sass
 
 ## Pré-requisitos
 
-Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
+Para rodar o projeto localmente, antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
 
 - [Node.js](https://nodejs.org/en/)
 - [Git](https://git-scm.com/)
@@ -115,5 +115,5 @@ Antes de começar, você vai precisar ter instalado em sua máquina as seguintes
    ```
 2. Acesse no seu navegador:
    ```plaintext
-   http://localhost:3000
+   http://localhost:5173/
    ```
