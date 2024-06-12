@@ -16,7 +16,7 @@ export const Menu = () => {
   useEffect(() => {
     (async function () {
       try {
-        const dataAPI = await getAPI("produto");
+        const dataAPI = await getAPI("product");
         if (dataAPI) {
           setMenuData(dataAPI);
         } else {

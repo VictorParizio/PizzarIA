@@ -46,7 +46,7 @@ export const Signup = () => {
       return;
     }
 
-    const response = await postAPI("usuario", formValues, showMessage);
+    const response = await postAPI("user", formValues, showMessage);
     sessionStorage.setItem("token", response.access_token);
     dispatch(login(true));
     navigate("/menu");
