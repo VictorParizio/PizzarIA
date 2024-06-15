@@ -24,32 +24,41 @@ export const Signup = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    if (name.trim() === "" && email.trim() === "" && password.trim() === "") {
-      showMessage("Todos os campos são obrigatórios");
-      return;
+    try {
+      if (name.trim() === "" && email.trim() === "" && password.trim() === "") {
+        showMessage("Todos os campos são obrigatórios");
+        return;
+      }
+
+      if (name.length < 3) {
+        showMessage("O Nome deve conter ao menos 3 digitos");
+        return;
+      }
+
+      const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+      if (!emailRegex.test(email)) {
+        showMessage("Formato de email inválido");
+        return;
+      }
+
+      if (password.length < 6) {
+        showMessage("Senha deve conter ao menos 6 digitos");
+        return;
+      }
+
+      const response = await postAPI("user", formValues, showMessage);
+      sessionStorage.setItem("token", response.access_token);
+      dispatch(login(true));
+      navigate("/menu");
+    } catch (error) {
+      if (error?.response?.data?.message) {
+        showMessage(error.response.data.message);
+      } else {
+        console.log("Erro do lado do servidor: " + error);
+      }
+      throw error;
     }
-
-    if (name.length < 3) {
-      showMessage("O Nome deve conter ao menos 3 digitos");
-      return;
-    }
-
-    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-
-    if (!emailRegex.test(email)) {
-      showMessage("Formato de email inválido");
-      return;
-    }
-
-    if (password.length < 6) {
-      showMessage("Senha deve conter ao menos 6 digitos");
-      return;
-    }
-
-    const response = await postAPI("user", formValues, showMessage);
-    sessionStorage.setItem("token", response.access_token);
-    dispatch(login(true));
-    navigate("/menu");
   };
 
   return (
