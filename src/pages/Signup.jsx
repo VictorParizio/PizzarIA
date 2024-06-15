@@ -7,7 +7,6 @@ import { InputForm } from "../components/InputForm";
 import { Button } from "../components/Button";
 import { useForm } from "../hooks/useForm";
 import { postAPI } from "../http";
-import { login } from "../redux/user/slice";
 
 export const Signup = () => {
   const [formValues, handleInputChange] = useForm({
@@ -49,11 +48,11 @@ export const Signup = () => {
 
       const response = await postAPI("user", formValues, showMessage);
       sessionStorage.setItem("token", response.access_token);
-      dispatch(login(true));
       navigate("/menu");
     } catch (error) {
       if (error?.response?.data?.message) {
         showMessage(error.response.data.message);
+        console.log("Erro do lado do servidor: " + error);
       } else {
         console.log("Erro do lado do servidor: " + error);
       }
