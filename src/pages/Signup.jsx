@@ -47,7 +47,8 @@ export const Signup = () => {
     }
 
     try {
-      const response = await postAPI("user", formValues, showMessage);
+      const response = await postAPI("register", formValues, showMessage);
+      console.log(response)
       sessionStorage.setItem("token", response.access_token);
       dispatch(login(true));
       navigate("/menu");
