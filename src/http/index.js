@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const http = axios.create({
-  baseURL: "https://pizzaria-backend-api.vercel.app/pizzaria/",
+  baseURL: "https://glistening-essence-production.up.railway.app/pizzaria",
   headers: {
     Accept: "application/json",
     Content: "application/json",
